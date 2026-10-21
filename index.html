@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ishaan Shailesh Phaye — AI Systems Architect &amp; Software Engineer</title>
+  <meta name="description" content="Portfolio of Ishaan Shailesh Phaye — AI Systems Architect, M.Tech CSE @ IIIT Lucknow. ClipSense AI, GPT-2 from Scratch, Mini Database Storage Engine, Distributed Systems."/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- FontAwesome for tech stack & social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Tailwind Theme Configuration matching petroleum-teal avant-garde palette -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#081416",
+            "surface": "#0c1a1d",
+            "surface-container": "#112226",
+            "surface-container-high": "#162b30",
+            "surface-container-lowest": "#050d0e",
+            "on-surface": "#e5eded",
+            "on-surface-variant": "#9db4b8",
+            "outline": "#607b80",
+            "outline-variant": "#2a4247",
+            "accent-teal": "#00f0ff",
+            "accent-amber": "#ffb259",
+            "accent-cyan": "#5ef2d6"
+          },
+          fontFamily: {
+            "meta-mono": ["Fira Code", "monospace"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "display": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-caps": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "meta-mono": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.08em" }],
+            "body-md": ["0.9375rem", { lineHeight: "1.5rem", letterSpacing: "0.01em" }],
+            "headline-md": ["2rem", { lineHeight: "2.4rem", letterSpacing: "-0.02em" }],
+            "display": ["5.5rem", { lineHeight: "5.5rem", letterSpacing: "-0.04em" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "0.01em" }],
+            "headline-sm": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em" }],
+            "headline-lg": ["3.5rem", { lineHeight: "3.75rem", letterSpacing: "-0.03em" }],
+            "label-caps": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.14em" }]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 35mm Analog Film Grain */
+    .film-grain {
+      background-image: radial-gradient(rgba(244, 246, 246, 0.035) 1px, transparent 0);
+      background-size: 4px 4px;
+    }
+    
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 34s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Fluid Neon Cursor Rules - Absolute system cursor hiding on desktop */
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after {
+        cursor: none !important;
+      }
+    }
+
+    /* Crisp High-Energy Core Dot */
+    #custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: #00f0ff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.8);
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      will-change: transform;
+    }
+
+    /* Outer Neon Precision Ring - NO BLUR */
+    #custom-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(0, 240, 255, 0.55);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.15);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.2s ease, 
+                  background-color 0.2s ease;
+      will-change: transform;
+    }
+
+    /* Clickable Hover State: Expanded ring with crisp outline and subtle tint - STRICTLY NO BLUR, White Accent */
+    body.cursor-hover #custom-cursor-ring {
+      width: 58px;
+      height: 58px;
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.15);
+    }
+
+    body.cursor-hover #custom-cursor-dot {
+      transform: translate(-50%, -50%) scale(1.4);
+      background-color: #ffffff;
+      box-shadow: 0 0 14px #ffffff, 0 0 24px #ffffff;
+    }
+
+    body.cursor-down #custom-cursor-ring {
+      transform: translate(-50%, -50%) scale(0.85);
+      border-color: #ffffff;
+      box-shadow: 0 0 20px #00f0ff;
+    }
+
+    /* High-Resolution Neon Trail Ribbon Canvas */
+    #trail-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99996;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ambient Dynamic Pointer Glow Lights */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+      transition: transform 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+    }
+
+    /* 3D Achievement Card Spatial Elevation */
+    .achievement-card-wrapper {
+      perspective: 1000px;
+    }
+
+    .achievement-card {
+      transition: transform 0.15s ease-out,
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease,
+                  background-color 0.25s ease;
+      will-change: transform, box-shadow;
+      transform-style: preserve-3d;
+      cursor: none !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card.is-hovered {
+      border-color: #00f0ff !important;
+      background-color: rgba(12, 26, 29, 0.95) !important;
+      box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.7), 
+                  0 0 25px rgba(0, 240, 255, 0.2) !important;
+    }
+
+    /* Subtle optical sheen glare moving with tilt */
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .achievement-card.is-hovered .card-glare {
+      opacity: 1;
+    }
+
+    /* Animated Card Icons using Animate Skill easing */
+    .card-icon {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), filter 0.25s ease;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .achievement-card.is-hovered .card-icon i {
+      animation: iconPulseFloat 0.8s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate !important;
+      filter: drop-shadow(0 0 12px currentColor) !important;
+    }
+
+    @keyframes iconPulseFloat {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.22) rotate(-6deg);
+      }
+      100% {
+        transform: translateY(-10px) scale(1.3) rotate(8deg);
+      }
+    }
+
+    /* 3D Section Depth Transitions */
+    .section-3d-wrap {
+      perspective: 1200px;
+      perspective-origin: center top;
+    }
+
+    .section-3d-reveal {
+      opacity: 0.15;
+      transform: perspective(1200px) rotateX(12deg) translateY(45px) scale(0.96);
+      transform-origin: center top;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .section-3d-reveal.is-in-view {
+      opacity: 1;
+      transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .section-3d-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #081416;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a4247;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f0ff;
+    }
+  </style>
+</head>
+
+<body class="bg-primary-container text-on-surface min-h-screen selection:bg-accent-teal selection:text-primary-container antialiased overflow-x-hidden relative">
+
+  <!-- Interactive Custom Mouse Cursor Elements -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="trail-canvas"></canvas>
+
+  <!-- Interactive Liquid / Water Motion Background Canvas -->
+  <canvas id="water-canvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
+
+  <!-- Dynamic Pointer-Tracking Ambient Background Lights -->
+  <div id="ambient-primary" class="ambient-glow -z-10 w-[780px] h-[780px] bg-accent-teal/10 rounded-full blur-[160px] top-0 left-0"></div>
+  <div id="ambient-secondary" class="ambient-glow -z-10 w-[620px] h-[620px] bg-accent-amber/8 rounded-full blur-[150px] bottom-0 right-0"></div>
+  
+  <!-- Analog Film Grain Overlay -->
+  <div class="fixed inset-0 film-grain pointer-events-none z-30 opacity-40"></div>
+
+  <!-- ========================================================
+       TOP NAVIGATION BAR WITH DYNAMIC ACTIVE SECTION SCROLL-SPY
+       ======================================================== -->
+  <header class="w-full px-5 md:px-12 py-3.5 flex justify-between items-center border-b border-dotted border-outline-variant/40 sticky top-0 bg-primary-container/90 backdrop-blur-md z-40">
+    <div class="flex items-center gap-6">
+      <a class="font-headline-sm text-lg md:text-xl font-medium tracking-tight text-on-surface hover:text-accent-teal transition-colors duration-200" href="#">
+        ishaan.phaye<span class="text-accent-teal">()</span>
+      </a>
+    </div>
+
+    <!-- Navigation items (developerFolio taxonomy with sliding pill) -->
+    <nav class="hidden md:flex items-center gap-1.5" id="nav-container">
+      <a class="nav-item bg-[#f4f7f6] text-[#081416] font-medium font-label-caps text-label-caps rounded-full px-3.5 py-1.5 transition-all duration-300" data-target="about" href="#about">
+        01 ABOUT
+      </a>
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="skills" href="#skills">
+        02 SKILLS
+      </a>
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="experience" href="#experience">
+        03 EXP
+      </a>
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="projects" href="#projects">
+        04 PROJECTS
+      </a>
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="achievements" href="#achievements">
+        05 ACHIEVEMENTS
+      </a>
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="contact" href="#contact">
+        06 CONTACT
+      </a>
+    </nav>
+  </header>
+
+  <main class="w-full">
+    <!-- ========================================================
+         SECTION 01: ABOUT ME & HERO STATEMENT
+         ======================================================== -->
+    <section class="section-3d-reveal relative w-full px-5 md:px-12 pt-14 md:pt-24 pb-20 md:pb-28" id="about">
+      <!-- Chapter Metadata Header -->
+      <div class="flex items-center justify-between pb-6 border-b border-dotted border-outline-variant/40">
+        <span class="font-meta-mono text-meta-mono text-outline">
+          01 // ABOUT
+        </span>
+      </div>
+
+      <!-- Monumental Typography Spread -->
+      <div class="pt-12 md:pt-20 pb-8 relative z-10">
+        <div class="max-w-6xl">
+          <p class="font-meta-mono text-accent-teal text-meta-mono tracking-widest uppercase mb-4">
+            AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER // M.TECH @ IIIT LUCKNOW
+          </p>
+          <h1 class="text-4xl sm:text-6xl md:text-8xl font-normal text-on-surface tracking-tight leading-[0.94] mb-8 font-display">
+            ISHAAN<br/>
+            <span class="text-on-surface/90 font-light italic text-accent-cyan">SHAILESH PHAYE</span>
+          </h1>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end pt-2">
+            <div class="md:col-span-8">
+              <p class="font-body-lg text-lg sm:text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-6 font-normal">
+                Engineering production-ready AI systems, custom database storage engines, and high-concurrency distributed backends. Specializing in autonomous RAG platforms, fine-tuned LLM architectures, and systems programming.
+              </p>
+
+              <!-- Candidate Metadata Status Tags -->
+              <div class="flex flex-wrap gap-2.5 mb-8 font-meta-mono text-xs">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-outline-variant/40 bg-surface text-on-surface-variant">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Immediate Notice (0 Days)
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-outline-variant/40 bg-surface text-on-surface-variant">
+                  <i class="fas fa-location-dot text-accent-teal"></i> Lucknow / Open to Relocation &amp; Remote
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-outline-variant/40 bg-surface text-on-surface-variant">
+                  <i class="fas fa-graduation-cap text-accent-amber"></i> IIIT Lucknow (CGPA: 8.36)
+                </span>
+              </div>
+              
+              <!-- Tactical CTA and Social Channels -->
+              <div class="flex flex-wrap items-center gap-6">
+                <a class="group inline-flex items-center rounded-full overflow-hidden border border-outline-variant bg-surface-container-lowest hover:border-accent-teal transition-all duration-300" href="#projects">
+                  <span class="bg-on-surface text-surface-container-lowest font-label-caps text-label-caps px-5 py-2.5 font-bold tracking-widest">
+                    EXPLORE PROJECTS
+                  </span>
+                  <span class="px-3.5 py-2.5 bg-surface-container text-accent-teal font-meta-mono text-meta-mono group-hover:translate-y-0.5 transition-transform duration-200">
+                    ↓
+                  </span>
+                </a>
+
+                <a class="group inline-flex items-center rounded-full overflow-hidden border border-accent-teal/40 bg-surface hover:border-accent-teal transition-all duration-300" href="#contact">
+                  <span class="text-accent-teal font-label-caps text-label-caps px-4 py-2.5 font-bold tracking-widest">
+                    GET IN TOUCH
+                  </span>
+                </a>
+
+                <!-- Verified Candidate Social Channels -->
+                <div class="flex items-center gap-4 text-on-surface-variant font-meta-mono text-sm">
+                  <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="GitHub">
+                    <i class="fab fa-github"></i> <span class="hidden sm:inline">GITHUB</span>
+                  </a>
+                  <span class="text-outline-variant">/</span>
+                  <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i> <span class="hidden sm:inline">LINKEDIN</span>
+                  </a>
+                  <span class="text-outline-variant">/</span>
+                  <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LeetCode (400+ Solved)">
+                    <i class="fas fa-code"></i> <span class="hidden sm:inline">LEETCODE</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RUNNING TYPOGRAPHIC MARQUEE -->
+    <section class="w-full border-t border-b border-dotted border-outline-variant/30 py-4 overflow-hidden bg-surface-container-lowest/50">
+      <div class="animate-marquee whitespace-nowrap flex items-center">
+        <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface-variant/80 uppercase mx-5">
+          PYTORCH × FASTAPI × B+TREE WAL STORAGE × QDRANT VECTOR RAG × DOCKER × C++20 × LLM FINE-TUNING →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-accent-teal uppercase mx-5">
+          DISTRIBUTED SYSTEMS × ACID TRANSACTIONS × CONCURRENCY × 400+ LEETCODE ALGORITHMS →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface-variant/80 uppercase mx-5">
+          PYTORCH × FASTAPI × B+TREE WAL STORAGE × QDRANT VECTOR RAG × DOCKER × C++20 × LLM FINE-TUNING →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-accent-amber uppercase mx-5">
+          DISTRIBUTED SYSTEMS × ACID TRANSACTIONS × CONCURRENCY × 400+ LEETCODE ALGORITHMS →
+        </span>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 02: TECH STACK & SKILLS
+         ======================================================== -->
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-20 md:py-28" id="skills">
+      <!-- Chapter Marker -->
+      <div class="flex items-center justify-between pb-6 border-b border-dotted border-outline-variant/30 mb-12">
+        <div class="flex items-center gap-4">
+          <span class="font-headline-sm text-xl font-light text-on-surface">
+            02 / TECH STACK &amp; SKILLS
+          </span>
+          <span class="font-meta-mono text-meta-mono text-outline">
+            [CORE COMPETENCIES]
+          </span>
+        </div>
+      </div>
+
+      <!-- Domain Matrix Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Domain 1: AI, LLMs & Vector Systems -->
+        <div class="border-t border-outline-variant/50 pt-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-meta-mono text-meta-mono text-accent-teal font-semibold">01 // AI, LLMS &amp; RETRIEVAL</span>
+            <i class="fas fa-brain text-outline text-lg"></i>
+          </div>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">
+            Production-grade RAG pipelines, fine-tuned transformer architectures, cross-encoder re-ranking, and low-latency edge computer vision.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">PyTorch / TensorFlow / TFLite</span>
+              <span class="text-outline">Deep Learning &amp; Edge</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">HuggingFace / Transformers / LoRA</span>
+              <span class="text-outline">QLoRA / SFT Engine</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">LangChain / LangGraph / RAGAS</span>
+              <span class="text-outline">RAG &amp; Evaluation</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">Qdrant / Chroma / FastEmbed</span>
+              <span class="text-outline">Vector Search &amp; Embeddings</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain 2: Systems, Languages & Core CS -->
+        <div class="border-t border-outline-variant/50 pt-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-meta-mono text-meta-mono text-accent-cyan font-semibold">02 // SYSTEMS &amp; CORE CS</span>
+            <i class="fas fa-microchip text-outline text-lg"></i>
+          </div>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">
+            Custom storage engines, disk I/O, cache-conscious page layouts, concurrency, and rigorous algorithmic problem solving (400+ LeetCode).
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">C / C++ (C++20)</span>
+              <span class="text-outline">Systems Programming</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">B+Tree / WAL / Buffer Pool</span>
+              <span class="text-outline">Storage Engine Design</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">Distributed Systems &amp; ACID</span>
+              <span class="text-outline">Concurrency &amp; Networking</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">Algorithms &amp; Data Structures</span>
+              <span class="text-outline">Top 200 TCS NQT / 400+ LC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain 3: Full Stack & Infrastructure -->
+        <div class="border-t border-outline-variant/50 pt-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-meta-mono text-meta-mono text-accent-amber font-semibold">03 // FULL STACK &amp; INFRA</span>
+            <i class="fas fa-server text-outline text-lg"></i>
+          </div>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm leading-relaxed">
+            Asynchronous REST APIs, responsive reactive frontends, containerized microservices, and relational/document databases.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">FastAPI / Flask / Express.js / Node</span>
+              <span class="text-outline">API &amp; Backend Runtimes</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">React / TypeScript / Tailwind CSS</span>
+              <span class="text-outline">Frontend Architecture</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">PostgreSQL / MongoDB / Redis</span>
+              <span class="text-outline">Databases &amp; Indexing</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-dotted border-outline-variant/30 font-meta-mono text-xs">
+              <span class="text-on-surface">Docker / Git / Linux / AWS / CI/CD</span>
+              <span class="text-outline">DevOps &amp; Cloud Infra</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Software Skill Badges with Enriched Styling, Larger Icons and Text -->
+      <div class="mt-14 pt-8 border-t border-dotted border-outline-variant/30">
+        <p class="font-meta-mono text-meta-mono text-outline uppercase tracking-wider mb-6">
+          VERIFIED LANGUAGES, FRAMEWORKS &amp; TOOLS //
+        </p>
+        <div class="flex flex-wrap gap-3.5">
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-python text-accent-teal text-base"></i> Python
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-code text-accent-cyan text-base"></i> C &amp; C++ (C++20)
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-js-square text-[#f7df1e] text-base"></i> TypeScript / JavaScript
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-fire text-amber-500 text-base"></i> PyTorch
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-bolt text-accent-teal text-base"></i> FastAPI
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-react text-[#61dafb] text-base"></i> React
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-node text-[#68a063] text-base"></i> Node.js &amp; Express
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-database text-accent-cyan text-base"></i> PostgreSQL / MongoDB
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-vector-square text-accent-teal text-base"></i> Qdrant / Chroma Vector DB
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-docker text-[#2496ed] text-base"></i> Docker
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-aws text-accent-amber text-base"></i> AWS Cloud
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-linux text-on-surface text-base"></i> Linux &amp; Bash
+          </span>
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-git-alt text-[#f05032] text-base"></i> Git &amp; GitHub Actions
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 03: WORK EXPERIENCE & EDUCATION
+         ======================================================== -->
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-20 md:py-28 border-t border-dotted border-outline-variant/30" id="experience">
+      <!-- Chapter Marker -->
+      <div class="flex items-center justify-between pb-6 border-b border-dotted border-outline-variant/30 mb-12">
+        <div class="flex items-center gap-4">
+          <span class="font-headline-sm text-xl font-light text-on-surface">
+            03 / EXPERIENCE &amp; ACADEMICS
+          </span>
+          <span class="font-meta-mono text-meta-mono text-outline">
+            [CHRONOLOGY]
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- Work Experience Timeline (7 Cols) -->
+        <div class="lg:col-span-7 space-y-10">
+          <p class="font-meta-mono text-meta-mono text-accent-teal uppercase tracking-widest mb-6">
+            WORK EXPERIENCE //
+          </p>
+
+          <!-- Role: Datanomers -->
+          <div class="relative pl-6 border-l border-dotted border-outline-variant/60 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-teal group-hover:scale-125 transition-transform"></div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+              <h3 class="font-headline-md text-xl text-on-surface font-medium group-hover:text-accent-teal transition-colors">
+                Machine Learning Intern <span class="text-on-surface font-medium text-xl">@ Datanomers</span>
+              </h3>
+              <span class="font-meta-mono text-xs text-outline">JUN 2022 — DEC 2022</span>
+            </div>
+            <p class="font-meta-mono text-xs text-accent-cyan/90 mb-3">
+              Remote (Work from Home) · SDE / AI Systems / Data Engineering
+            </p>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed mb-4">
+              Engineered high-scale Python data preprocessing pipelines, optimized real-time predictive ML inference algorithms, and collaborated on banking-domain models.
+            </p>
+            <ul class="font-meta-mono text-xs text-on-surface-variant/90 space-y-2 list-disc list-inside">
+              <li>Engineered a high-scale data pipeline to preprocess &amp; encode SIC codes, categorizing corporate profiles for banking-domain ML models.</li>
+              <li>Optimized predictive ML inference in high-scale systems, cutting response latency by <strong class="text-on-surface font-semibold">35%</strong> across production environments.</li>
+              <li>Implemented and unit-tested <strong class="text-on-surface font-semibold">40+ automated rule-based validation checks</strong> prior to ingestion, improving model signal accuracy by up to <strong class="text-on-surface font-semibold">30%</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education & Academic Foundation (5 Cols) -->
+        <div class="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-dotted border-outline-variant/40 pt-8 lg:pt-0 lg:pl-10">
+          <p class="font-meta-mono text-meta-mono text-accent-cyan uppercase tracking-widest mb-6">
+            EDUCATION &amp; DEGREES //
+          </p>
+
+          <div class="space-y-8">
+            <!-- Degree 1: M.Tech IIIT Lucknow -->
+            <div class="relative pl-5 border-l-2 border-accent-teal">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-meta-mono text-xs text-outline">2025 — PRESENT (EXP. 2027)</span>
+                <span class="font-meta-mono text-xs px-2 py-0.5 rounded bg-accent-teal/15 text-accent-teal font-semibold">CGPA: 8.36 / 10</span>
+              </div>
+              <h4 class="font-headline-sm text-lg text-on-surface font-medium">M.Tech in Computer Science</h4>
+              <p class="font-body-md text-sm text-accent-cyan font-light mb-2">Indian Institute of Information Technology, Lucknow (IIIT Lucknow)</p>
+              <p class="font-meta-mono text-xs text-outline leading-relaxed">
+                Lucknow, Uttar Pradesh, India. Specialization in Advanced Computer Science, Systems Architecture, Machine Learning Theory &amp; Distributed Algorithms.
+              </p>
+            </div>
+
+            <!-- Degree 2: B.Tech SSIPMT -->
+            <div class="relative pl-5 border-l-2 border-outline-variant">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-meta-mono text-xs text-outline">2019 — 2023</span>
+                <span class="font-meta-mono text-xs px-2 py-0.5 rounded bg-surface text-accent-amber font-semibold">CGPA: 8.3 / 10</span>
+              </div>
+              <h4 class="font-headline-sm text-base text-on-surface font-medium">B.Tech in Information Technology</h4>
+              <p class="font-body-md text-sm text-on-surface-variant font-light mb-2">Shri Shankaracharya Institute of Professional Management &amp; Technology (SSIPMT)</p>
+              <p class="font-meta-mono text-xs text-outline leading-relaxed">
+                Raipur, Chhattisgarh, India. Strong foundation in Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, and Computer Networks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 04: PROJECTS (PRODUCTION & SYSTEMS)
+         ======================================================== -->
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-20 md:py-28 border-t border-dotted border-outline-variant/30" id="projects">
+      <!-- Chapter Marker -->
+      <div class="flex items-center justify-between pb-6 border-b border-dotted border-outline-variant/30 mb-8">
+        <div class="flex items-center gap-4">
+          <span class="font-headline-sm text-xl font-light text-on-surface">
+            04 / FEATURED &amp; SYSTEMS PROJECTS
+          </span>
+          <span class="font-meta-mono text-meta-mono text-outline">
+            [INDEX 01—05]
+          </span>
+        </div>
+      </div>
+
+      <!-- Pure Typographic Index Rows - No horizontal dividers between projects -->
+      <div class="space-y-4">
+        <!-- Project 01: ClipSense AI -->
+        <div class="group py-8 md:py-10 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200">
+                <span class="text-on-surface-variant font-light group-hover:text-accent-teal">01 —</span> CLIPSENSE AI
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm">
+                Scalable Video RAG &amp; Multi-Vector Search Platform
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs text-outline">
+              <span>FastAPI · React · TypeScript · Qdrant · Docker</span>
+              <span class="text-emerald-400 font-semibold">● LIVE DEMO</span>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-[#c0d2d4] max-w-4xl leading-relaxed mb-4">
+            Engineered a production-ready RAG platform transforming YouTube videos and playlists into queryable knowledge bases. Features a two-stage retrieval pipeline (Qdrant dense vector search + cross-encoder re-ranking) operating within a sub-80 MB serverless RAM footprint. Implemented concurrent thread-pool retrieval across 35+ playlists, cutting search latency by <strong class="text-on-surface font-semibold">96%</strong> (8s down to &lt;0.3s) with dual-token JWT auth and timestamped citations synced to an embedded player.
+          </p>
+          <div class="flex items-center gap-5 font-meta-mono text-xs">
+            <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
+              <i class="fab fa-github"></i> GitHub Repository ↗
+            </a>
+            <a href="https://clipsense-ai.onrender.com" target="_blank" rel="noopener" class="text-accent-teal hover:underline flex items-center gap-1.5">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Application Demo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 02: GPT-2 from Scratch -->
+        <div class="group py-8 md:py-10 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200">
+                <span class="text-on-surface-variant font-light group-hover:text-accent-teal">02 —</span> GPT-2 FROM SCRATCH
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm">
+                Architecture, Pretraining &amp; SFT Engine
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs text-outline">
+              <span>PyTorch · SFT · BPE Tokenization · Flask</span>
+              <span class="text-accent-teal font-semibold">95.67% ACCURACY</span>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-[#c0d2d4] max-w-4xl leading-relaxed mb-4">
+            Engineered the complete GPT-2 (124M/355M) architecture from scratch in PyTorch covering causal multi-head attention, Byte Pair Encoding tokenization, and pre-LayerNorm residual blocks, transferring OpenAI pretrained weights into the custom model. Fine-tuned checkpoints for sequence classification (<strong class="text-on-surface font-semibold">95.67% test accuracy</strong>) and instruction following via SFT on the Alpaca dataset; built an autoregressive inference engine with Top-k sampling and temperature control.
+          </p>
+          <div class="flex items-center gap-5 font-meta-mono text-xs">
+            <a href="https://github.com/iSHAANphaye/GPT2-From-Scratch" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
+              <i class="fab fa-github"></i> GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 03: Vaatika Zone (Moved to 3rd place per requirement) -->
+        <div class="group py-8 md:py-10 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200">
+                <span class="text-on-surface-variant font-light group-hover:text-accent-teal">03 —</span> VAATIKA ZONE
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm">
+                Full-Stack E-Commerce Web Platform
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs text-outline">
+              <span>React · Express.js · MongoDB · Node.js · Docker</span>
+              <span class="text-accent-amber font-semibold">-20% QUERY LATENCY</span>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-[#c0d2d4] max-w-4xl leading-relaxed mb-4">
+            Developed a responsive full-stack e-commerce web platform for a regional startup from structural ideation to production deployment, owning the entire SDLC. Designed schema architectures and compound indexing strategies in MongoDB, reducing backend API database query processing latency by <strong class="text-on-surface font-semibold">20%</strong> while containerizing services with Docker.
+          </p>
+          <div class="flex items-center gap-5 font-meta-mono text-xs">
+            <a href="https://github.com/iSHAANphaye/Vaatika-Zone-personal" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
+              <i class="fab fa-github"></i> GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 04: Mini Database Storage Engine (Placed 4th per requirement) -->
+        <div class="group py-8 md:py-10 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200">
+                <span class="text-on-surface-variant font-light group-hover:text-accent-teal">04 —</span> MINI DATABASE STORAGE ENGINE
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm">
+                Disk-Backed Custom Key-Value Store
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs text-outline">
+              <span>C++20 · B+Tree Index · Write-Ahead Log · Buffer Pool</span>
+              <span class="text-accent-cyan font-semibold">ACID ATOMICITY</span>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-[#c0d2d4] max-w-4xl leading-relaxed mb-4">
+            Engineered a disk-backed key-value store in C++ from scratch featuring a custom B+Tree index, supporting O(log n) point lookups and range scans across leaf-node linked lists with cache-conscious page layouts. Built Write-Ahead Logging (WAL) with sequential log flushing prior to in-place page writes, guaranteeing ACID atomicity, crash-safe durability, and automated recovery on restart alongside an LRU buffer pool manager.
+          </p>
+          <div class="flex items-center gap-5 font-meta-mono text-xs">
+            <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
+              <i class="fab fa-github"></i> GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 05: Real-Time Object Detection App (Placed at last per requirement) -->
+        <div class="group py-8 md:py-10 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200">
+                <span class="text-on-surface-variant font-light group-hover:text-accent-teal">05 —</span> ON-DEVICE OBJECT DETECTION
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm">
+                Quantized Edge Computer Vision Pipeline
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs text-outline">
+              <span>Flutter · TensorFlow · TFLite · SSD MobileNet</span>
+              <span class="text-accent-teal font-semibold">93% ACCURACY</span>
+            </div>
+          </div>
+          <p class="font-body-md text-sm text-[#c0d2d4] max-w-4xl leading-relaxed mb-4">
+            Led development of an on-device computer vision pipeline detecting and classifying objects with <strong class="text-on-surface font-semibold">93% accuracy</strong>, deployed as a real-time mobile application. Trained an SSD MobileNet model on the MSCOCO dataset and exported quantized models to TFLite format for edge deployment, achieving ultra low-latency inference directly on hardware without cloud dependencies.
+          </p>
+          <div class="flex items-center gap-5 font-meta-mono text-xs">
+            <a href="https://github.com/iSHAANphaye/Object-Detection-App" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
+              <i class="fab fa-github"></i> GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 05: ACHIEVEMENTS & KEY HONORS
+         ======================================================== -->
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-16 md:py-24 border-t border-dotted border-outline-variant/30" id="achievements">
+      <!-- Chapter Marker -->
+      <div class="flex items-center justify-between pb-6 border-b border-dotted border-outline-variant/30 mb-8">
+        <div class="flex items-center gap-4">
+          <span class="font-headline-sm text-xl font-light text-on-surface">
+            05 / ACHIEVEMENTS &amp; COMPETITIVE HONORS
+          </span>
+          <span class="font-meta-mono text-meta-mono text-outline">
+            [AWARDS &amp; RANKINGS]
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 achievement-card-wrapper">
+        <!-- Award 1: TechXR Hackathon -->
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-amber text-xl card-icon"><i class="fas fa-trophy"></i></span>
+            <span class="font-meta-mono text-xs text-outline">IIT ROORKEE</span>
+          </div>
+          <h3 class="font-headline-sm text-lg text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            8th Place / 3,500+ Participants
+          </h3>
+          <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4">
+            Secured 8th position among 3,500+ developers at TechXR Hackathon (IIT Roorkee), earning a competitive 3-month internship offer based on technical architecture and performance.
+          </p>
+          <span class="font-meta-mono text-[11px] text-accent-cyan">TECHXR HACKATHON · IIT ROORKEE</span>
+        </div>
+
+        <!-- Award 2: Competitive Programming LeetCode -->
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-cyan text-xl card-icon"><i class="fas fa-code"></i></span>
+            <span class="font-meta-mono text-xs text-outline">LEETCODE</span>
+          </div>
+          <h3 class="font-headline-sm text-lg text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            400+ Algorithmic Problems Solved
+          </h3>
+          <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4">
+            Solved over 400 algorithmic problems on LeetCode focusing on asymptotic runtime and memory complexity optimization across Dynamic Programming, Graphs, and Trees.
+          </p>
+          <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="font-meta-mono text-[11px] text-accent-teal hover:underline inline-flex items-center gap-1">
+            VIEW PROFILE @ishaanroxx ↗
+          </a>
+        </div>
+
+        <!-- Award 3: TCS NQT -->
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-teal text-xl card-icon"><i class="fas fa-medal"></i></span>
+            <span class="font-meta-mono text-xs text-outline">NATIONAL EXAM</span>
+          </div>
+          <h3 class="font-headline-sm text-lg text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            Top 200 All-India Rank
+          </h3>
+          <p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4">
+            Attained a Top 200 national percentile rank in TCS National Qualifier Test (NQT) nationwide with only one month of targeted algorithmic preparation.
+          </p>
+          <span class="font-meta-mono text-[11px] text-accent-amber">TCS NATIONAL QUALIFIER TEST</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 06: CONTACT & EMPLOYMENT PREFERENCES
+         ======================================================== -->
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-20 md:py-28 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest/30" id="contact">
+      <div class="pb-6 border-b border-dotted border-outline-variant/30 flex justify-between items-center mb-12">
+        <span class="font-meta-mono text-meta-mono text-outline">
+          06 // GET IN TOUCH
+        </span>
+        <span class="font-meta-mono text-meta-mono text-emerald-400 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          OPEN TO IMMEDIATE OPPORTUNITIES
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        <!-- Direct contact info & preferences -->
+        <div class="md:col-span-7 flex flex-col justify-between">
+          <div>
+            <p class="font-meta-mono text-meta-mono text-outline mb-3">
+              DIRECT DISPATCH //
+            </p>
+            <a class="text-2xl sm:text-4xl font-normal text-on-surface hover:text-accent-teal transition-colors duration-200 tracking-tight block mb-2" href="mailto:ishaanphaye@gmail.com">
+              ishaanphaye@gmail.com
+            </a>
+            <p class="font-meta-mono text-sm text-accent-teal mb-6">
+              Phone: +91-8839167462
+            </p>
+            
+            <p class="font-body-md text-sm text-on-surface-variant max-w-lg leading-relaxed mb-6">
+              Actively seeking roles across Software Development Engineering (SDE), Backend Systems, and AI / Machine Learning Engineering.
+            </p>
+
+            <!-- Relocation & Compensation Highlights with Uniform Two-Column Alignment -->
+            <div class="p-5 rounded-lg border border-outline-variant/30 bg-surface mb-8 max-w-lg font-meta-mono text-xs">
+              <div class="grid grid-cols-12 gap-y-3 gap-x-4 items-baseline">
+                <div class="col-span-5 text-outline">LOCATION BASE:</div>
+                <div class="col-span-7 text-right text-on-surface">Lucknow, Uttar Pradesh, India</div>
+
+                <div class="col-span-5 text-outline">WILLING TO RELOCATE:</div>
+                <div class="col-span-7 text-right text-accent-teal font-medium">Yes (India / Global Remote)</div>
+
+                <div class="col-span-5 text-outline">PREFERRED LOCATIONS:</div>
+                <div class="col-span-7 text-right text-on-surface leading-relaxed">Remote, Worldwide Remote, Bangalore, Pune, Hyderabad, NCR</div>
+
+                <div class="col-span-5 text-outline">WORK AUTHORIZATION:</div>
+                <div class="col-span-7 text-right text-on-surface">India Authorized · Global Remote</div>
+
+                <div class="col-span-12 border-t border-dotted border-outline-variant/30 my-0.5"></div>
+
+                <div class="col-span-5 text-outline">NOTICE PERIOD:</div>
+                <div class="col-span-7 text-right text-emerald-400 font-semibold">Immediate (0 Days)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social links matrix -->
+          <div class="space-y-4 pt-4 border-t border-dotted border-outline-variant/30">
+            <span class="font-meta-mono text-meta-mono text-outline block">VERIFIED PROFILES //</span>
+            <div class="flex flex-wrap gap-4 font-meta-mono text-xs">
+              <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
+                <i class="fab fa-github"></i> github.com/iSHAANphaye
+              </a>
+              <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
+                <i class="fab fa-linkedin-in"></i> linkedin.com/in/ishaan-phaye
+              </a>
+              <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
+                <i class="fas fa-code"></i> leetcode.com/ishaanroxx
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Direct Message Box -->
+        <div class="md:col-span-5 border-t md:border-t-0 md:border-l border-dotted border-outline-variant/40 pt-8 md:pt-0 md:pl-10">
+          <span class="font-meta-mono text-meta-mono text-outline block mb-4">INITIATE INQUIRY //</span>
+          <form class="space-y-4" onsubmit="event.preventDefault(); const n = document.getElementById('cf-name').value; const e = document.getElementById('cf-email').value; const m = document.getElementById('cf-msg').value; window.location.href = `mailto:ishaanphaye@gmail.com?subject=Inquiry from ${encodeURIComponent(n)}&body=${encodeURIComponent(m + '\n\nFrom: ' + n + ' (' + e + ')')}`; return false;">
+            <div>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">YOUR NAME &amp; COMPANY</label>
+              <input id="cf-name" type="text" placeholder="e.g. Hiring Lead / Engineering Director" class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required/>
+            </div>
+            <div>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">YOUR EMAIL ADDRESS</label>
+              <input id="cf-email" type="email" placeholder="contact@company.com" class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required/>
+            </div>
+            <div>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">MESSAGE / POSITION DETAILS</label>
+              <textarea id="cf-msg" rows="3" placeholder="Discussing role opening, timeline, or interview details..." class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required></textarea>
+            </div>
+            <div class="flex justify-end pt-2">
+              <button type="submit" class="group inline-flex items-center gap-3 rounded-full border border-outline-variant/60 bg-surface hover:border-accent-teal hover:bg-surface-container transition-all duration-200 py-2.5 px-6">
+                <span class="font-label-caps text-xs text-on-surface font-semibold tracking-widest group-hover:text-accent-teal transition-colors">
+                  SEND
+                </span>
+                <span class="text-accent-teal font-meta-mono text-sm group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Component: Footer -->
+  <footer class="w-full px-5 md:px-12 py-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest">
+    <div class="font-meta-mono text-meta-mono text-outline text-center md:text-left">
+      ISHAAN SHAILESH PHAYE — AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER. ALL RIGHTS RESERVED.
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#about">
+        BACK TO TOP ↑
+      </a>
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#projects">
+        PROJECTS
+      </a>
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#contact">
+        CONTACT
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       SCRIPTS: DYNAMIC AMBIENT LIGHT, LIQUID NEON TRAIL,
+       WATER CANVAS, AND ADVANCED SCROLL-SPY
+       ======================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ----------------------------------------------------
+      // 1. DYNAMIC SCROLL-SPY NAVIGATION
+      // ----------------------------------------------------
+      const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      const navItems = document.querySelectorAll('.nav-item');
+
+      const activeClasses = ['bg-[#f4f7f6]', 'text-[#081416]', 'font-medium', 'font-label-caps', 'text-label-caps', 'rounded-full', 'px-3.5', 'py-1.5'];
+      const mutedClasses = ['font-meta-mono', 'text-meta-mono', 'text-[#7b9295]', 'hover:text-on-surface', 'px-3', 'py-1.5'];
+
+      let currentActiveId = 'about';
+
+      function setActiveNav(targetId) {
+        if (!targetId || targetId === currentActiveId) return;
+        currentActiveId = targetId;
+
+        navItems.forEach(item => {
+          const isCurrent = item.getAttribute('data-target') === targetId;
+          if (isCurrent) {
+            item.classList.remove(...mutedClasses);
+            item.classList.add(...activeClasses);
+          } else {
+            item.classList.remove(...activeClasses);
+            item.classList.add(...mutedClasses);
+          }
+        });
+      }
+
+      // Robust offset-based scroll-spy handler that precisely detects tall sections like #projects
+      function updateScrollSpy() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        // Apex threshold
+        if (scrollPosition < 150) {
+          setActiveNav('about');
+          return;
+        }
+
+        // Bottom of page threshold
+        if (scrollPosition + windowHeight >= documentHeight - 60) {
+          setActiveNav('contact');
+          return;
+        }
+
+        // Check sections from bottom to top against a trigger line (35% from viewport top)
+        const triggerY = scrollPosition + windowHeight * 0.35;
+        let matchedId = 'about';
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          const top = sec.offsetTop;
+          if (triggerY >= top) {
+            matchedId = sec.id;
+            break;
+          }
+        }
+
+        setActiveNav(matchedId);
+      }
+
+      // Smooth click-to-scroll with proper header offset
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          const targetId = item.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            const headerOffset = 70;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            setActiveNav(targetId);
+          }
+        });
+      });
+
+      window.addEventListener('scroll', updateScrollSpy, { passive: true });
+      window.addEventListener('resize', updateScrollSpy, { passive: true });
+      // Initial call
+      updateScrollSpy();
+
+      // 3D Smooth Section Transition Observer
+      const revealSections = document.querySelectorAll('.section-3d-reveal');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+          } else {
+            // Un-reveal slightly when scrolled far away for dynamic re-entry depth
+            if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
+              entry.target.classList.remove('is-in-view');
+            }
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
+      });
+
+      revealSections.forEach(sec => sectionObserver.observe(sec));
+
+
+      // ----------------------------------------------------
+      // 2. POINTER POSITION & DYNAMIC AMBIENT BACKGROUND LIGHT
+      // ----------------------------------------------------
+      const ambientPrimary = document.getElementById('ambient-primary');
+      const ambientSecondary = document.getElementById('ambient-secondary');
+      const cursorDot = document.getElementById('custom-cursor-dot');
+      const cursorRing = document.getElementById('custom-cursor-ring');
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      // Ambient light lerp values
+      let amb1X = mouseX;
+      let amb1Y = mouseY;
+      let amb2X = window.innerWidth - mouseX;
+      let amb2Y = window.innerHeight - mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (cursorDot) {
+          cursorDot.style.left = `${mouseX}px`;
+          cursorDot.style.top = `${mouseY}px`;
+        }
+      });
+
+      // Universal Event Delegation for Hover Detection on ANY clickable item/link/button/card
+      document.body.addEventListener('mouseover', (e) => {
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        if (interactiveTarget) {
+          document.body.classList.add('cursor-hover');
+        }
+      });
+
+      document.body.addEventListener('mouseout', (e) => {
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        if (interactiveTarget) {
+          // If we left to an element that is NOT inside an interactive target, remove class
+          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article')) {
+            document.body.classList.remove('cursor-hover');
+          }
+        }
+      });
+
+      window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+      window.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+
+      // Dynamic 3D Spatial Tilt Physics on Achievement Cards
+      const achievementCards = document.querySelectorAll('.achievement-card');
+      achievementCards.forEach(card => {
+        const glare = card.querySelector('.card-glare');
+
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('is-hovered');
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          // Normalized -1 to 1 coordinates
+          const normX = (x - centerX) / centerX;
+          const normY = (y - centerY) / centerY;
+
+          const rotateX = normY * -14;
+          const rotateY = normX * 16;
+
+          // Smoothly tilt card with perspective
+          card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.03, 1.03, 1.03)`;
+
+          // Move glare reflection with cursor
+          if (glare) {
+            const glareX = (x / rect.width) * 100;
+            const glareY = (y / rect.height) * 100;
+            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.22) 0%, transparent 65%)`;
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('is-hovered');
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+        });
+      });
+
+
+      // ----------------------------------------------------
+      // 3. LIQUID NEON TRAIL RIBBON (Matching Cyan / Teal)
+      // ----------------------------------------------------
+      const trailCanvas = document.getElementById('trail-canvas');
+      const tCtx = trailCanvas.getContext('2d');
+      let trailWidth = (trailCanvas.width = window.innerWidth);
+      let trailHeight = (trailCanvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        trailWidth = trailCanvas.width = window.innerWidth;
+        trailHeight = trailCanvas.height = window.innerHeight;
+      });
+
+      // Smooth point history for fluent bezier spline
+      const trailPoints = [];
+      const MAX_TRAIL_POINTS = 32;
+
+      // ----------------------------------------------------
+      // 4. INTERACTIVE WATER / LIQUID WAVES BACKGROUND
+      // ----------------------------------------------------
+      const waterCanvas = document.getElementById('water-canvas');
+      const wCtx = waterCanvas.getContext('2d');
+      let wWidth = (waterCanvas.width = window.innerWidth);
+      let wHeight = (waterCanvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        wWidth = waterCanvas.width = window.innerWidth;
+        wHeight = waterCanvas.height = window.innerHeight;
+      });
+
+      const ripples = [];
+      const wakes = [];
+      let lastMouseX = mouseX;
+      let lastMouseY = mouseY;
+      let lastTime = performance.now();
+
+      class WaterRipple {
+        constructor(x, y, power = 1.0) {
+          this.x = x;
+          this.y = y;
+          this.radius = 4;
+          this.maxRadius = Math.min(wWidth, wHeight) * (0.2 + Math.random() * 0.1) * power;
+          this.speed = (2.2 + Math.random() * 1.6) * power;
+          this.opacity = 0.5 * power;
+          this.decay = 0.984;
+        }
+
+        update() {
+          this.radius += this.speed;
+          this.opacity *= this.decay;
+          this.speed *= 0.994;
+          return this.opacity > 0.01 && this.radius < this.maxRadius;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+
+          const grad = ctx.createRadialGradient(
+            this.x, this.y, Math.max(0, this.radius - 14),
+            this.x, this.y, this.radius + 6
+          );
+          grad.addColorStop(0, `rgba(8, 20, 22, 0)`);
+          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.3})`);
+          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.2})`);
+          grad.addColorStop(1, `rgba(8, 20, 22, 0)`);
+
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = Math.max(1, 3.2 * (1 - this.radius / this.maxRadius));
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      class FluidWake {
+        constructor(x1, y1, x2, y2, speed) {
+          this.x1 = x1;
+          this.y1 = y1;
+          this.x2 = x2;
+          this.y2 = y2;
+          this.speed = speed;
+          this.life = 1.0;
+          this.width = Math.min(26, 4 + speed * 1.6);
+        }
+
+        update() {
+          this.life -= 0.035;
+          this.width += 0.35;
+          return this.life > 0;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(this.x1, this.y1);
+          ctx.lineTo(this.x2, this.y2);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.12})`;
+          ctx.lineWidth = this.width;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      let moveThrottle = 0;
+      window.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        const dt = now - lastTime;
+        lastTime = now;
+
+        const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
+        const speed = dist / Math.max(1, dt);
+
+        if (dist > 3) {
+          wakes.push(new FluidWake(lastMouseX, lastMouseY, e.clientX, e.clientY, speed));
+        }
+
+        moveThrottle++;
+        if (moveThrottle % 4 === 0 && dist > 5) {
+          const power = Math.min(1.8, Math.max(0.6, speed * 0.8));
+          ripples.push(new WaterRipple(e.clientX, e.clientY, power));
+        }
+
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      });
+
+      window.addEventListener('click', (e) => {
+        ripples.push(new WaterRipple(e.clientX, e.clientY, 1.8));
+        setTimeout(() => {
+          ripples.push(new WaterRipple(e.clientX, e.clientY, 1.3));
+        }, 80);
+      });
+
+
+      // ----------------------------------------------------
+      // 5. MASTER ANIMATION LOOP
+      // ----------------------------------------------------
+      function renderLoop() {
+        // 1. Move Ambient Background Lights with gentle lag
+        amb1X += (mouseX - amb1X) * 0.045;
+        amb1Y += (mouseY - amb1Y) * 0.045;
+        if (ambientPrimary) {
+          ambientPrimary.style.transform = `translate3d(${amb1X - 390}px, ${amb1Y - 390}px, 0)`;
+        }
+
+        // Secondary ambient light opposes cursor for spatial depth
+        const targetAmb2X = window.innerWidth - mouseX;
+        const targetAmb2Y = window.innerHeight - mouseY;
+        amb2X += (targetAmb2X - amb2X) * 0.035;
+        amb2Y += (targetAmb2Y - amb2Y) * 0.035;
+        if (ambientSecondary) {
+          ambientSecondary.style.transform = `translate3d(${amb2X - 310}px, ${amb2Y - 310}px, 0)`;
+        }
+
+        // 2. Smooth Cursor Ring Lerp
+        ringX += (mouseX - ringX) * 0.22;
+        ringY += (mouseY - ringY) * 0.22;
+        if (cursorRing) {
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+
+        // 3. Liquid Neon Continuous Streamline Trail Rendering
+        trailPoints.push({ x: mouseX, y: mouseY, time: performance.now() });
+        if (trailPoints.length > MAX_TRAIL_POINTS) {
+          trailPoints.shift();
+        }
+
+        tCtx.clearRect(0, 0, trailWidth, trailHeight);
+
+        if (trailPoints.length > 2) {
+          // Pass 1: Wide Continuous Ambient Cyan Glow
+          tCtx.save();
+          tCtx.beginPath();
+          tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
+          for (let i = 1; i < trailPoints.length - 1; i++) {
+            const midX = (trailPoints[i].x + trailPoints[i + 1].x) / 2;
+            const midY = (trailPoints[i].y + trailPoints[i + 1].y) / 2;
+            tCtx.quadraticCurveTo(trailPoints[i].x, trailPoints[i].y, midX, midY);
+          }
+          const lastPt = trailPoints[trailPoints.length - 1];
+          tCtx.lineTo(lastPt.x, lastPt.y);
+
+          tCtx.lineCap = 'round';
+          tCtx.lineJoin = 'round';
+          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+          tCtx.lineWidth = 4.5;
+          tCtx.shadowColor = '#00f0ff';
+          tCtx.shadowBlur = 18;
+          tCtx.stroke();
+          tCtx.restore();
+
+          // Pass 2: Crisp Fluid Core Filament
+          tCtx.save();
+          tCtx.beginPath();
+          tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
+          for (let i = 1; i < trailPoints.length - 1; i++) {
+            const midX = (trailPoints[i].x + trailPoints[i + 1].x) / 2;
+            const midY = (trailPoints[i].y + trailPoints[i + 1].y) / 2;
+            tCtx.quadraticCurveTo(trailPoints[i].x, trailPoints[i].y, midX, midY);
+          }
+          tCtx.lineTo(lastPt.x, lastPt.y);
+
+          tCtx.lineCap = 'round';
+          tCtx.lineJoin = 'round';
+          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+          tCtx.lineWidth = 1.75;
+          tCtx.shadowColor = '#ffffff';
+          tCtx.shadowBlur = 6;
+          tCtx.stroke();
+          tCtx.restore();
+        }
+
+        // 4. Render Water Canvas
+        wCtx.clearRect(0, 0, wWidth, wHeight);
+
+        for (let i = wakes.length - 1; i >= 0; i--) {
+          if (!wakes[i].update()) {
+            wakes.splice(i, 1);
+          } else {
+            wakes[i].draw(wCtx);
+          }
+        }
+
+        for (let i = ripples.length - 1; i >= 0; i--) {
+          if (!ripples[i].update()) {
+            ripples.splice(i, 1);
+          } else {
+            ripples[i].draw(wCtx);
+          }
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      requestAnimationFrame(renderLoop);
+    });
+  </script>
+</body>
+</html>
