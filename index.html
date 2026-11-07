@@ -4,48 +4,55 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Ishaan Shailesh Phaye — AI Systems Architect &amp; Software Engineer</title>
-  <meta name="description" content="Portfolio of Ishaan Shailesh Phaye — AI Systems Architect & Software Engineer. M.Tech CSE @ IIIT Lucknow. ClipSense AI, GPT-2 from Scratch, Mini Database Storage Engine, Distributed Systems."/>
-  
-  <!-- Preconnect & Fonts: Plus Jakarta Sans for UI, JetBrains Mono for Code & Telemetry -->
+  <meta name="description" content="Portfolio of Ishaan Shailesh Phaye — AI Systems Architect, M.Tech CSE @ IIIT Lucknow. ClipSense AI, GPT-2 from Scratch, Mini Database Storage Engine, Distributed Systems."/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   
-  <!-- FontAwesome for verified brand & technology icons -->
+  <!-- FontAwesome for tech stack & social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-  <!-- Tailwind CSS CDN with typography & container plugins -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   
-  <!-- Tailored Precision Carbon & Slate Palette -->
+  <!-- Tailwind Theme Configuration matching petroleum-teal avant-garde palette -->
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
           colors: {
-            "bg-canvas": "#0b0d12",
-            "bg-page": "#0f1118",
-            "surface": "#141722",
-            "surface-raised": "#1a1e2d",
-            "surface-hover": "#222738",
-            "hairline": "rgba(255, 255, 255, 0.08)",
-            "hairline-subtle": "rgba(255, 255, 255, 0.04)",
-            "primary-text": "#f1f3f7",
-            "secondary-text": "#9ba1b0",
-            "muted-text": "#686e7d",
-            "accent": "#00d8f6",
-            "accent-soft": "rgba(0, 216, 246, 0.12)",
-            "accent-green": "#10b981",
-            "accent-amber": "#f59e0b"
+            "primary-container": "#081416",
+            "surface": "#0c1a1d",
+            "surface-container": "#112226",
+            "surface-container-high": "#162b30",
+            "surface-container-lowest": "#050d0e",
+            "on-surface": "#e5eded",
+            "on-surface-variant": "#9db4b8",
+            "outline": "#607b80",
+            "outline-variant": "#2a4247",
+            "accent-teal": "#00f0ff",
+            "accent-amber": "#ffb259",
+            "accent-cyan": "#5ef2d6"
           },
           fontFamily: {
-            sans: ["Plus Jakarta Sans", "system-ui", "-apple-system", "sans-serif"],
-            mono: ["JetBrains Mono", "SFMono-Regular", "Menlo", "monospace"]
+            "meta-mono": ["Fira Code", "monospace"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "display": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-caps": ["Plus Jakarta Sans", "sans-serif"]
           },
-          boxShadow: {
-            "card-subtle": "0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06)",
-            "card-hover": "0 8px 24px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+          fontSize: {
+            "meta-mono": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.08em" }],
+            "body-md": ["0.9375rem", { lineHeight: "1.5rem", letterSpacing: "0.01em" }],
+            "headline-md": ["2rem", { lineHeight: "2.4rem", letterSpacing: "-0.02em" }],
+            "display": ["5.5rem", { lineHeight: "5.5rem", letterSpacing: "-0.04em" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "0.01em" }],
+            "headline-sm": ["1.375rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em" }],
+            "headline-lg": ["3.5rem", { lineHeight: "3.75rem", letterSpacing: "-0.03em" }],
+            "label-caps": ["0.6875rem", { lineHeight: "0.875rem", letterSpacing: "0.14em" }]
           }
         }
       }
@@ -53,660 +60,715 @@
   </script>
 
   <style>
-    /* Clean custom scrollbar */
-    ::-webkit-scrollbar {
+    /* 35mm Analog Film Grain */
+    .film-grain {
+      background-image: radial-gradient(rgba(244, 246, 246, 0.035) 1px, transparent 0);
+      background-size: 4px 4px;
+    }
+    
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 34s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Fluid Neon Cursor Rules - Absolute system cursor hiding on desktop */
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after {
+        cursor: none !important;
+      }
+    }
+
+    /* Crisp High-Energy Core Dot */
+    #custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 6px;
       height: 6px;
+      background-color: #00f0ff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.8);
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      will-change: transform;
+    }
+
+    /* Outer Neon Precision Ring - NO BLUR */
+    #custom-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(0, 240, 255, 0.55);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 14px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.15);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.2s ease, 
+                  background-color 0.2s ease;
+      will-change: transform;
+    }
+
+    /* Clickable Hover State: Expanded ring with crisp outline and subtle tint */
+    body.cursor-hover #custom-cursor-ring {
+      width: 58px;
+      height: 58px;
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.15);
+    }
+
+    body.cursor-hover #custom-cursor-dot {
+      transform: translate(-50%, -50%) scale(1.4);
+      background-color: #ffffff;
+      box-shadow: 0 0 14px #ffffff, 0 0 24px #ffffff;
+    }
+
+    body.cursor-down #custom-cursor-ring {
+      transform: translate(-50%, -50%) scale(0.85);
+      border-color: #ffffff;
+      box-shadow: 0 0 20px #00f0ff;
+    }
+
+    /* High-Resolution Neon Trail Ribbon Canvas */
+    #trail-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99996;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ambient Dynamic Pointer Glow Lights */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+      transition: transform 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+    }
+
+    /* 3D Achievement Card Spatial Elevation - Simplified Subtle Shallow Popout */
+    .achievement-card-wrapper {
+      perspective: 1000px;
+    }
+
+    .achievement-card {
+      transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease,
+                  background-color 0.25s ease;
+      will-change: transform, box-shadow;
+      transform-style: preserve-3d;
+      cursor: none !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card.is-hovered {
+      border-color: #00f0ff !important;
+      background-color: rgba(12, 26, 29, 0.95) !important;
+      box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.5), 
+                  0 0 18px rgba(0, 240, 255, 0.15) !important;
+    }
+
+    /* Subtle optical sheen glare moving with tilt */
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.12) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .achievement-card.is-hovered .card-glare {
+      opacity: 1;
+    }
+
+    /* Clean Card Icons - No aggressive pulse, just clean accent glow */
+    .card-icon {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      transform-origin: center center;
+    }
+
+    .achievement-card.is-hovered .card-icon {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 8px currentColor);
+    }
+
+    /* 3D Section Depth Transitions */
+    .section-3d-wrap {
+      perspective: 1200px;
+      perspective-origin: center top;
+    }
+
+    .section-3d-reveal {
+      opacity: 0.15;
+      transform: perspective(1200px) rotateX(8deg) translateY(30px) scale(0.98);
+      transform-origin: center top;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .section-3d-reveal.is-in-view {
+      opacity: 1;
+      transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .section-3d-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0b0d12;
+      background: #081416;
     }
     ::-webkit-scrollbar-thumb {
-      background: #222738;
+      background: #2a4247;
       border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #3b4258;
-    }
-
-    /* Tabular figures for exact alignment of numbers */
-    .tabular-nums {
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* Subtle hairline border utility */
-    .border-hairline {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .border-hairline-b {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .border-hairline-t {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Interactive telemetry tab switching */
-    .telemetry-tab.active {
-      color: #00d8f6;
-      border-bottom-color: #00d8f6;
-      background: rgba(0, 216, 246, 0.05);
-    }
-
-    /* Accessible focus states */
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid #00d8f6;
-      outline-offset: 2px;
+      background: #00f0ff;
     }
   </style>
 </head>
 
-<body class="bg-bg-canvas text-primary-text min-h-screen selection:bg-accent selection:text-bg-canvas antialiased overflow-x-hidden font-sans">
+<body class="bg-primary-container text-on-surface min-h-screen selection:bg-accent-teal selection:text-primary-container antialiased overflow-x-hidden relative">
+
+  <!-- Interactive Custom Mouse Cursor Elements -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+  <canvas id="trail-canvas"></canvas>
+
+  <!-- Interactive Liquid / Water Motion Background Canvas -->
+  <canvas id="water-canvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
+
+  <!-- Dynamic Pointer-Tracking Ambient Background Lights -->
+  <div id="ambient-primary" class="ambient-glow -z-10 w-[780px] h-[780px] bg-accent-teal/10 rounded-full blur-[160px] top-0 left-0"></div>
+  <div id="ambient-secondary" class="ambient-glow -z-10 w-[620px] h-[620px] bg-accent-amber/8 rounded-full blur-[150px] bottom-0 right-0"></div>
+  
+  <!-- Analog Film Grain Overlay -->
+  <div class="fixed inset-0 film-grain pointer-events-none z-30 opacity-40"></div>
 
   <!-- ========================================================
-       TOP NAVIGATION BAR
-       Minimalist, quiet, fixed with subtle backdrop blur
+       TOP NAVIGATION BAR WITH DYNAMIC ACTIVE SECTION SCROLL-SPY
+       (Item 12: Section names without numbers)
        ======================================================== -->
-  <header class="w-full px-6 md:px-12 py-3.5 flex justify-between items-center border-b border-hairline sticky top-0 bg-bg-canvas/90 backdrop-blur-md z-50">
-    <div class="flex items-center gap-4">
-      <a class="font-mono text-sm md:text-base font-medium tracking-tight text-primary-text hover:text-accent transition-colors duration-150 flex items-center gap-2" href="#">
-        <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-        ishaan.phaye<span class="text-muted-text">()</span>
+  <header class="w-full px-5 md:px-12 py-3.5 flex justify-between items-center border-b border-dotted border-outline-variant/40 sticky top-0 bg-primary-container/90 backdrop-blur-md z-40">
+    <div class="flex items-center gap-6">
+      <a class="font-headline-sm text-lg md:text-xl font-medium tracking-tight text-on-surface hover:text-accent-teal transition-colors duration-200" href="#">
+        ishaan.phaye<span class="text-accent-teal">()</span>
       </a>
-      <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono bg-accent-soft text-accent border border-accent/20">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-        Available for SDE &amp; AI Roles
-      </span>
     </div>
 
-    <!-- Navigation items -->
-    <nav class="flex items-center gap-1 text-xs md:text-sm font-medium" id="nav-container">
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="about" href="#about">
-        About
+    <!-- Navigation items: purely textual names without numbers -->
+    <nav class="hidden md:flex items-center gap-1.5" id="nav-container">
+      <a class="nav-item bg-[#f4f7f6] text-[#081416] font-medium font-label-caps text-label-caps rounded-full px-3.5 py-1.5 transition-all duration-300" data-target="about" href="#about">
+        ABOUT
       </a>
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="skills" href="#skills">
-        Skills
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="skills" href="#skills">
+        SKILLS
       </a>
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="experience" href="#experience">
-        Experience
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="experience" href="#experience">
+        EXP
       </a>
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="projects" href="#projects">
-        Projects
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="projects" href="#projects">
+        PROJECTS
       </a>
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="achievements" href="#achievements">
-        Honors
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="achievements" href="#achievements">
+        ACHIEVEMENTS
       </a>
-      <a class="nav-item px-3 py-1.5 rounded-md text-secondary-text hover:text-primary-text hover:bg-surface-raised transition-all duration-150" data-target="contact" href="#contact">
-        Contact
+      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="contact" href="#contact">
+        CONTACT
       </a>
     </nav>
   </header>
 
-  <main class="w-full max-w-7xl mx-auto px-6 md:px-12">
+  <main class="w-full">
     <!-- ========================================================
-         HERO SECTION: THE ARCHITECTURAL SPLIT
-         Clean, confident typography + Live System Telemetry Visual
+         SECTION 01: ABOUT ME & HERO STATEMENT
+         (Items 1: Justify intro, 2: Remove notice period & cgpa, 4: Remove 01 // ABOUT header, 8: Reduced gaps)
          ======================================================== -->
-    <section class="pt-12 md:pt-20 pb-16 md:pb-24 border-hairline-b" id="about">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Left: Identity & Core Narrative -->
-        <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-surface border border-hairline text-secondary-text mb-6">
-            <span class="text-accent">M.Tech CSE</span> @ IIIT Lucknow · Systems &amp; AI
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-primary-text tracking-tight leading-[1.08] mb-6">
-            Ishaan Shailesh Phaye
+    <section class="section-3d-reveal relative w-full px-5 md:px-12 pt-8 md:pt-16 pb-12 md:pb-16" id="about">
+      <!-- Monumental Typography Spread -->
+      <div class="pt-4 md:pt-8 pb-4 relative z-10">
+        <div class="max-w-6xl">
+          <p class="font-meta-mono text-accent-teal text-meta-mono tracking-widest uppercase mb-4">
+            AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER // M.TECH @ IIIT LUCKNOW
+          </p>
+          <h1 class="text-4xl sm:text-6xl md:text-8xl font-normal text-on-surface tracking-tight leading-[0.94] mb-8 font-display">
+            ISHAAN<br/>
+            <span class="text-on-surface/90 font-light italic text-accent-cyan">SHAILESH PHAYE</span>
           </h1>
 
-          <p class="text-lg md:text-xl text-secondary-text font-normal leading-relaxed mb-8 max-w-2xl text-pretty">
-            AI Systems Architect and Software Engineer building production-grade retrieval architectures, custom database storage engines, and high-concurrency backends. Focused on low-latency inference, distributed durability, and systems programming.
-          </p>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end pt-2">
+            <div class="md:col-span-8">
+              <!-- Item 1 & 5: Justified intro paragraph -->
+              <p class="font-body-lg text-lg sm:text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-6 font-normal text-justify">
+                Engineering production-ready AI systems, custom database storage engines, and high-concurrency distributed backends. Specializing in autonomous RAG platforms, fine-tuned LLM architectures, and systems programming.
+              </p>
 
-          <!-- Candidate Status Matrix -->
-          <div class="flex flex-wrap items-center gap-3 mb-8 text-xs font-mono text-secondary-text">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface border border-hairline">
-              <i class="fas fa-location-dot text-accent"></i> Lucknow, India
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface border border-hairline">
-              <i class="fas fa-plane-departure text-secondary-text"></i> Open to Relocation &amp; Remote
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface border border-hairline text-emerald-400">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Notice: Immediate (0 Days)
-            </span>
-          </div>
-
-          <!-- CTAs and Social Links -->
-          <div class="flex flex-wrap items-center gap-4">
-            <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-text text-bg-canvas font-medium text-sm hover:bg-white hover:shadow-lg transition-all duration-150" href="#projects">
-              Explore Projects
-              <span class="font-mono">↓</span>
-            </a>
-
-            <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-surface border border-hairline text-primary-text font-medium text-sm hover:border-accent hover:text-accent transition-all duration-150" href="#contact">
-              Get in Touch
-            </a>
-
-            <div class="flex items-center gap-3 text-secondary-text text-sm font-mono ml-0 sm:ml-2">
-              <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="p-2 rounded-md hover:text-accent hover:bg-surface transition-colors" title="GitHub">
-                <i class="fab fa-github text-lg"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="p-2 rounded-md hover:text-accent hover:bg-surface transition-colors" title="LinkedIn">
-                <i class="fab fa-linkedin-in text-lg"></i>
-              </a>
-              <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="p-2 rounded-md hover:text-accent hover:bg-surface transition-colors" title="LeetCode (400+ Solved)">
-                <i class="fas fa-code text-lg"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Authentic Systems Telemetry & Architecture Showcase (The Craft Moment) -->
-        <div class="lg:col-span-5">
-          <div class="rounded-xl border border-hairline bg-surface shadow-card-subtle overflow-hidden">
-            <!-- Terminal Title Bar -->
-            <div class="px-4 py-3 border-b border-hairline bg-surface-raised flex items-center justify-between text-xs font-mono">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                <span class="text-secondary-text ml-2">systems-telemetry.sh</span>
+              <!-- Item 2: Candidate Status Tags (Notice period & CGPA removed) -->
+              <div class="flex flex-wrap gap-2.5 mb-8 font-meta-mono text-xs">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-outline-variant/40 bg-surface text-on-surface-variant">
+                  <i class="fas fa-location-dot text-accent-teal"></i> Lucknow / Open to Relocation &amp; Remote
+                </span>
               </div>
-              <span class="text-accent text-[11px] font-semibold">ONLINE · 200 OK</span>
-            </div>
+              
+              <!-- Tactical CTA and Social Channels -->
+              <div class="flex flex-wrap items-center gap-6">
+                <a class="group inline-flex items-center rounded-full overflow-hidden border border-outline-variant bg-surface-container-lowest hover:border-accent-teal transition-all duration-300" href="#projects">
+                  <span class="bg-on-surface text-surface-container-lowest font-label-caps text-label-caps px-5 py-2.5 font-bold tracking-widest">
+                    EXPLORE PROJECTS
+                  </span>
+                  <span class="px-3.5 py-2.5 bg-surface-container text-accent-teal font-meta-mono text-meta-mono group-hover:translate-y-0.5 transition-transform duration-200">
+                    ↓
+                  </span>
+                </a>
 
-            <!-- Tabs: ClipSense RAG vs Mini Database Storage Engine -->
-            <div class="flex border-b border-hairline bg-bg-canvas/50 text-xs font-mono">
-              <button onclick="switchTab('clipsense')" id="tab-clipsense" class="telemetry-tab active flex-1 py-2.5 px-3 border-b-2 border-transparent text-center transition-colors">
-                ClipSense RAG
-              </button>
-              <button onclick="switchTab('btree')" id="tab-btree" class="telemetry-tab flex-1 py-2.5 px-3 border-b-2 border-transparent text-secondary-text text-center transition-colors">
-                B+Tree WAL Engine
-              </button>
-              <button onclick="switchTab('gpt2')" id="tab-gpt2" class="telemetry-tab flex-1 py-2.5 px-3 border-b-2 border-transparent text-secondary-text text-center transition-colors">
-                GPT-2 SFT
-              </button>
-            </div>
+                <a class="group inline-flex items-center rounded-full overflow-hidden border border-accent-teal/40 bg-surface hover:border-accent-teal transition-all duration-300" href="#contact">
+                  <span class="text-accent-teal font-label-caps text-label-caps px-4 py-2.5 font-bold tracking-widest">
+                    GET IN TOUCH
+                  </span>
+                </a>
 
-            <!-- Tab Content 1: ClipSense -->
-            <div id="content-clipsense" class="p-5 font-mono text-xs space-y-4">
-              <div class="flex items-center justify-between text-secondary-text">
-                <span>RETRIEVAL PIPELINE</span>
-                <span class="text-accent">Dense Vector + Re-ranking</span>
-              </div>
-              <div class="p-3 rounded-lg bg-bg-canvas border border-hairline space-y-2">
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Vector Database</span>
-                  <span class="text-primary-text font-medium">Qdrant Serverless</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Cross-Encoder Memory</span>
-                  <span class="text-emerald-400 font-semibold">&lt; 80 MB RAM</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Search Latency Delta</span>
-                  <span class="text-accent font-semibold tabular-nums">-96% (8.0s → 0.28s)</span>
+                <!-- Verified Candidate Social Channels -->
+                <div class="flex items-center gap-4 text-on-surface-variant font-meta-mono text-sm">
+                  <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="GitHub">
+                    <i class="fab fa-github"></i> <span class="hidden sm:inline">GITHUB</span>
+                  </a>
+                  <span class="text-outline-variant">/</span>
+                  <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i> <span class="hidden sm:inline">LINKEDIN</span>
+                  </a>
+                  <span class="text-outline-variant">/</span>
+                  <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LeetCode (400+ Solved)">
+                    <i class="fas fa-code"></i> <span class="hidden sm:inline">LEETCODE</span>
+                  </a>
                 </div>
               </div>
-              <div class="text-[11px] text-muted-text leading-relaxed">
-                Dual-stage retrieval over 35+ YouTube video playlists with synchronized clickable timestamp citations.
-              </div>
-            </div>
-
-            <!-- Tab Content 2: B+Tree Storage Engine -->
-            <div id="content-btree" class="p-5 font-mono text-xs space-y-4 hidden">
-              <div class="flex items-center justify-between text-secondary-text">
-                <span>STORAGE SUBSYSTEM</span>
-                <span class="text-accent">Disk-Backed C++20</span>
-              </div>
-              <div class="p-3 rounded-lg bg-bg-canvas border border-hairline space-y-2">
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Index Layout</span>
-                  <span class="text-primary-text font-medium">Custom B+Tree (Cache-Conscious)</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Durability Protocol</span>
-                  <span class="text-emerald-400 font-semibold">Write-Ahead Logging (WAL)</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Point Lookup Time</span>
-                  <span class="text-accent font-semibold tabular-nums">O(log n) Leaf-Linked</span>
-                </div>
-              </div>
-              <div class="text-[11px] text-muted-text leading-relaxed">
-                Guarantees ACID atomicity and automated crash recovery upon restart with an integrated LRU buffer pool.
-              </div>
-            </div>
-
-            <!-- Tab Content 3: GPT-2 -->
-            <div id="content-gpt2" class="p-5 font-mono text-xs space-y-4 hidden">
-              <div class="flex items-center justify-between text-secondary-text">
-                <span>TRANSFORMER ENGINE</span>
-                <span class="text-accent">PyTorch Custom</span>
-              </div>
-              <div class="p-3 rounded-lg bg-bg-canvas border border-hairline space-y-2">
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Architecture Range</span>
-                  <span class="text-primary-text font-medium">124M / 355M Parameters</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Evaluation Metric</span>
-                  <span class="text-emerald-400 font-semibold">95.67% Test Accuracy</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-secondary-text">Tokenizer &amp; Tuning</span>
-                  <span class="text-accent font-semibold">BPE + Alpaca SFT</span>
-                </div>
-              </div>
-              <div class="text-[11px] text-muted-text leading-relaxed">
-                Autoregressive inference engine with Top-k sampling, temperature scaling, and custom residual blocks.
-              </div>
-            </div>
-
-            <!-- Telemetry Footer -->
-            <div class="px-4 py-2.5 bg-surface-raised border-t border-hairline flex items-center justify-between text-[11px] font-mono text-muted-text">
-              <span>Host: Linux / x86_64</span>
-              <span>Stack: PyTorch · C++20 · FastAPI</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- RUNNING TYPOGRAPHIC MARQUEE -->
+    <section class="w-full border-t border-b border-dotted border-outline-variant/30 py-3.5 overflow-hidden bg-surface-container-lowest/50">
+      <div class="animate-marquee whitespace-nowrap flex items-center">
+        <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface-variant/80 uppercase mx-5">
+          PYTORCH × FASTAPI × B+TREE WAL STORAGE × QDRANT VECTOR RAG × DOCKER × C++20 × LLM FINE-TUNING →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-accent-teal uppercase mx-5">
+          DISTRIBUTED SYSTEMS × ACID TRANSACTIONS × CONCURRENCY × 400+ LEETCODE ALGORITHMS →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-on-surface-variant/80 uppercase mx-5">
+          PYTORCH × FASTAPI × B+TREE WAL STORAGE × QDRANT VECTOR RAG × DOCKER × C++20 × LLM FINE-TUNING →
+        </span>
+        <span class="font-meta-mono text-meta-mono tracking-widest text-accent-amber uppercase mx-5">
+          DISTRIBUTED SYSTEMS × ACID TRANSACTIONS × CONCURRENCY × 400+ LEETCODE ALGORITHMS →
+        </span>
+      </div>
+    </section>
+
     <!-- ========================================================
-         SECTION 01: TECH STACK & CORE COMPETENCIES
-         Structured, disciplined 3-domain matrix + Verified Skill Badges
+         SECTION 02: TECH STACK & SKILLS
+         (Items 3: No number in title, 6: No bracketed subhead, increased subsection size,
+          7: Removed right-side text, 8: Reduced gaps, 11: Increased font size)
          ======================================================== -->
-    <section class="py-16 md:py-20 border-hairline-b" id="skills">
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 pb-4 border-hairline-b">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-primary-text">
-            Tech Stack &amp; Skills
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16" id="skills">
+      <!-- Section Title Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-dotted border-outline-variant/30 mb-8">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline-sm text-2xl font-light text-on-surface">
+            TECH STACK &amp; SKILLS
           </h2>
-          <p class="text-sm text-secondary-text mt-1">
-            Engineered competencies across neural architectures, low-level systems, and cloud infrastructure.
-          </p>
         </div>
-        <span class="text-xs font-mono text-muted-text mt-2 md:mt-0">Verified Stack</span>
       </div>
 
-      <!-- Domain Matrix Grid (3 Disciplined Columns) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <!-- Domain 1: AI, LLMs & Retrieval -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold font-mono text-accent">AI, LLMs &amp; Retrieval</span>
-              <i class="fas fa-brain text-secondary-text text-sm"></i>
-            </div>
-            <p class="text-sm text-secondary-text leading-relaxed mb-6">
-              Production-grade RAG pipelines, fine-tuned transformer architectures, cross-encoder re-ranking, and low-latency edge computer vision.
-            </p>
+      <!-- Domain Matrix Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
+        <!-- Domain 1: AI, LLMs & Vector Systems -->
+        <div class="border-t border-outline-variant/50 pt-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-meta-mono text-base font-semibold text-accent-teal">AI, LLMS &amp; RETRIEVAL</span>
+            <i class="fas fa-brain text-outline text-lg"></i>
           </div>
-          <div class="space-y-2.5 pt-4 border-hairline-t font-mono text-xs text-primary-text">
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>PyTorch · Transformers · LoRA</span>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm md:text-base leading-relaxed text-justify">
+            Production-grade RAG pipelines, fine-tuned transformer architectures, cross-encoder re-ranking, and low-latency edge computer vision.
+          </p>
+          <!-- Skills List with right-side labels removed and larger font size -->
+          <div class="space-y-2">
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              PyTorch / TensorFlow / TFLite
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>LangChain · LangGraph · RAGAS</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              HuggingFace / Transformers / LoRA
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>Qdrant · Chroma · FastEmbed</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              LangChain / LangGraph / RAGAS
             </div>
-            <div class="flex justify-between py-1">
-              <span>TensorFlow · TFLite · OpenCV</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              Qdrant / Chroma / FastEmbed
             </div>
           </div>
         </div>
 
-        <!-- Domain 2: Systems & Core CS -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold font-mono text-accent">Systems &amp; Core CS</span>
-              <i class="fas fa-microchip text-secondary-text text-sm"></i>
-            </div>
-            <p class="text-sm text-secondary-text leading-relaxed mb-6">
-              Custom storage engines, disk I/O, cache-conscious page layouts, concurrency, and rigorous algorithmic problem solving (400+ LeetCode).
-            </p>
+        <!-- Domain 2: Systems, Languages & Core CS -->
+        <div class="border-t border-outline-variant/50 pt-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-meta-mono text-base font-semibold text-accent-cyan">SYSTEMS &amp; CORE CS</span>
+            <i class="fas fa-microchip text-outline text-lg"></i>
           </div>
-          <div class="space-y-2.5 pt-4 border-hairline-t font-mono text-xs text-primary-text">
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>C · C++ (C++20)</span>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm md:text-base leading-relaxed text-justify">
+            Custom storage engines, disk I/O, cache-conscious page layouts, concurrency, and rigorous algorithmic problem solving (400+ LeetCode).
+          </p>
+          <!-- Skills List with right-side labels removed and larger font size -->
+          <div class="space-y-2">
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              C / C++ (C++20)
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>B+Tree Indexing · WAL · Buffer Pool</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              B+Tree / WAL / Buffer Pool
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>Distributed Systems · ACID Guarantees</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              Distributed Systems &amp; ACID
             </div>
-            <div class="flex justify-between py-1">
-              <span>Concurrency · Multithreading · DSA</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              Algorithms &amp; Data Structures
             </div>
           </div>
         </div>
 
         <!-- Domain 3: Full Stack & Infrastructure -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-semibold font-mono text-accent">Full Stack &amp; Infra</span>
-              <i class="fas fa-server text-secondary-text text-sm"></i>
-            </div>
-            <p class="text-sm text-secondary-text leading-relaxed mb-6">
-              Asynchronous REST APIs, responsive reactive frontends, containerized microservices, and relational/document databases.
-            </p>
+        <div class="border-t border-outline-variant/50 pt-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-meta-mono text-base font-semibold text-accent-amber">FULL STACK &amp; INFRA</span>
+            <i class="fas fa-server text-outline text-lg"></i>
           </div>
-          <div class="space-y-2.5 pt-4 border-hairline-t font-mono text-xs text-primary-text">
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>FastAPI · Flask · Express · Node.js</span>
+          <p class="font-body-md text-on-surface-variant mb-6 text-sm md:text-base leading-relaxed text-justify">
+            Asynchronous REST APIs, responsive reactive frontends, containerized microservices, and relational/document databases.
+          </p>
+          <!-- Skills List with right-side labels removed and larger font size -->
+          <div class="space-y-2">
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              FastAPI / Flask / Express.js / Node
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>React · TypeScript · Tailwind CSS</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              React / TypeScript / Tailwind CSS
             </div>
-            <div class="flex justify-between py-1 border-b border-hairline-subtle">
-              <span>PostgreSQL · MongoDB · Redis</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              PostgreSQL / MongoDB / Redis
             </div>
-            <div class="flex justify-between py-1">
-              <span>Docker · Git · Linux · AWS CI/CD</span>
+            <div class="py-2 border-b border-dotted border-outline-variant/30 font-meta-mono text-sm md:text-base text-on-surface">
+              Docker / Git / Linux / AWS / CI/CD
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Verified Software Skill Badges with Uniform Craft -->
-      <div>
-        <p class="text-xs font-mono uppercase tracking-wider text-muted-text mb-4">
-          Verified Languages, Frameworks &amp; Tools
+      <!-- Verified Software Skill Badges with Enriched Styling, Larger Icons and Text -->
+      <div class="mt-10 pt-6 border-t border-dotted border-outline-variant/30">
+        <p class="font-meta-mono text-sm md:text-base font-semibold text-outline uppercase tracking-wider mb-5">
+          VERIFIED LANGUAGES, FRAMEWORKS &amp; TOOLS //
         </p>
-        <div class="flex flex-wrap gap-2.5">
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-python text-accent"></i> Python
+        <div class="flex flex-wrap gap-3.5">
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-python text-accent-teal text-base md:text-lg"></i> Python
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fas fa-code text-accent"></i> C &amp; C++ (C++20)
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-code text-accent-cyan text-base md:text-lg"></i> C &amp; C++ (C++20)
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-js-square text-[#f7df1e]"></i> TypeScript / JavaScript
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-js-square text-[#f7df1e] text-base md:text-lg"></i> TypeScript / JavaScript
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fas fa-fire text-amber-500"></i> PyTorch
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-fire text-amber-500 text-base md:text-lg"></i> PyTorch
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fas fa-bolt text-accent"></i> FastAPI
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-bolt text-accent-teal text-base md:text-lg"></i> FastAPI
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-react text-[#61dafb]"></i> React
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-react text-[#61dafb] text-base md:text-lg"></i> React
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-node text-[#68a063]"></i> Node.js &amp; Express
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-node text-[#68a063] text-base md:text-lg"></i> Node.js &amp; Express
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fas fa-database text-accent"></i> PostgreSQL / MongoDB
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-database text-accent-cyan text-base md:text-lg"></i> PostgreSQL / MongoDB
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fas fa-vector-square text-accent"></i> Qdrant / Chroma Vector DB
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fas fa-vector-square text-accent-teal text-base md:text-lg"></i> Qdrant / Chroma Vector DB
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-docker text-[#2496ed]"></i> Docker
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-docker text-[#2496ed] text-base md:text-lg"></i> Docker
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-aws text-amber-400"></i> AWS Cloud
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-aws text-accent-amber text-base md:text-lg"></i> AWS Cloud
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-linux text-primary-text"></i> Linux &amp; Bash
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-linux text-on-surface text-base md:text-lg"></i> Linux &amp; Bash
           </span>
-          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-hairline bg-surface text-xs font-mono text-primary-text hover:border-accent/40 transition-colors">
-            <i class="fab fa-git-alt text-[#f05032]"></i> Git &amp; CI/CD
+          <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-outline-variant/50 bg-surface text-sm md:text-base font-meta-mono text-on-surface hover:border-accent-teal hover:text-accent-teal transition-all">
+            <i class="fab fa-git-alt text-[#f05032] text-base md:text-lg"></i> Git &amp; GitHub Actions
           </span>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         SECTION 02: WORK EXPERIENCE & ACADEMICS
-         Clear chronology, verified impact metrics, and degrees
+         SECTION 03: WORK EXPERIENCE & EDUCATION
+         (Items 3: No numbers in titles, 5: Justified text, 6: No bracketed subhead, increased subsection size, 8: Reduced gaps)
          ======================================================== -->
-    <section class="py-16 md:py-20 border-hairline-b" id="experience">
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 pb-4 border-hairline-b">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-primary-text">
-            Experience &amp; Academics
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="experience">
+      <!-- Section Title Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-dotted border-outline-variant/30 mb-8">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline-sm text-2xl font-light text-on-surface">
+            EXPERIENCE &amp; ACADEMICS
           </h2>
-          <p class="text-sm text-secondary-text mt-1">
-            Production industry experience alongside high-rigor computer science graduate education.
-          </p>
         </div>
-        <span class="text-xs font-mono text-muted-text mt-2 md:mt-0">Chronology</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12">
         <!-- Work Experience Timeline (7 Cols) -->
-        <div class="lg:col-span-7">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-accent mb-6 font-semibold">
-            Work Experience
-          </h3>
+        <div class="lg:col-span-7 space-y-8">
+          <p class="font-meta-mono text-sm md:text-base font-semibold text-accent-teal uppercase tracking-widest mb-4">
+            WORK EXPERIENCE
+          </p>
 
-          <div class="p-6 rounded-xl border border-hairline bg-surface shadow-card-subtle">
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2">
-              <h4 class="text-lg font-semibold text-primary-text">
-                Machine Learning Intern <span class="text-secondary-text font-normal">@ Datanomers</span>
-              </h4>
-              <span class="text-xs font-mono text-muted-text mt-1 sm:mt-0">Jun 2022 — Dec 2022</span>
+          <!-- Role: Datanomers -->
+          <div class="relative pl-6 border-l border-dotted border-outline-variant/60 group">
+            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-teal group-hover:scale-125 transition-transform"></div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+              <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium group-hover:text-accent-teal transition-colors">
+                Machine Learning Intern <span class="text-on-surface font-medium text-xl md:text-2xl">@ Datanomers</span>
+              </h3>
+              <span class="font-meta-mono text-xs text-outline">JUN 2022 — DEC 2022</span>
             </div>
-
-            <p class="text-xs font-mono text-accent mb-4">
-              Remote · SDE / AI Systems / Data Engineering
+            <p class="font-meta-mono text-xs md:text-sm text-accent-cyan/90 mb-3">
+              Remote (Work from Home) · SDE / AI Systems / Data Engineering
             </p>
-
-            <p class="text-sm text-secondary-text leading-relaxed mb-4">
-              Engineered high-scale Python data preprocessing pipelines, optimized real-time predictive ML inference algorithms, and collaborated across banking-domain models.
+            <p class="font-body-md text-sm md:text-[15px] text-on-surface-variant leading-relaxed mb-4 text-justify">
+              Engineered high-scale Python data preprocessing pipelines, optimized real-time predictive ML inference algorithms, and collaborated on banking-domain models.
             </p>
-
-            <ul class="text-xs md:text-sm text-secondary-text space-y-2.5 list-disc list-inside">
-              <li>
-                Engineered a high-scale data pipeline to preprocess and encode Standard Industrial Classification (SIC) codes, categorizing corporate profiles for banking-domain ML models.
-              </li>
-              <li>
-                Optimized predictive machine learning algorithms for real-time inference in high-scale systems, cutting response latency by <strong class="text-primary-text font-semibold">35%</strong> across production environments.
-              </li>
-              <li>
-                Implemented and unit-tested <strong class="text-primary-text font-semibold">40+ automated rule-based validation checks</strong> prior to ingestion, collaborating with cross-functional teams to improve model signal accuracy by up to <strong class="text-primary-text font-semibold">30%</strong>.
-              </li>
+            <ul class="font-meta-mono text-xs md:text-sm text-on-surface-variant/90 space-y-2.5 list-disc list-inside text-justify">
+              <li>Engineered a high-scale data pipeline to preprocess &amp; encode SIC codes, categorizing corporate profiles for banking-domain ML models.</li>
+              <li>Optimized predictive ML inference in high-scale systems, cutting response latency by <strong class="text-on-surface font-semibold">35%</strong> across production environments.</li>
+              <li>Implemented and unit-tested <strong class="text-on-surface font-semibold">40+ automated rule-based validation checks</strong> prior to ingestion, improving model signal accuracy by up to <strong class="text-on-surface font-semibold">30%</strong>.</li>
             </ul>
           </div>
         </div>
 
         <!-- Education & Academic Foundation (5 Cols) -->
-        <div class="lg:col-span-5 space-y-6">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-accent mb-6 font-semibold">
-            Education &amp; Degrees
-          </h3>
+        <div class="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-dotted border-outline-variant/40 pt-6 lg:pt-0 lg:pl-10">
+          <p class="font-meta-mono text-sm md:text-base font-semibold text-accent-cyan uppercase tracking-widest mb-4">
+            EDUCATION &amp; DEGREES
+          </p>
 
-          <!-- Degree 1: M.Tech IIIT Lucknow -->
-          <div class="p-6 rounded-xl border border-hairline bg-surface shadow-card-subtle relative">
-            <div class="flex items-center justify-between text-xs font-mono text-muted-text mb-2">
-              <span>2025 — Present (Exp. 2027)</span>
-              <span class="px-2 py-0.5 rounded bg-accent-soft text-accent font-semibold">CGPA: 8.36 / 10</span>
+          <div class="space-y-6">
+            <!-- Degree 1: M.Tech IIIT Lucknow -->
+            <div class="relative pl-5 border-l-2 border-accent-teal">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-meta-mono text-xs text-outline">2025 — PRESENT (EXP. 2027)</span>
+                <span class="font-meta-mono text-xs px-2 py-0.5 rounded bg-accent-teal/15 text-accent-teal font-semibold">CGPA: 8.36 / 10</span>
+              </div>
+              <h4 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium">M.Tech in Computer Science</h4>
+              <p class="font-body-md text-sm md:text-base text-accent-cyan font-light mb-2">Indian Institute of Information Technology, Lucknow (IIIT Lucknow)</p>
+              <p class="font-meta-mono text-xs md:text-sm text-outline leading-relaxed text-justify">
+                Lucknow, Uttar Pradesh, India. Specialization in Advanced Computer Science, Systems Architecture, Machine Learning Theory &amp; Distributed Algorithms.
+              </p>
             </div>
-            <h4 class="text-base font-semibold text-primary-text">M.Tech in Computer Science</h4>
-            <p class="text-xs text-accent mt-0.5 mb-2 font-mono">Indian Institute of Information Technology, Lucknow</p>
-            <p class="text-xs text-secondary-text leading-relaxed">
-              Specializing in Advanced Computer Science, Systems Architecture, Machine Learning Theory &amp; Distributed Algorithms.
-            </p>
-          </div>
 
-          <!-- Degree 2: B.Tech SSIPMT Raipur -->
-          <div class="p-6 rounded-xl border border-hairline bg-surface shadow-card-subtle relative">
-            <div class="flex items-center justify-between text-xs font-mono text-muted-text mb-2">
-              <span>2019 — 2023</span>
-              <span class="px-2 py-0.5 rounded bg-surface-raised text-amber-400 font-semibold">CGPA: 8.3 / 10</span>
+            <!-- Degree 2: B.Tech SSIPMT -->
+            <div class="relative pl-5 border-l-2 border-outline-variant">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-meta-mono text-xs text-outline">2019 — 2023</span>
+                <span class="font-meta-mono text-xs px-2 py-0.5 rounded bg-surface text-accent-amber font-semibold">CGPA: 8.3 / 10</span>
+              </div>
+              <h4 class="font-headline-sm text-base md:text-lg text-on-surface font-medium">B.Tech in Information Technology</h4>
+              <p class="font-body-md text-sm md:text-base text-on-surface-variant font-light mb-2">Shri Shankaracharya Institute of Professional Management &amp; Technology (SSIPMT)</p>
+              <p class="font-meta-mono text-xs md:text-sm text-outline leading-relaxed text-justify">
+                Raipur, Chhattisgarh, India. Strong foundation in Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, and Computer Networks.
+              </p>
             </div>
-            <h4 class="text-base font-semibold text-primary-text">B.Tech in Information Technology</h4>
-            <p class="text-xs text-secondary-text mt-0.5 mb-2 font-mono">SSIPMT Raipur</p>
-            <p class="text-xs text-secondary-text leading-relaxed">
-              Rigorous foundation in Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, and Computer Networks.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         SECTION 03: FEATURED & SYSTEMS PROJECTS
-         High-craft architectural cards with performance metrics
+         SECTION 04: PROJECTS (PRODUCTION & SYSTEMS)
+         (Items 3: No numbers in titles, 5: Justified text, 6: No bracketed subhead, 8: Reduced gaps, 9: Italicized project titles, 11: Increased font size)
          ======================================================== -->
-    <section class="py-16 md:py-20 border-hairline-b" id="projects">
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 pb-4 border-hairline-b">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-primary-text">
-            Featured &amp; Systems Projects
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="projects">
+      <!-- Section Title Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-dotted border-outline-variant/30 mb-6">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline-sm text-2xl font-light text-on-surface">
+            FEATURED &amp; SYSTEMS PROJECTS
           </h2>
-          <p class="text-sm text-secondary-text mt-1">
-            Production platforms, custom engines, and first-principles deep learning implementations.
-          </p>
         </div>
-        <span class="text-xs font-mono text-muted-text mt-2 md:mt-0">5 Engineering Projects</span>
       </div>
 
-      <div class="space-y-6">
-        <!-- Project 1: ClipSense AI -->
-        <div class="p-6 md:p-8 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-all duration-150 shadow-card-subtle group">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-            <div class="flex flex-wrap items-baseline gap-3">
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-text group-hover:text-accent transition-colors italic">
-                ClipSense AI
-              </h3>
-              <span class="text-sm text-secondary-text font-normal">
+      <!-- Pure Typographic Index Rows - No horizontal dividers between projects -->
+      <div class="space-y-4">
+        <!-- Project 01: ClipSense AI -->
+        <div class="group py-6 md:py-8 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
+                CLIPSENSE AI
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm md:text-base">
                 Scalable Video RAG &amp; Multi-Vector Search Platform
               </span>
             </div>
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="text-muted-text">FastAPI · React · TypeScript · Qdrant · Docker</span>
-              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">● Live Demo</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs md:text-sm text-outline">
+              <span>FastAPI · React · TypeScript · Qdrant · Docker</span>
+              <span class="text-emerald-400 font-semibold">● LIVE DEMO</span>
             </div>
           </div>
-
-          <p class="text-sm text-secondary-text leading-relaxed mb-5 max-w-4xl">
-            Engineered a production-ready RAG platform transforming YouTube videos and playlists into queryable knowledge bases. Features a two-stage retrieval pipeline (Qdrant dense vector search + cross-encoder re-ranking) operating within a sub-80 MB serverless RAM footprint. Implemented concurrent thread-pool retrieval across 35+ playlists, cutting search latency by <strong class="text-primary-text font-semibold">96%</strong> (8s down to &lt;0.3s) with dual-token JWT auth and timestamped citations synced to an embedded player.
+          <p class="font-body-md text-sm md:text-base text-[#c0d2d4] max-w-4xl leading-relaxed mb-4 text-justify">
+            Engineered a production-ready RAG platform transforming YouTube videos and playlists into queryable knowledge bases. Features a two-stage retrieval pipeline (Qdrant dense vector search + cross-encoder re-ranking) operating within a sub-80 MB serverless RAM footprint. Implemented concurrent thread-pool retrieval across 35+ playlists, cutting search latency by <strong class="text-on-surface font-semibold">96%</strong> (8s down to &lt;0.3s) with dual-token JWT auth and timestamped citations synced to an embedded player.
           </p>
-
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-raised hover:bg-surface-hover text-primary-text border border-hairline transition-colors">
+          <div class="flex items-center gap-5 font-meta-mono text-xs md:text-sm">
+            <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
               <i class="fab fa-github"></i> GitHub Repository ↗
             </a>
-            <a href="https://clipsense-ai.onrender.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-accent/10 hover:bg-accent/20 text-accent border border-accent/20 transition-colors">
-              <i class="fas fa-arrow-up-right-from-square"></i> Live Demo ↗
+            <a href="https://clipsense-ai.onrender.com" target="_blank" rel="noopener" class="text-accent-teal hover:underline flex items-center gap-1.5">
+              <i class="fas fa-arrow-up-right-from-square"></i> Live Application Demo ↗
             </a>
           </div>
         </div>
 
-        <!-- Project 2: GPT-2 from Scratch -->
-        <div class="p-6 md:p-8 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-all duration-150 shadow-card-subtle group">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-            <div class="flex flex-wrap items-baseline gap-3">
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-text group-hover:text-accent transition-colors italic">
-                GPT-2 from Scratch
-              </h3>
-              <span class="text-sm text-secondary-text font-normal">
+        <!-- Project 02: GPT-2 from Scratch -->
+        <div class="group py-6 md:py-8 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
+                GPT-2 FROM SCRATCH
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm md:text-base">
                 Architecture, Pretraining &amp; SFT Engine
               </span>
             </div>
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="text-muted-text">PyTorch · SFT · BPE Tokenization · Flask</span>
-              <span class="px-2 py-0.5 rounded bg-accent/10 text-accent font-semibold border border-accent/20">95.67% Accuracy</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs md:text-sm text-outline">
+              <span>PyTorch · SFT · BPE Tokenization · Flask</span>
+              <span class="text-accent-teal font-semibold">95.67% ACCURACY</span>
             </div>
           </div>
-
-          <p class="text-sm text-secondary-text leading-relaxed mb-5 max-w-4xl">
-            Engineered the complete GPT-2 (124M/355M) architecture from scratch in PyTorch covering causal multi-head attention, Byte Pair Encoding tokenization, and pre-LayerNorm residual blocks, transferring OpenAI pretrained weights into the custom model. Fine-tuned checkpoints for sequence classification (<strong class="text-primary-text font-semibold">95.67% test accuracy</strong>) and instruction following via SFT on the Alpaca dataset; built an autoregressive inference engine with Top-k sampling and temperature control.
+          <p class="font-body-md text-sm md:text-base text-[#c0d2d4] max-w-4xl leading-relaxed mb-4 text-justify">
+            Engineered the complete GPT-2 (124M/355M) architecture from scratch in PyTorch covering causal multi-head attention, Byte Pair Encoding tokenization, and pre-LayerNorm residual blocks, transferring OpenAI pretrained weights into the custom model. Fine-tuned checkpoints for sequence classification (<strong class="text-on-surface font-semibold">95.67% test accuracy</strong>) and instruction following via SFT on the Alpaca dataset; built an autoregressive inference engine with Top-k sampling and temperature control.
           </p>
-
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/iSHAANphaye/GPT2-From-Scratch" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-raised hover:bg-surface-hover text-primary-text border border-hairline transition-colors">
+          <div class="flex items-center gap-5 font-meta-mono text-xs md:text-sm">
+            <a href="https://github.com/iSHAANphaye/GPT2-From-Scratch" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
               <i class="fab fa-github"></i> GitHub Repository ↗
             </a>
           </div>
         </div>
 
-        <!-- Project 3: Vaatika Zone -->
-        <div class="p-6 md:p-8 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-all duration-150 shadow-card-subtle group">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-            <div class="flex flex-wrap items-baseline gap-3">
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-text group-hover:text-accent transition-colors italic">
-                Vaatika Zone
-              </h3>
-              <span class="text-sm text-secondary-text font-normal">
+        <!-- Project 03: Vaatika Zone -->
+        <div class="group py-6 md:py-8 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
+                VAATIKA ZONE
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm md:text-base">
                 Full-Stack E-Commerce Web Platform
               </span>
             </div>
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="text-muted-text">React · Express.js · MongoDB · Node.js · Docker</span>
-              <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20">-20% Query Latency</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs md:text-sm text-outline">
+              <span>React · Express.js · MongoDB · Node.js · Docker</span>
+              <span class="text-accent-amber font-semibold">-20% QUERY LATENCY</span>
             </div>
           </div>
-
-          <p class="text-sm text-secondary-text leading-relaxed mb-5 max-w-4xl">
-            Developed a responsive full-stack e-commerce web platform for a regional startup from structural ideation to production deployment, owning the entire SDLC. Designed schema architectures and compound indexing strategies in MongoDB, reducing backend API database query processing latency by <strong class="text-primary-text font-semibold">20%</strong> while containerizing services with Docker.
+          <p class="font-body-md text-sm md:text-base text-[#c0d2d4] max-w-4xl leading-relaxed mb-4 text-justify">
+            Developed a responsive full-stack e-commerce web platform for a regional startup from structural ideation to production deployment, owning the entire SDLC. Designed schema architectures and compound indexing strategies in MongoDB, reducing backend API database query processing latency by <strong class="text-on-surface font-semibold">20%</strong> while containerizing services with Docker.
           </p>
-
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/iSHAANphaye/Vaatika-Zone-personal" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-raised hover:bg-surface-hover text-primary-text border border-hairline transition-colors">
+          <div class="flex items-center gap-5 font-meta-mono text-xs md:text-sm">
+            <a href="https://github.com/iSHAANphaye/Vaatika-Zone-personal" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
               <i class="fab fa-github"></i> GitHub Repository ↗
             </a>
           </div>
         </div>
 
-        <!-- Project 4: Mini Database Storage Engine -->
-        <div class="p-6 md:p-8 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-all duration-150 shadow-card-subtle group">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-            <div class="flex flex-wrap items-baseline gap-3">
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-text group-hover:text-accent transition-colors italic">
-                Mini Database Storage Engine
-              </h3>
-              <span class="text-sm text-secondary-text font-normal">
+        <!-- Project 04: Mini Database Storage Engine -->
+        <div class="group py-6 md:py-8 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
+                MINI DATABASE STORAGE ENGINE
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm md:text-base">
                 Disk-Backed Custom Key-Value Store
               </span>
             </div>
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="text-muted-text">C++20 · B+Tree Index · Write-Ahead Log · Buffer Pool</span>
-              <span class="px-2 py-0.5 rounded bg-accent/10 text-accent font-semibold border border-accent/20">ACID Atomicity</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs md:text-sm text-outline">
+              <span>C++20 · B+Tree Index · Write-Ahead Log · Buffer Pool</span>
+              <span class="text-accent-cyan font-semibold">ACID ATOMICITY</span>
             </div>
           </div>
-
-          <p class="text-sm text-secondary-text leading-relaxed mb-5 max-w-4xl">
+          <p class="font-body-md text-sm md:text-base text-[#c0d2d4] max-w-4xl leading-relaxed mb-4 text-justify">
             Engineered a disk-backed key-value store in C++ from scratch featuring a custom B+Tree index, supporting O(log n) point lookups and range scans across leaf-node linked lists with cache-conscious page layouts. Built Write-Ahead Logging (WAL) with sequential log flushing prior to in-place page writes, guaranteeing ACID atomicity, crash-safe durability, and automated recovery on restart alongside an LRU buffer pool manager.
           </p>
-
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-raised hover:bg-surface-hover text-primary-text border border-hairline transition-colors">
+          <div class="flex items-center gap-5 font-meta-mono text-xs md:text-sm">
+            <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
               <i class="fab fa-github"></i> GitHub Repository ↗
             </a>
           </div>
         </div>
 
-        <!-- Project 5: On-Device Object Detection -->
-        <div class="p-6 md:p-8 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-all duration-150 shadow-card-subtle group">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-            <div class="flex flex-wrap items-baseline gap-3">
-              <h3 class="text-xl md:text-2xl font-semibold text-primary-text group-hover:text-accent transition-colors italic">
-                On-Device Object Detection
-              </h3>
-              <span class="text-sm text-secondary-text font-normal">
+        <!-- Project 05: Real-Time Object Detection App -->
+        <div class="group py-6 md:py-8 transition-all duration-200 hover:bg-surface-container-lowest/60 hover:pl-4 px-2 -mx-2 border-l-2 border-transparent hover:border-accent-teal">
+          <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
+              <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
+                ON-DEVICE OBJECT DETECTION
+              </span>
+              <span class="font-body-md text-on-surface-variant font-light text-sm md:text-base">
                 Quantized Edge Computer Vision Pipeline
               </span>
             </div>
-            <div class="flex items-center gap-3 text-xs font-mono">
-              <span class="text-muted-text">Flutter · TensorFlow · TFLite · SSD MobileNet</span>
-              <span class="px-2 py-0.5 rounded bg-accent/10 text-accent font-semibold border border-accent/20">93% Accuracy</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0 font-meta-mono text-xs md:text-sm text-outline">
+              <span>Flutter · TensorFlow · TFLite · SSD MobileNet</span>
+              <span class="text-accent-teal font-semibold">93% ACCURACY</span>
             </div>
           </div>
-
-          <p class="text-sm text-secondary-text leading-relaxed mb-5 max-w-4xl">
-            Led development of an on-device computer vision pipeline detecting and classifying objects with <strong class="text-primary-text font-semibold">93% accuracy</strong>, deployed as a real-time mobile application. Trained an SSD MobileNet model on the MSCOCO dataset and exported quantized models to TFLite format for edge deployment, achieving ultra low-latency inference directly on hardware without cloud dependencies.
+          <p class="font-body-md text-sm md:text-base text-[#c0d2d4] max-w-4xl leading-relaxed mb-4 text-justify">
+            Led development of an on-device computer vision pipeline detecting and classifying objects with <strong class="text-on-surface font-semibold">93% accuracy</strong>, deployed as a real-time mobile application. Trained an SSD MobileNet model on the MSCOCO dataset and exported quantized models to TFLite format for edge deployment, achieving ultra low-latency inference directly on hardware without cloud dependencies.
           </p>
-
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/iSHAANphaye/Object-Detection-App" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-raised hover:bg-surface-hover text-primary-text border border-hairline transition-colors">
+          <div class="flex items-center gap-5 font-meta-mono text-xs md:text-sm">
+            <a href="https://github.com/iSHAANphaye/Object-Detection-App" target="_blank" rel="noopener" class="text-on-surface hover:text-accent-teal transition-colors flex items-center gap-1.5">
               <i class="fab fa-github"></i> GitHub Repository ↗
             </a>
           </div>
@@ -715,101 +777,82 @@
     </section>
 
     <!-- ========================================================
-         SECTION 04: ACHIEVEMENTS & KEY HONORS
-         Quiet, elevated cards with verified national competitive metrics
+         SECTION 05: ACHIEVEMENTS & KEY HONORS
+         (Items 3: No numbers in titles, 5: Justified text, 6: No bracketed subhead,
+          8: Reduced gaps, 10: Subtle shallow 3D popout without wild animation)
          ======================================================== -->
-    <section class="py-16 md:py-20 border-hairline-b" id="achievements">
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 pb-4 border-hairline-b">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-primary-text">
-            Achievements &amp; Competitive Honors
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="achievements">
+      <!-- Section Title Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-dotted border-outline-variant/30 mb-6">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline-sm text-2xl font-light text-on-surface">
+            ACHIEVEMENTS &amp; COMPETITIVE HONORS
           </h2>
-          <p class="text-sm text-secondary-text mt-1">
-            National rankings, competitive hackathon awards, and verified problem solving.
-          </p>
         </div>
-        <span class="text-xs font-mono text-muted-text mt-2 md:mt-0">Awards &amp; Rankings</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 achievement-card-wrapper">
         <!-- Award 1: TechXR Hackathon -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-colors shadow-card-subtle flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
-                <i class="fas fa-trophy text-sm"></i>
-              </span>
-              <span class="text-xs font-mono text-muted-text">IIT Roorkee</span>
-            </div>
-            <h3 class="text-lg font-semibold text-primary-text mb-2">
-              8th Place / 3,500+ Participants
-            </h3>
-            <p class="text-xs md:text-sm text-secondary-text leading-relaxed mb-4">
-              Secured 8th position among 3,500+ developers at TechXR Hackathon (IIT Roorkee), earning a competitive 3-month internship offer based on technical architecture and performance.
-            </p>
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-amber text-xl card-icon"><i class="fas fa-trophy"></i></span>
+            <span class="font-meta-mono text-xs text-outline">IIT ROORKEE</span>
           </div>
-          <span class="text-[11px] font-mono text-accent">TechXR Hackathon · IIT Roorkee</span>
+          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            8th Place / 3,500+ Participants
+          </h3>
+          <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
+            Secured 8th position among 3,500+ developers at TechXR Hackathon (IIT Roorkee), earning a competitive 3-month internship offer based on technical architecture and performance.
+          </p>
+          <span class="font-meta-mono text-[11px] md:text-xs text-accent-cyan">TECHXR HACKATHON · IIT ROORKEE</span>
         </div>
 
         <!-- Award 2: Competitive Programming LeetCode -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-colors shadow-card-subtle flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center border border-accent/20">
-                <i class="fas fa-code text-sm"></i>
-              </span>
-              <span class="text-xs font-mono text-muted-text">LeetCode</span>
-            </div>
-            <h3 class="text-lg font-semibold text-primary-text mb-2">
-              400+ Algorithmic Problems Solved
-            </h3>
-            <p class="text-xs md:text-sm text-secondary-text leading-relaxed mb-4">
-              Solved over 400 algorithmic problems focusing on asymptotic runtime and memory complexity optimization across Dynamic Programming, Graphs, and Trees.
-            </p>
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-cyan text-xl card-icon"><i class="fas fa-code"></i></span>
+            <span class="font-meta-mono text-xs text-outline">LEETCODE</span>
           </div>
-          <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="text-[11px] font-mono text-accent hover:underline inline-flex items-center gap-1">
-            Profile @ishaanroxx ↗
+          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            400+ Algorithmic Problems Solved
+          </h3>
+          <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
+            Solved over 400 algorithmic problems on LeetCode focusing on asymptotic runtime and memory complexity optimization across Dynamic Programming, Graphs, and Trees.
+          </p>
+          <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="font-meta-mono text-[11px] md:text-xs text-accent-teal hover:underline inline-flex items-center gap-1">
+            VIEW PROFILE @ishaanroxx ↗
           </a>
         </div>
 
         <!-- Award 3: TCS NQT -->
-        <div class="p-6 rounded-xl border border-hairline bg-surface hover:border-accent/40 transition-colors shadow-card-subtle flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center border border-accent/20">
-                <i class="fas fa-medal text-sm"></i>
-              </span>
-              <span class="text-xs font-mono text-muted-text">National Exam</span>
-            </div>
-            <h3 class="text-lg font-semibold text-primary-text mb-2">
-              Top 200 All-India Rank
-            </h3>
-            <p class="text-xs md:text-sm text-secondary-text leading-relaxed mb-4">
-              Attained a Top 200 national percentile rank in TCS National Qualifier Test (NQT) nationwide with focused algorithmic and systems preparation.
-            </p>
+        <div class="p-6 border border-dotted border-outline-variant/40 bg-surface-container-lowest/40 achievement-card group rounded-lg">
+          <div class="card-glare"></div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-accent-teal text-xl card-icon"><i class="fas fa-medal"></i></span>
+            <span class="font-meta-mono text-xs text-outline">NATIONAL EXAM</span>
           </div>
-          <span class="text-[11px] font-mono text-amber-400">TCS National Qualifier Test</span>
+          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+            Top 200 All-India Rank
+          </h3>
+          <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
+            Attained a Top 200 national percentile rank in TCS National Qualifier Test (NQT) nationwide with only one month of targeted algorithmic preparation.
+          </p>
+          <span class="font-meta-mono text-[11px] md:text-xs text-accent-amber">TCS NATIONAL QUALIFIER TEST</span>
         </div>
       </div>
     </section>
 
     <!-- ========================================================
-         SECTION 05: CONTACT & EMPLOYMENT PREFERENCES
-         Structured dossier with two-column alignment + Direct message form
+         SECTION 06: CONTACT & EMPLOYMENT PREFERENCES
+         (Items 4: Removed 06 // GET IN TOUCH header, 5: Justified text, 8: Reduced gaps)
          ======================================================== -->
-    <section class="py-16 md:py-20" id="contact">
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-10 pb-4 border-hairline-b">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-primary-text">
-            Get in Touch
-          </h2>
-          <p class="text-sm text-secondary-text mt-1">
-            Open to Software Development Engineering (SDE), Backend Systems, and AI roles globally.
-          </p>
-        </div>
-        <span class="text-xs font-mono text-emerald-400 flex items-center gap-2 mt-2 md:mt-0">
+    <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest/30" id="contact">
+      <div class="pb-4 border-b border-dotted border-outline-variant/30 flex justify-end items-center mb-8">
+        <span class="font-meta-mono text-meta-mono text-emerald-400 flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Immediate Notice (0 Days)
+          OPEN TO IMMEDIATE OPPORTUNITIES
         </span>
       </div>
 
@@ -817,80 +860,84 @@
         <!-- Direct contact info & preferences -->
         <div class="md:col-span-7 flex flex-col justify-between">
           <div>
-            <p class="text-xs font-mono text-muted-text uppercase tracking-wider mb-2 font-semibold">
-              Direct Contact
+            <p class="font-meta-mono text-sm md:text-base font-semibold text-outline mb-3">
+              DIRECT DISPATCH //
             </p>
-            <a class="text-2xl sm:text-3xl font-medium text-primary-text hover:text-accent transition-colors block mb-2" href="mailto:ishaanphaye@gmail.com">
+            <a class="text-2xl sm:text-4xl font-normal text-on-surface hover:text-accent-teal transition-colors duration-200 tracking-tight block mb-2" href="mailto:ishaanphaye@gmail.com">
               ishaanphaye@gmail.com
             </a>
-            <p class="text-sm font-mono text-accent mb-6">
+            <p class="font-meta-mono text-sm md:text-base text-accent-teal mb-6">
               Phone: +91-8839167462
             </p>
+            
+            <p class="font-body-md text-sm md:text-base text-on-surface-variant max-w-lg leading-relaxed mb-6 text-justify">
+              Actively seeking roles across Software Development Engineering (SDE), Backend Systems, and AI / Machine Learning Engineering.
+            </p>
 
-            <!-- Dossier Alignment Box -->
-            <div class="p-5 rounded-xl border border-hairline bg-surface mb-8 font-mono text-xs">
+            <!-- Relocation & Compensation Highlights with Uniform Two-Column Alignment -->
+            <div class="p-5 rounded-lg border border-outline-variant/30 bg-surface mb-8 max-w-lg font-meta-mono text-xs md:text-sm">
               <div class="grid grid-cols-12 gap-y-3 gap-x-4 items-baseline">
-                <div class="col-span-5 text-muted-text">LOCATION BASE:</div>
-                <div class="col-span-7 text-right text-primary-text">Lucknow, Uttar Pradesh, India</div>
+                <div class="col-span-5 text-outline">LOCATION BASE:</div>
+                <div class="col-span-7 text-right text-on-surface">Lucknow, Uttar Pradesh, India</div>
 
-                <div class="col-span-5 text-muted-text">WILLING TO RELOCATE:</div>
-                <div class="col-span-7 text-right text-accent font-medium">Yes (India / Global Remote)</div>
+                <div class="col-span-5 text-outline">WILLING TO RELOCATE:</div>
+                <div class="col-span-7 text-right text-accent-teal font-medium">Yes (India / Global Remote)</div>
 
-                <div class="col-span-5 text-muted-text">PREFERRED HUBS:</div>
-                <div class="col-span-7 text-right text-primary-text leading-relaxed">Remote, Worldwide Remote, Bangalore, Pune, Hyderabad, NCR</div>
+                <div class="col-span-5 text-outline">PREFERRED LOCATIONS:</div>
+                <div class="col-span-7 text-right text-on-surface leading-relaxed">Remote, Worldwide Remote, Bangalore, Pune, Hyderabad, NCR</div>
 
-                <div class="col-span-5 text-muted-text">WORK AUTHORIZATION:</div>
-                <div class="col-span-7 text-right text-primary-text">India Authorized · Global Remote</div>
+                <div class="col-span-5 text-outline">WORK AUTHORIZATION:</div>
+                <div class="col-span-7 text-right text-on-surface">India Authorized · Global Remote</div>
 
-                <div class="col-span-12 border-t border-hairline my-0.5"></div>
+                <div class="col-span-12 border-t border-dotted border-outline-variant/30 my-0.5"></div>
 
-                <div class="col-span-5 text-muted-text">NOTICE PERIOD:</div>
+                <div class="col-span-5 text-outline">NOTICE PERIOD:</div>
                 <div class="col-span-7 text-right text-emerald-400 font-semibold">Immediate (0 Days)</div>
               </div>
             </div>
           </div>
 
-          <!-- Verified Social Profiles -->
-          <div class="pt-4 border-hairline-t">
-            <span class="text-xs font-mono text-muted-text uppercase tracking-wider block mb-3 font-semibold">
-              Verified Profiles
-            </span>
-            <div class="flex flex-wrap gap-3 font-mono text-xs">
-              <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg border border-hairline bg-surface hover:border-accent/40 text-primary-text hover:text-accent transition-colors flex items-center gap-2">
+          <!-- Social links matrix -->
+          <div class="space-y-4 pt-4 border-t border-dotted border-outline-variant/30">
+            <span class="font-meta-mono text-sm md:text-base font-semibold text-outline block">VERIFIED PROFILES //</span>
+            <div class="flex flex-wrap gap-4 font-meta-mono text-xs md:text-sm">
+              <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
                 <i class="fab fa-github"></i> github.com/iSHAANphaye
               </a>
-              <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg border border-hairline bg-surface hover:border-accent/40 text-primary-text hover:text-accent transition-colors flex items-center gap-2">
+              <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
                 <i class="fab fa-linkedin-in"></i> linkedin.com/in/ishaan-phaye
               </a>
-              <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-lg border border-hairline bg-surface hover:border-accent/40 text-primary-text hover:text-accent transition-colors flex items-center gap-2">
+              <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface hover:border-accent-teal hover:text-accent-teal transition-colors flex items-center gap-2">
                 <i class="fas fa-code"></i> leetcode.com/ishaanroxx
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Direct Inquiry Form -->
-        <div class="md:col-span-5 border-t md:border-t-0 md:border-l border-hairline pt-8 md:pt-0 md:pl-10">
-          <p class="text-xs font-mono text-muted-text uppercase tracking-wider mb-4 font-semibold">
-            Send Message
-          </p>
+        <!-- Interactive Direct Message Box -->
+        <div class="md:col-span-5 border-t md:border-t-0 md:border-l border-dotted border-outline-variant/40 pt-8 md:pt-0 md:pl-10">
+          <span class="font-meta-mono text-sm md:text-base font-semibold text-outline block mb-4">INITIATE INQUIRY //</span>
           <form class="space-y-4" onsubmit="event.preventDefault(); const n = document.getElementById('cf-name').value; const e = document.getElementById('cf-email').value; const m = document.getElementById('cf-msg').value; window.location.href = `mailto:ishaanphaye@gmail.com?subject=Inquiry from ${encodeURIComponent(n)}&body=${encodeURIComponent(m + '\n\nFrom: ' + n + ' (' + e + ')')}`; return false;">
             <div>
-              <label class="block font-mono text-xs text-muted-text mb-1.5">Name &amp; Organization</label>
-              <input id="cf-name" type="text" placeholder="e.g. Engineering Lead / Recruiter" class="w-full bg-surface border border-hairline rounded-lg px-3.5 py-2.5 font-mono text-xs text-primary-text placeholder:text-muted-text/60 focus:outline-none focus:border-accent transition-colors" required/>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">YOUR NAME &amp; COMPANY</label>
+              <input id="cf-name" type="text" placeholder="e.g. Hiring Lead / Engineering Director" class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs md:text-sm text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required/>
             </div>
             <div>
-              <label class="block font-mono text-xs text-muted-text mb-1.5">Email Address</label>
-              <input id="cf-email" type="email" placeholder="contact@company.com" class="w-full bg-surface border border-hairline rounded-lg px-3.5 py-2.5 font-mono text-xs text-primary-text placeholder:text-muted-text/60 focus:outline-none focus:border-accent transition-colors" required/>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">YOUR EMAIL ADDRESS</label>
+              <input id="cf-email" type="email" placeholder="contact@company.com" class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs md:text-sm text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required/>
             </div>
             <div>
-              <label class="block font-mono text-xs text-muted-text mb-1.5">Message / Role Details</label>
-              <textarea id="cf-msg" rows="3" placeholder="Discussing opportunity, tech stack, or interview..." class="w-full bg-surface border border-hairline rounded-lg px-3.5 py-2.5 font-mono text-xs text-primary-text placeholder:text-muted-text/60 focus:outline-none focus:border-accent transition-colors" required></textarea>
+              <label class="block font-meta-mono text-xs text-outline mb-1.5">MESSAGE / POSITION DETAILS</label>
+              <textarea id="cf-msg" rows="3" placeholder="Discussing role opening, timeline, or interview details..." class="w-full bg-surface border border-outline-variant/50 rounded-lg px-3.5 py-2.5 font-meta-mono text-xs md:text-sm text-on-surface focus:outline-none focus:border-accent-teal transition-colors" required></textarea>
             </div>
             <div class="flex justify-end pt-2">
-              <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-text text-bg-canvas font-medium text-xs font-mono hover:bg-white transition-colors">
-                <span>Send Dispatch</span>
-                <span>→</span>
+              <button type="submit" class="group inline-flex items-center gap-3 rounded-full border border-outline-variant/60 bg-surface hover:border-accent-teal hover:bg-surface-container transition-all duration-200 py-2.5 px-6">
+                <span class="font-label-caps text-xs text-on-surface font-semibold tracking-widest group-hover:text-accent-teal transition-colors">
+                  SEND
+                </span>
+                <span class="text-accent-teal font-meta-mono text-sm group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </button>
             </div>
           </form>
@@ -899,91 +946,447 @@
     </section>
   </main>
 
-  <!-- ========================================================
-       FOOTER
-       ======================================================== -->
-  <footer class="w-full border-t border-hairline py-8 mt-12 bg-bg-canvas text-xs font-mono text-muted-text">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        Ishaan Shailesh Phaye — AI Systems &amp; Software Engineer
-      </div>
-      <div class="flex items-center gap-6">
-        <a class="hover:text-primary-text transition-colors" href="#about">Back to Top ↑</a>
-        <a class="hover:text-primary-text transition-colors" href="#projects">Projects</a>
-        <a class="hover:text-primary-text transition-colors" href="#contact">Contact</a>
-      </div>
+  <!-- Shared Component: Footer -->
+  <footer class="w-full px-5 md:px-12 py-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest">
+    <div class="font-meta-mono text-meta-mono text-outline text-center md:text-left">
+      ISHAAN SHAILESH PHAYE — AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER. ALL RIGHTS RESERVED.
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#about">
+        BACK TO TOP ↑
+      </a>
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#projects">
+        PROJECTS
+      </a>
+      <a class="font-meta-mono text-meta-mono text-on-surface-variant hover:text-accent-teal transition-colors duration-150" href="#contact">
+        CONTACT
+      </a>
     </div>
   </footer>
 
   <!-- ========================================================
-       MINIMALIST SCRIPT: TELEMETRY TABS & SCROLL-SPY
+       SCRIPTS: DYNAMIC AMBIENT LIGHT, LIQUID NEON TRAIL,
+       WATER CANVAS, AND ADVANCED SCROLL-SPY
        ======================================================== -->
   <script>
-    // Tab Switching for Systems Telemetry Widget
-    function switchTab(tabName) {
-      const tabs = ['clipsense', 'btree', 'gpt2'];
-      tabs.forEach(t => {
-        const btn = document.getElementById(`tab-${t}`);
-        const content = document.getElementById(`content-${t}`);
-        if (t === tabName) {
-          btn.classList.add('active');
-          btn.classList.remove('text-secondary-text');
-          content.classList.remove('hidden');
-        } else {
-          btn.classList.remove('active');
-          btn.classList.add('text-secondary-text');
-          content.classList.add('hidden');
-        }
-      });
-    }
-
-    // Scroll-Spy for Top Navigation
     document.addEventListener('DOMContentLoaded', () => {
+      // ----------------------------------------------------
+      // 1. DYNAMIC SCROLL-SPY NAVIGATION
+      // ----------------------------------------------------
       const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
       const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
       const navItems = document.querySelectorAll('.nav-item');
 
-      function updateActiveNav() {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
+      const activeClasses = ['bg-[#f4f7f6]', 'text-[#081416]', 'font-medium', 'font-label-caps', 'text-label-caps', 'rounded-full', 'px-3.5', 'py-1.5'];
+      const mutedClasses = ['font-meta-mono', 'text-meta-mono', 'text-[#7b9295]', 'hover:text-on-surface', 'px-3', 'py-1.5'];
 
-        if (scrollPosition < 120) {
-          highlightNav('about');
-          return;
-        }
+      let currentActiveId = 'about';
 
-        if (scrollPosition + windowHeight >= documentHeight - 60) {
-          highlightNav('contact');
-          return;
-        }
+      function setActiveNav(targetId) {
+        if (!targetId || targetId === currentActiveId) return;
+        currentActiveId = targetId;
 
-        const triggerY = scrollPosition + windowHeight * 0.35;
-        let activeId = 'about';
-
-        for (let i = sections.length - 1; i >= 0; i--) {
-          if (triggerY >= sections[i].offsetTop) {
-            activeId = sections[i].id;
-            break;
-          }
-        }
-        highlightNav(activeId);
-      }
-
-      function highlightNav(targetId) {
         navItems.forEach(item => {
-          if (item.getAttribute('data-target') === targetId) {
-            item.classList.add('text-primary-text', 'bg-surface-raised');
-            item.classList.remove('text-secondary-text');
+          const isCurrent = item.getAttribute('data-target') === targetId;
+          if (isCurrent) {
+            item.classList.remove(...mutedClasses);
+            item.classList.add(...activeClasses);
           } else {
-            item.classList.remove('text-primary-text', 'bg-surface-raised');
-            item.classList.add('text-secondary-text');
+            item.classList.remove(...activeClasses);
+            item.classList.add(...mutedClasses);
           }
         });
       }
 
-      window.addEventListener('scroll', updateActiveNav, { passive: true });
-      updateActiveNav();
+      function updateScrollSpy() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        if (scrollPosition < 150) {
+          setActiveNav('about');
+          return;
+        }
+
+        if (scrollPosition + windowHeight >= documentHeight - 60) {
+          setActiveNav('contact');
+          return;
+        }
+
+        const triggerY = scrollPosition + windowHeight * 0.35;
+        let matchedId = 'about';
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sec = sections[i];
+          const top = sec.offsetTop;
+          if (triggerY >= top) {
+            matchedId = sec.id;
+            break;
+          }
+        }
+
+        setActiveNav(matchedId);
+      }
+
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          const targetId = item.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            const headerOffset = 70;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            setActiveNav(targetId);
+          }
+        });
+      });
+
+      window.addEventListener('scroll', updateScrollSpy, { passive: true });
+      window.addEventListener('resize', updateScrollSpy, { passive: true });
+      updateScrollSpy();
+
+      // 3D Smooth Section Transition Observer
+      const revealSections = document.querySelectorAll('.section-3d-reveal');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+          } else {
+            if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
+              entry.target.classList.remove('is-in-view');
+            }
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
+      });
+
+      revealSections.forEach(sec => sectionObserver.observe(sec));
+
+
+      // ----------------------------------------------------
+      // 2. POINTER POSITION & DYNAMIC AMBIENT BACKGROUND LIGHT
+      // ----------------------------------------------------
+      const ambientPrimary = document.getElementById('ambient-primary');
+      const ambientSecondary = document.getElementById('ambient-secondary');
+      const cursorDot = document.getElementById('custom-cursor-dot');
+      const cursorRing = document.getElementById('custom-cursor-ring');
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      let amb1X = mouseX;
+      let amb1Y = mouseY;
+      let amb2X = window.innerWidth - mouseX;
+      let amb2Y = window.innerHeight - mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (cursorDot) {
+          cursorDot.style.left = `${mouseX}px`;
+          cursorDot.style.top = `${mouseY}px`;
+        }
+      });
+
+      document.body.addEventListener('mouseover', (e) => {
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        if (interactiveTarget) {
+          document.body.classList.add('cursor-hover');
+        }
+      });
+
+      document.body.addEventListener('mouseout', (e) => {
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        if (interactiveTarget) {
+          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article')) {
+            document.body.classList.remove('cursor-hover');
+          }
+        }
+      });
+
+      window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+      window.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+
+      // Item 10: Simplified Subtle Shallow 3D Popout for Achievement Cards
+      const achievementCards = document.querySelectorAll('.achievement-card');
+      achievementCards.forEach(card => {
+        const glare = card.querySelector('.card-glare');
+
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('is-hovered');
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const normX = (x - centerX) / centerX;
+          const normY = (y - centerY) / centerY;
+
+          // Subtle, shallow 3D tilt popout that tracks cursor gently
+          const rotateX = normY * -4;
+          const rotateY = normX * 4;
+
+          card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)`;
+
+          if (glare) {
+            const glareX = (x / rect.width) * 100;
+            const glareY = (y / rect.height) * 100;
+            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.12) 0%, transparent 60%)`;
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('is-hovered');
+          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+        });
+      });
+
+
+      // ----------------------------------------------------
+      // 3. LIQUID NEON CONTINUOUS TRAIL STREAMLINE
+      // ----------------------------------------------------
+      const trailCanvas = document.getElementById('trail-canvas');
+      const tCtx = trailCanvas.getContext('2d');
+      let trailWidth = (trailCanvas.width = window.innerWidth);
+      let trailHeight = (trailCanvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        trailWidth = trailCanvas.width = window.innerWidth;
+        trailHeight = trailCanvas.height = window.innerHeight;
+      });
+
+      const trailPoints = [];
+      const MAX_TRAIL_POINTS = 32;
+
+      // ----------------------------------------------------
+      // 4. INTERACTIVE WATER / LIQUID WAVES BACKGROUND
+      // ----------------------------------------------------
+      const waterCanvas = document.getElementById('water-canvas');
+      const wCtx = waterCanvas.getContext('2d');
+      let wWidth = (waterCanvas.width = window.innerWidth);
+      let wHeight = (waterCanvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        wWidth = waterCanvas.width = window.innerWidth;
+        wHeight = waterCanvas.height = window.innerHeight;
+      });
+
+      const ripples = [];
+      const wakes = [];
+      let lastMouseX = mouseX;
+      let lastMouseY = mouseY;
+      let lastTime = performance.now();
+
+      class WaterRipple {
+        constructor(x, y, power = 1.0) {
+          this.x = x;
+          this.y = y;
+          this.radius = 4;
+          this.maxRadius = Math.min(wWidth, wHeight) * (0.2 + Math.random() * 0.1) * power;
+          this.speed = (2.2 + Math.random() * 1.6) * power;
+          this.opacity = 0.5 * power;
+          this.decay = 0.984;
+        }
+
+        update() {
+          this.radius += this.speed;
+          this.opacity *= this.decay;
+          this.speed *= 0.994;
+          return this.opacity > 0.01 && this.radius < this.maxRadius;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+
+          const grad = ctx.createRadialGradient(
+            this.x, this.y, Math.max(0, this.radius - 14),
+            this.x, this.y, this.radius + 6
+          );
+          grad.addColorStop(0, `rgba(8, 20, 22, 0)`);
+          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.3})`);
+          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.2})`);
+          grad.addColorStop(1, `rgba(8, 20, 22, 0)`);
+
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = Math.max(1, 3.2 * (1 - this.radius / this.maxRadius));
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      class FluidWake {
+        constructor(x1, y1, x2, y2, speed) {
+          this.x1 = x1;
+          this.y1 = y1;
+          this.x2 = x2;
+          this.y2 = y2;
+          this.speed = speed;
+          this.life = 1.0;
+          this.width = Math.min(26, 4 + speed * 1.6);
+        }
+
+        update() {
+          this.life -= 0.035;
+          this.width += 0.35;
+          return this.life > 0;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(this.x1, this.y1);
+          ctx.lineTo(this.x2, this.y2);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.12})`;
+          ctx.lineWidth = this.width;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      let moveThrottle = 0;
+      window.addEventListener('mousemove', (e) => {
+        const now = performance.now();
+        const dt = now - lastTime;
+        lastTime = now;
+
+        const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
+        const speed = dist / Math.max(1, dt);
+
+        if (dist > 3) {
+          wakes.push(new FluidWake(lastMouseX, lastMouseY, e.clientX, e.clientY, speed));
+        }
+
+        moveThrottle++;
+        if (moveThrottle % 4 === 0 && dist > 5) {
+          const power = Math.min(1.8, Math.max(0.6, speed * 0.8));
+          ripples.push(new WaterRipple(e.clientX, e.clientY, power));
+        }
+
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      });
+
+      window.addEventListener('click', (e) => {
+        ripples.push(new WaterRipple(e.clientX, e.clientY, 1.8));
+        setTimeout(() => {
+          ripples.push(new WaterRipple(e.clientX, e.clientY, 1.3));
+        }, 80);
+      });
+
+
+      // ----------------------------------------------------
+      // 5. MASTER ANIMATION LOOP
+      // ----------------------------------------------------
+      function renderLoop() {
+        amb1X += (mouseX - amb1X) * 0.045;
+        amb1Y += (mouseY - amb1Y) * 0.045;
+        if (ambientPrimary) {
+          ambientPrimary.style.transform = `translate3d(${amb1X - 390}px, ${amb1Y - 390}px, 0)`;
+        }
+
+        const targetAmb2X = window.innerWidth - mouseX;
+        const targetAmb2Y = window.innerHeight - mouseY;
+        amb2X += (targetAmb2X - amb2X) * 0.035;
+        amb2Y += (targetAmb2Y - amb2Y) * 0.035;
+        if (ambientSecondary) {
+          ambientSecondary.style.transform = `translate3d(${amb2X - 310}px, ${amb2Y - 310}px, 0)`;
+        }
+
+        ringX += (mouseX - ringX) * 0.22;
+        ringY += (mouseY - ringY) * 0.22;
+        if (cursorRing) {
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+
+        trailPoints.push({ x: mouseX, y: mouseY, time: performance.now() });
+        if (trailPoints.length > MAX_TRAIL_POINTS) {
+          trailPoints.shift();
+        }
+
+        tCtx.clearRect(0, 0, trailWidth, trailHeight);
+
+        if (trailPoints.length > 2) {
+          tCtx.save();
+          tCtx.beginPath();
+          tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
+          for (let i = 1; i < trailPoints.length - 1; i++) {
+            const midX = (trailPoints[i].x + trailPoints[i + 1].x) / 2;
+            const midY = (trailPoints[i].y + trailPoints[i + 1].y) / 2;
+            tCtx.quadraticCurveTo(trailPoints[i].x, trailPoints[i].y, midX, midY);
+          }
+          const lastPt = trailPoints[trailPoints.length - 1];
+          tCtx.lineTo(lastPt.x, lastPt.y);
+
+          tCtx.lineCap = 'round';
+          tCtx.lineJoin = 'round';
+          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+          tCtx.lineWidth = 4.5;
+          tCtx.shadowColor = '#00f0ff';
+          tCtx.shadowBlur = 18;
+          tCtx.stroke();
+          tCtx.restore();
+
+          tCtx.save();
+          tCtx.beginPath();
+          tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
+          for (let i = 1; i < trailPoints.length - 1; i++) {
+            const midX = (trailPoints[i].x + trailPoints[i + 1].x) / 2;
+            const midY = (trailPoints[i].y + trailPoints[i + 1].y) / 2;
+            tCtx.quadraticCurveTo(trailPoints[i].x, trailPoints[i].y, midX, midY);
+          }
+          tCtx.lineTo(lastPt.x, lastPt.y);
+
+          tCtx.lineCap = 'round';
+          tCtx.lineJoin = 'round';
+          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+          tCtx.lineWidth = 1.75;
+          tCtx.shadowColor = '#ffffff';
+          tCtx.shadowBlur = 6;
+          tCtx.stroke();
+          tCtx.restore();
+        }
+
+        wCtx.clearRect(0, 0, wWidth, wHeight);
+
+        for (let i = wakes.length - 1; i >= 0; i--) {
+          if (!wakes[i].update()) {
+            wakes.splice(i, 1);
+          } else {
+            wakes[i].draw(wCtx);
+          }
+        }
+
+        for (let i = ripples.length - 1; i >= 0; i--) {
+          if (!ripples[i].update()) {
+            ripples.splice(i, 1);
+          } else {
+            ripples[i].draw(wCtx);
+          }
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      requestAnimationFrame(renderLoop);
     });
   </script>
 </body>
