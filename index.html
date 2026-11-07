@@ -95,7 +95,7 @@
       }
     }
 
-    /* Crisp High-Energy Core Dot */
+    /* Crisp High-Energy Core Dot - Direct 1:1 hardware motion, zero lag */
     #custom-cursor-dot {
       position: fixed;
       top: 0;
@@ -108,11 +108,11 @@
       z-index: 99999;
       transform: translate3d(-50%, -50%, 0);
       box-shadow: 0 0 8px #00f0ff, 0 0 16px rgba(0, 240, 255, 0.6);
-      transition: opacity 0.25s ease;
+      transition: opacity 0.2s ease;
       will-change: transform;
     }
 
-    /* Outer Neon Precision Ring - Lightweight and snappy */
+    /* Outer Neon Precision Ring - Direct 1:1 hardware motion, zero physics/inertia */
     #custom-cursor-ring {
       position: fixed;
       top: 0;
@@ -125,11 +125,11 @@
       z-index: 99998;
       transform: translate3d(-50%, -50%, 0);
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.2), inset 0 0 8px rgba(0, 240, 255, 0.1);
-      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
                   border-color 0.2s ease, 
                   background-color 0.2s ease,
-                  opacity 0.25s ease;
+                  opacity 0.2s ease;
       will-change: transform;
     }
 
@@ -143,13 +143,11 @@
     }
 
     body.cursor-hover #custom-cursor-dot {
-      transform: scale(1.3) translate3d(-50%, -50%, 0);
       background-color: #ffffff;
       box-shadow: 0 0 12px #ffffff;
     }
 
     body.cursor-down #custom-cursor-ring {
-      transform: scale(0.85) translate3d(-50%, -50%, 0);
       border-color: #ffffff;
       box-shadow: 0 0 16px #00f0ff;
     }
@@ -164,7 +162,7 @@
       height: 100%;
     }
 
-    /* Ambient Dynamic Pointer Glow Lights - Lightweight GPU performance */
+    /* Ambient Dynamic Pointer Glow Lights - Expanded atmospheric gradient */
     .ambient-glow {
       position: fixed;
       border-radius: 50%;
@@ -246,6 +244,19 @@
       }
     }
 
+    /* Symmetrical Nav Sliding Indicator */
+    #nav-indicator {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      border-radius: 9999px;
+      background-color: #f4f7f6;
+      pointer-events: none;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -265,7 +276,7 @@
 
 <body class="bg-primary-container text-on-surface min-h-screen selection:bg-accent-teal selection:text-primary-container antialiased overflow-x-hidden relative">
 
-  <!-- Interactive Custom Mouse Cursor Elements -->
+  <!-- Interactive Custom Mouse Cursor Elements (Direct 1:1 hardware motion, zero lag) -->
   <div id="custom-cursor-dot"></div>
   <div id="custom-cursor-ring"></div>
   <canvas id="trail-canvas"></canvas>
@@ -273,15 +284,16 @@
   <!-- Interactive Liquid / Water Motion Background Canvas -->
   <canvas id="water-canvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
 
-  <!-- Dynamic Pointer-Tracking Ambient Background Lights -->
-  <div id="ambient-primary" class="ambient-glow -z-10 w-[640px] h-[640px] bg-accent-teal/10 rounded-full blur-[100px] top-0 left-0"></div>
-  <div id="ambient-secondary" class="ambient-glow -z-10 w-[520px] h-[520px] bg-accent-amber/8 rounded-full blur-[90px] bottom-0 right-0"></div>
+  <!-- Dynamic Pointer-Tracking Ambient Background Lights (Expanded Large Gradient) -->
+  <div id="ambient-primary" class="ambient-glow -z-10 w-[1050px] h-[1050px] bg-accent-teal/[0.13] rounded-full blur-[150px] top-0 left-0"></div>
+  <div id="ambient-secondary" class="ambient-glow -z-10 w-[850px] h-[850px] bg-accent-amber/[0.09] rounded-full blur-[130px] bottom-0 right-0"></div>
   
   <!-- Analog Film Grain Overlay -->
   <div class="fixed inset-0 film-grain pointer-events-none z-30 opacity-40"></div>
 
   <!-- ========================================================
-       TOP NAVIGATION BAR WITH FLUID SLIDING INDICATOR PILL
+       TOP NAVIGATION BAR WITH SYMMETRICAL FLUID SLIDING PILL
+       (Item 1: Symmetrical button highlight in section selector)
        ======================================================== -->
   <header class="w-full px-5 md:px-12 py-3.5 flex justify-between items-center border-b border-dotted border-outline-variant/40 sticky top-0 bg-primary-container/90 backdrop-blur-md z-40">
     <div class="flex items-center gap-6">
@@ -290,27 +302,27 @@
       </a>
     </div>
 
-    <!-- Navigation items with smooth sliding indicator pill -->
-    <nav class="hidden md:flex items-center relative p-1 rounded-full bg-surface-container/60 border border-outline-variant/30 backdrop-blur-md" id="nav-container">
-      <!-- Fluid sliding pill indicator -->
-      <div id="nav-indicator" class="absolute h-[calc(100%-8px)] rounded-full bg-[#f4f7f6] shadow-sm transition-all duration-300 pointer-events-none" style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);"></div>
+    <!-- Navigation items with symmetrical sliding indicator pill -->
+    <nav class="hidden md:flex items-center relative p-1 rounded-full bg-surface-container/70 border border-outline-variant/40 backdrop-blur-md" id="nav-container">
+      <!-- Symmetrical sliding pill indicator -->
+      <div id="nav-indicator"></div>
 
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#081416]" data-target="about" href="#about">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#081416] inline-flex items-center justify-center text-center" data-target="about" href="#about">
         ABOUT
       </a>
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="skills" href="#skills">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="skills" href="#skills">
         SKILLS
       </a>
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="experience" href="#experience">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="experience" href="#experience">
         EXP
       </a>
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="projects" href="#projects">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="projects" href="#projects">
         PROJECTS
       </a>
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="achievements" href="#achievements">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="achievements" href="#achievements">
         ACHIEVEMENTS
       </a>
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="contact" href="#contact">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="contact" href="#contact">
         CONTACT
       </a>
     </nav>
@@ -319,12 +331,13 @@
   <main class="w-full">
     <!-- ========================================================
          SECTION 01: ABOUT ME & HERO STATEMENT
+         (Item 3: Balanced, high-craft layout for Actions & Social Dock)
          ======================================================== -->
     <section class="section-3d-reveal relative w-full px-5 md:px-12 pt-8 md:pt-16 pb-12 md:pb-16" id="about">
       <!-- Monumental Typography Spread -->
       <div class="pt-4 md:pt-8 pb-4 relative z-10">
         <div class="max-w-6xl">
-          <!-- Item 6: M.Tech beneath AI Systems Architect text -->
+          <!-- Stacked subtitle -->
           <div class="mb-5 space-y-1">
             <p class="font-meta-mono text-accent-teal text-meta-mono tracking-widest uppercase">
               AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER
@@ -356,35 +369,39 @@
                 </span>
               </div>
               
-              <!-- Tactical CTA and Social Channels -->
-              <div class="flex flex-wrap items-center gap-6">
-                <a class="group inline-flex items-center rounded-full overflow-hidden border border-outline-variant bg-surface-container-lowest hover:border-accent-teal transition-all duration-300" href="#projects">
-                  <span class="bg-on-surface text-surface-container-lowest font-label-caps text-label-caps px-5 py-2.5 font-bold tracking-widest group-hover:bg-accent-teal transition-colors">
-                    EXPLORE PROJECTS
-                  </span>
-                  <span class="px-3.5 py-2.5 bg-surface-container text-accent-teal font-meta-mono text-meta-mono group-hover:translate-y-0.5 transition-transform duration-200">
-                    ↓
-                  </span>
-                </a>
-
-                <a class="group inline-flex items-center rounded-full overflow-hidden border border-accent-teal/40 bg-surface hover:border-accent-teal transition-all duration-300" href="#contact">
-                  <span class="text-accent-teal font-label-caps text-label-caps px-4 py-2.5 font-bold tracking-widest">
-                    GET IN TOUCH
-                  </span>
-                </a>
-
-                <!-- Verified Candidate Social Channels -->
-                <div class="flex items-center gap-4 text-on-surface-variant font-meta-mono text-sm">
-                  <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="GitHub">
-                    <i class="fab fa-github"></i> <span class="hidden sm:inline">GITHUB</span>
+              <!-- ========================================================
+                   REFINED TWO-TIER ACTION & PROFILES DOCK (Item 3)
+                   Tier 1: Balanced Primary & Secondary Action CTAs
+                   Tier 2: Dedicated Professional Profile Dock
+                   ======================================================== -->
+              <div class="space-y-4">
+                <!-- Tier 1: Primary Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4">
+                  <a class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent-teal text-primary-container font-label-caps text-xs font-bold tracking-widest hover:bg-white hover:shadow-[0_0_24px_rgba(0,240,255,0.45)] transition-all duration-300" href="#projects">
+                    <span>EXPLORE PROJECTS</span>
+                    <span class="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
                   </a>
-                  <span class="text-outline-variant">/</span>
-                  <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i> <span class="hidden sm:inline">LINKEDIN</span>
+
+                  <a class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-outline-variant/60 bg-surface/80 hover:border-accent-teal hover:bg-surface-container text-on-surface font-label-caps text-xs font-bold tracking-widest transition-all duration-300" href="#contact">
+                    <span>GET IN TOUCH</span>
+                    <span class="text-accent-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">↗</span>
                   </a>
-                  <span class="text-outline-variant">/</span>
-                  <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="hover:text-accent-teal transition-colors flex items-center gap-1.5" title="LeetCode (400+ Solved)">
-                    <i class="fas fa-code"></i> <span class="hidden sm:inline">LEETCODE</span>
+                </div>
+
+                <!-- Tier 2: Dedicated Profiles & Channels Dock -->
+                <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                  <span class="font-meta-mono text-xs text-outline uppercase tracking-wider mr-1">CHANNELS //</span>
+                  
+                  <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface/70 hover:border-accent-teal hover:text-accent-teal hover:bg-surface text-xs font-meta-mono text-on-surface-variant transition-all duration-200">
+                    <i class="fab fa-github text-sm"></i> GitHub
+                  </a>
+                  
+                  <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface/70 hover:border-accent-teal hover:text-accent-teal hover:bg-surface text-xs font-meta-mono text-on-surface-variant transition-all duration-200">
+                    <i class="fab fa-linkedin-in text-sm text-[#0077b5]"></i> LinkedIn
+                  </a>
+                  
+                  <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface/70 hover:border-accent-teal hover:text-accent-teal hover:bg-surface text-xs font-meta-mono text-on-surface-variant transition-all duration-200">
+                    <i class="fas fa-code text-sm text-accent-amber"></i> LeetCode <span class="text-[10px] text-outline font-semibold">(400+)</span>
                   </a>
                 </div>
               </div>
@@ -572,6 +589,7 @@
 
     <!-- ========================================================
          SECTION 03: WORK EXPERIENCE & EDUCATION
+         (Item 4: Symmetrical Education Cards with Clean Multi-line Details)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="experience">
       <!-- Section Title Header -->
@@ -627,21 +645,33 @@
               </div>
               <h4 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mt-2">M.Tech in Computer Science</h4>
               <p class="font-body-md text-sm md:text-base text-accent-cyan font-light mb-2">Indian Institute of Information Technology, Lucknow (IIIT Lucknow)</p>
-              <p class="font-meta-mono text-xs md:text-sm text-outline leading-relaxed text-justify">
-                Lucknow, Uttar Pradesh, India. Specialization in Advanced Computer Science, Systems Architecture, Machine Learning Theory &amp; Distributed Algorithms.
+              
+              <!-- Item 4: Location on its own line -->
+              <p class="font-meta-mono text-xs text-outline mb-2 flex items-center gap-1.5">
+                <i class="fas fa-location-dot text-accent-teal"></i> Lucknow, Uttar Pradesh, India
+              </p>
+              <!-- Info starting on clean new line -->
+              <p class="font-meta-mono text-xs md:text-sm text-on-surface-variant/90 leading-relaxed text-justify">
+                Specialization in Advanced Computer Science, Systems Architecture, Machine Learning Theory &amp; Distributed Algorithms.
               </p>
             </div>
 
-            <!-- Degree 2: B.Tech SSIPMT -->
-            <div class="p-6 rounded-2xl border-l-4 border-l-outline-variant border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 backdrop-blur-sm">
+            <!-- Degree 2: B.Tech SSIPMT (Identical font size, colors & badge styling to M.Tech) -->
+            <div class="p-6 rounded-2xl border-l-4 border-l-accent-teal border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 backdrop-blur-sm">
               <div class="flex items-center justify-between mb-1">
                 <span class="font-meta-mono text-xs text-outline">2019 — 2023</span>
-                <span class="font-meta-mono text-xs px-2.5 py-0.5 rounded-full bg-surface text-accent-amber font-semibold border border-outline-variant/40">CGPA: 8.3 / 10</span>
+                <span class="font-meta-mono text-xs px-2.5 py-0.5 rounded-full bg-accent-teal/15 text-accent-teal font-semibold border border-accent-teal/30">CGPA: 8.3 / 10</span>
               </div>
-              <h4 class="font-headline-sm text-base md:text-lg text-on-surface font-medium mt-2">B.Tech in Information Technology</h4>
-              <p class="font-body-md text-sm md:text-base text-on-surface-variant font-light mb-2">Shri Shankaracharya Institute of Professional Management &amp; Technology (SSIPMT)</p>
-              <p class="font-meta-mono text-xs md:text-sm text-outline leading-relaxed text-justify">
-                Raipur, Chhattisgarh, India. Strong foundation in Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, and Computer Networks.
+              <h4 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mt-2">B.Tech in Information Technology</h4>
+              <p class="font-body-md text-sm md:text-base text-accent-cyan font-light mb-2">Shri Shankaracharya Institute of Professional Management &amp; Technology (SSIPMT)</p>
+              
+              <!-- Item 4: Location on its own line -->
+              <p class="font-meta-mono text-xs text-outline mb-2 flex items-center gap-1.5">
+                <i class="fas fa-location-dot text-accent-teal"></i> Raipur, Chhattisgarh, India
+              </p>
+              <!-- Info starting on clean new line -->
+              <p class="font-meta-mono text-xs md:text-sm text-on-surface-variant/90 leading-relaxed text-justify">
+                Strong foundation in Data Structures &amp; Algorithms, Operating Systems, Database Management Systems, and Computer Networks.
               </p>
             </div>
           </div>
@@ -867,7 +897,6 @@
 
     <!-- ========================================================
          SECTION 06: CONTACT & EMPLOYMENT PREFERENCES
-         (Item 5: Removed direct dispatch and initiate inquiry text)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest/30" id="contact">
       <div class="pb-4 border-b border-dotted border-outline-variant/30 flex justify-end items-center mb-8">
@@ -982,13 +1011,13 @@
   </footer>
 
   <!-- ========================================================
-       SCRIPTS: HIGH PERFORMANCE ENGINE, SLIDING TABS,
-       LIGHTWEIGHT NEON TRAIL, AND BIDIRECTIONAL SCROLL REVEAL
+       SCRIPTS: DIRECT 1:1 HARDWARE MOUSE (ZERO PHYSICS),
+       EXPANDED AMBIENT ILLUMINATION, AND SYMMETRICAL SLIDING TABS
        ======================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ----------------------------------------------------
-      // 1. FLUID SLIDING TAB NAVIGATION WITH SCROLL-SPY
+      // 1. SYMMETRICAL FLUID SLIDING TAB NAVIGATION WITH SCROLL-SPY
       // ----------------------------------------------------
       const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
       const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
@@ -1022,7 +1051,7 @@
         });
       }
 
-      // Initial pill position
+      // Initial symmetrical positioning
       const initialActive = document.querySelector('.nav-item[data-target="about"]');
       if (initialActive) {
         setTimeout(() => updateNavIndicator(initialActive), 60);
@@ -1103,7 +1132,6 @@
           if (entry.isIntersecting) {
             entry.target.classList.add('is-in-view');
           } else {
-            // Resets cleanly whenever leaving viewport going UP or DOWN
             entry.target.classList.remove('is-in-view');
           }
         });
@@ -1116,7 +1144,9 @@
 
 
       // ----------------------------------------------------
-      // 3. RESPONSIVE LIGHTWEIGHT CUSTOM CURSOR & AMBIENT LIGHT
+      // 3. ZERO-PHYSICS HARDWARE-LOCKED CURSOR & EXPANDED LIGHT
+      // (Item 2: No weight/physics, direct 1:1 mouse movement)
+      // (Item 5: Expanded large ambient gradient following mouse)
       // ----------------------------------------------------
       const ambientPrimary = document.getElementById('ambient-primary');
       const ambientSecondary = document.getElementById('ambient-secondary');
@@ -1125,8 +1155,6 @@
 
       let mouseX = window.innerWidth / 2;
       let mouseY = window.innerHeight / 2;
-      let ringX = mouseX;
-      let ringY = mouseY;
 
       let amb1X = mouseX;
       let amb1Y = mouseY;
@@ -1137,13 +1165,14 @@
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        // Zero-lag GPU hardware-accelerated transform for core dot
+        // Zero-lag 1:1 hardware synchronization for both dot AND ring
         if (cursorDot) {
           cursorDot.style.opacity = '1';
           cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         }
         if (cursorRing) {
           cursorRing.style.opacity = '1';
+          cursorRing.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         }
       }, { passive: true });
 
@@ -1198,7 +1227,6 @@
           const normX = (x - centerX) / centerX;
           const normY = (y - centerY) / centerY;
 
-          // Gentle, lightened 3D tilt
           const rotateX = normY * -1.6;
           const rotateY = normX * 1.6;
 
@@ -1232,7 +1260,7 @@
       }, { passive: true });
 
       const trailPoints = [];
-      const MAX_TRAIL_POINTS = 18; // Lightweight history
+      const MAX_TRAIL_POINTS = 16;
 
 
       // ----------------------------------------------------
@@ -1353,30 +1381,24 @@
 
       // ----------------------------------------------------
       // 7. HIGH-PERFORMANCE ANIMATION LOOP
+      // (Item 5: 1050px / 850px large ambient lights centered smoothly)
       // ----------------------------------------------------
       let isCanvasActive = true;
 
       function renderLoop() {
-        // Smooth ambient lights
-        amb1X += (mouseX - amb1X) * 0.045;
-        amb1Y += (mouseY - amb1Y) * 0.045;
+        // Smooth atmospheric ambient lights with larger radius
+        amb1X += (mouseX - amb1X) * 0.05;
+        amb1Y += (mouseY - amb1Y) * 0.05;
         if (ambientPrimary) {
-          ambientPrimary.style.transform = `translate3d(${amb1X - 320}px, ${amb1Y - 320}px, 0)`;
+          ambientPrimary.style.transform = `translate3d(${amb1X - 525}px, ${amb1Y - 525}px, 0)`;
         }
 
         const targetAmb2X = window.innerWidth - mouseX;
         const targetAmb2Y = window.innerHeight - mouseY;
-        amb2X += (targetAmb2X - amb2X) * 0.035;
-        amb2Y += (targetAmb2Y - amb2Y) * 0.035;
+        amb2X += (targetAmb2X - amb2X) * 0.04;
+        amb2Y += (targetAmb2Y - amb2Y) * 0.04;
         if (ambientSecondary) {
-          ambientSecondary.style.transform = `translate3d(${amb2X - 260}px, ${amb2Y - 260}px, 0)`;
-        }
-
-        // Snappy responsive cursor ring follow (factor 0.45 for zero sluggishness)
-        ringX += (mouseX - ringX) * 0.45;
-        ringY += (mouseY - ringY) * 0.45;
-        if (cursorRing) {
-          cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+          ambientSecondary.style.transform = `translate3d(${amb2X - 425}px, ${amb2Y - 425}px, 0)`;
         }
 
         // Trail point collection
@@ -1403,7 +1425,7 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.18)';
           tCtx.lineWidth = 2.5;
           tCtx.shadowColor = '#00f0ff';
           tCtx.shadowBlur = 8;
@@ -1423,7 +1445,7 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.55)';
+          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
           tCtx.lineWidth = 1;
           tCtx.shadowColor = '#ffffff';
           tCtx.shadowBlur = 3;
