@@ -7,14 +7,13 @@
   <meta name="description" content="Portfolio of Ishaan Shailesh Phaye — AI Systems Architect, M.Tech CSE @ IIIT Lucknow. ClipSense AI, GPT-2 from Scratch, Mini Database Storage Engine, Distributed Systems."/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
   
   <!-- FontAwesome for tech stack & social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- High-Performance Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Tailwind Theme Configuration matching petroleum-teal avant-garde palette -->
   <script id="tailwind-config">
@@ -60,10 +59,19 @@
   </script>
 
   <style>
-    /* 35mm Analog Film Grain */
+    /* 35mm Analog Film Grain with Hardware Compositor Layer Isolation */
     .film-grain {
       background-image: radial-gradient(rgba(244, 246, 246, 0.035) 1px, transparent 0);
       background-size: 4px 4px;
+      transform: translateZ(0);
+      contain: strict;
+      pointer-events: none;
+    }
+    
+    /* Content-Visibility Optimization for Instant Offscreen Layout Skipping */
+    #skills, #experience, #projects, #achievements, #contact {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 700px;
     }
     
     /* Marquee animation */
@@ -189,12 +197,11 @@
                   box-shadow 0.25s ease,
                   border-color 0.25s ease,
                   background-color 0.25s ease;
-      will-change: transform;
-      transform-style: preserve-3d;
       position: relative;
     }
 
     .interactive-3d-card.is-hovered {
+      will-change: transform;
       border-color: rgba(0, 240, 255, 0.6) !important;
       background-color: rgba(12, 26, 29, 0.95) !important;
       box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 
@@ -234,18 +241,17 @@
       filter: drop-shadow(0 0 6px currentColor);
     }
 
-    /* 3D Section Depth Transitions - Smoothly resets on scroll up and down */
+    /* Fluid Section Depth Transitions - Smoothly resets on scroll up and down */
     .section-3d-reveal {
       opacity: 0.15;
-      transform: perspective(1000px) translateY(24px);
+      transform: translateY(24px);
       transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
                   transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity;
     }
 
     .section-3d-reveal.is-in-view {
       opacity: 1;
-      transform: perspective(1000px) translateY(0);
+      transform: translateY(0);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1102,6 +1108,16 @@
         setTimeout(() => updateNavIndicator(initialActive), 60);
       }
 
+      // Pre-cached section offsets for zero-layout-thrashing ScrollSpy
+      let sectionOffsets = [];
+      function cacheSectionOffsets() {
+        sectionOffsets = sections.map(sec => ({
+          id: sec.id,
+          top: sec.offsetTop
+        }));
+      }
+      cacheSectionOffsets();
+
       function updateScrollSpy() {
         if (isSmoothScrolling) return;
 
@@ -1122,11 +1138,9 @@
         const triggerY = scrollPosition + windowHeight * 0.35;
         let matchedId = 'about';
 
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const sec = sections[i];
-          const top = sec.offsetTop;
-          if (triggerY >= top) {
-            matchedId = sec.id;
+        for (let i = sectionOffsets.length - 1; i >= 0; i--) {
+          if (triggerY >= sectionOffsets[i].top) {
+            matchedId = sectionOffsets[i].id;
             break;
           }
         }
@@ -1162,12 +1176,27 @@
         });
       });
 
-      window.addEventListener('scroll', updateScrollSpy, { passive: true });
+      // Unified RAF-throttled scroll listener to completely eliminate scroll jank
+      let isScrollTicking = false;
+      function onWindowScroll() {
+        if (!isScrollTicking) {
+          requestAnimationFrame(() => {
+            updateScrollSpy();
+            checkCardUnderPointer();
+            isScrollTicking = false;
+          });
+          isScrollTicking = true;
+        }
+      }
+      window.addEventListener('scroll', onWindowScroll, { passive: true });
+
       window.addEventListener('resize', () => {
+        cacheSectionOffsets();
         const activeItem = document.querySelector(`.nav-item[data-target="${currentActiveId}"]`);
         if (activeItem) updateNavIndicator(activeItem);
         updateScrollSpy();
       }, { passive: true });
+      window.addEventListener('load', cacheSectionOffsets, { passive: true });
 
 
       // ----------------------------------------------------
@@ -1206,11 +1235,31 @@
       let amb2X = window.innerWidth - mouseX;
       let amb2Y = window.innerHeight - mouseY;
 
+      let isMouseMoving = false;
+      let mouseIdleTimer = null;
+      let isRenderLoopRunning = false;
+      let isTrailActive = false;
+      let isCanvasActive = false;
+
+      function wakeRenderLoop() {
+        if (!isRenderLoopRunning && !document.hidden) {
+          isRenderLoopRunning = true;
+          requestAnimationFrame(renderLoop);
+        }
+      }
+
+      // High-performance pointer tracking
       window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        isMouseMoving = true;
 
-        // Zero-lag 1:1 hardware synchronization for both dot AND ring
+        clearTimeout(mouseIdleTimer);
+        mouseIdleTimer = setTimeout(() => {
+          isMouseMoving = false;
+        }, 120);
+
+        // Zero-lag 1:1 hardware synchronization for cursor dot and ring
         if (cursorDot) {
           cursorDot.style.opacity = '1';
           cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
@@ -1219,6 +1268,41 @@
           cursorRing.style.opacity = '1';
           cursorRing.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         }
+
+        const now = performance.now();
+        const dt = Math.min(64, now - lastTime);
+
+        // Record trail points throttled to smooth 60-120fps intervals
+        if (now - lastPointTime > 12) {
+          trailPoints.push({ x: mouseX, y: mouseY, time: now });
+          if (trailPoints.length > MAX_TRAIL_POINTS) {
+            trailPoints.shift();
+          }
+          lastPointTime = now;
+          isTrailActive = true;
+        }
+
+        // Water wake generation with minimum distance and time threshold
+        const dist = Math.hypot(mouseX - lastMouseX, mouseY - lastMouseY);
+        const speed = dist / Math.max(1, dt);
+
+        if (dist > 6 && dt > 16 && wakes.length < MAX_WAKES) {
+          wakes.push(new FluidWake(lastMouseX, lastMouseY, mouseX, mouseY, speed));
+          lastTime = now;
+          isCanvasActive = true;
+        }
+
+        moveThrottle++;
+        if (moveThrottle % 8 === 0 && dist > 12 && ripples.length < MAX_RIPPLES) {
+          const power = Math.min(1.2, Math.max(0.4, speed * 0.5));
+          ripples.push(new WaterRipple(mouseX, mouseY, power));
+          isCanvasActive = true;
+        }
+
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+
+        wakeRenderLoop();
       }, { passive: true });
 
       document.addEventListener('mouseleave', () => {
@@ -1229,19 +1313,21 @@
       document.addEventListener('mouseenter', () => {
         if (cursorDot) cursorDot.style.opacity = '1';
         if (cursorRing) cursorRing.style.opacity = '1';
+        wakeRenderLoop();
       });
 
+      // Optimized delegation for cursor hover state
       document.body.addEventListener('mouseover', (e) => {
-        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article');
+        const interactiveTarget = e.target.closest('a, button, [role="button"], .interactive-3d-card, .nav-item');
         if (interactiveTarget) {
           document.body.classList.add('cursor-hover');
         }
       });
 
       document.body.addEventListener('mouseout', (e) => {
-        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article');
+        const interactiveTarget = e.target.closest('a, button, [role="button"], .interactive-3d-card, .nav-item');
         if (interactiveTarget) {
-          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article')) {
+          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, [role="button"], .interactive-3d-card, .nav-item')) {
             document.body.classList.remove('cursor-hover');
           }
         }
@@ -1252,7 +1338,7 @@
 
 
       // ----------------------------------------------------
-      // 4. FLUID, ZERO-LAG 3D POPOUT & SCROLL-OVER HIGHLIGHT ENGINE (Items 2 & 3)
+      // 4. FLUID, ZERO-LAG 3D POPOUT & SCROLL-OVER HIGHLIGHT ENGINE
       // ----------------------------------------------------
       const interactiveCards = document.querySelectorAll('.interactive-3d-card');
       let currentHoveredCard = null;
@@ -1267,19 +1353,20 @@
         const normX = (x - centerX) / centerX;
         const normY = (y - centerY) / centerY;
 
-        // Smooth subtle 3D popout
         const rotateX = normY * -2.4;
         const rotateY = normX * 2.4;
 
-        // Disable transform transition during direct cursor tracking for instantaneous response
+        // Instant response during direct cursor tracking
         card.style.transition = 'box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease';
         card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translate3d(0, -4px, 0)`;
 
-        const glare = card.querySelector('.card-glare');
-        if (glare) {
+        if (!card._glare) {
+          card._glare = card.querySelector('.card-glare');
+        }
+        if (card._glare) {
           const glareX = (x / rect.width) * 100;
           const glareY = (y / rect.height) * 100;
-          glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.08) 0%, transparent 60%)`;
+          card._glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.08) 0%, transparent 60%)`;
         }
       }
 
@@ -1290,6 +1377,8 @@
       }
 
       interactiveCards.forEach(card => {
+        card._glare = card.querySelector('.card-glare');
+
         card.addEventListener('mouseenter', (e) => {
           card.classList.add('is-hovered');
           currentHoveredCard = card;
@@ -1308,7 +1397,7 @@
         });
       });
 
-      // Item 2: Highlight card dynamically when scrolling if mouse is over it
+      // Highlight card dynamically when scrolling if mouse is over it
       function checkCardUnderPointer() {
         if (mouseX < 0 || mouseY < 0 || mouseX > window.innerWidth || mouseY > window.innerHeight) return;
         const el = document.elementFromPoint(mouseX, mouseY);
@@ -1328,11 +1417,9 @@
         }
       }
 
-      window.addEventListener('scroll', checkCardUnderPointer, { passive: true });
-
 
       // ----------------------------------------------------
-      // 5. RESTORED ORIGINAL VIBRANT NEON TRAIL STREAMLINE (Item 1)
+      // 5. RESTORED ORIGINAL VIBRANT NEON TRAIL STREAMLINE
       // ----------------------------------------------------
       const trailCanvas = document.getElementById('trail-canvas');
       const tCtx = trailCanvas.getContext('2d');
@@ -1345,7 +1432,8 @@
       }, { passive: true });
 
       const trailPoints = [];
-      const MAX_TRAIL_POINTS = 32; // Original fluid stream history
+      const MAX_TRAIL_POINTS = 32;
+      let lastPointTime = 0;
 
 
       // ----------------------------------------------------
@@ -1368,6 +1456,7 @@
       let lastMouseX = mouseX;
       let lastMouseY = mouseY;
       let lastTime = performance.now();
+      let moveThrottle = 0;
 
       class WaterRipple {
         constructor(x, y, power = 1.0) {
@@ -1438,32 +1527,11 @@
         }
       }
 
-      let moveThrottle = 0;
-      window.addEventListener('mousemove', (e) => {
-        const now = performance.now();
-        const dt = Math.min(64, now - lastTime);
-        lastTime = now;
-
-        const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
-        const speed = dist / Math.max(1, dt);
-
-        if (dist > 5 && wakes.length < MAX_WAKES) {
-          wakes.push(new FluidWake(lastMouseX, lastMouseY, e.clientX, e.clientY, speed));
-        }
-
-        moveThrottle++;
-        if (moveThrottle % 8 === 0 && dist > 10 && ripples.length < MAX_RIPPLES) {
-          const power = Math.min(1.2, Math.max(0.4, speed * 0.5));
-          ripples.push(new WaterRipple(e.clientX, e.clientY, power));
-        }
-
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
-      }, { passive: true });
-
       window.addEventListener('click', (e) => {
         if (ripples.length < MAX_RIPPLES) {
           ripples.push(new WaterRipple(e.clientX, e.clientY, 1.2));
+          isCanvasActive = true;
+          wakeRenderLoop();
         }
       }, { passive: true });
 
@@ -1471,6 +1539,10 @@
         wakes.length = 0;
         ripples.length = 0;
         trailPoints.length = 0;
+        isMouseMoving = false;
+        isTrailActive = false;
+        isCanvasActive = false;
+        isRenderLoopRunning = false;
         lastTime = performance.now();
         if (wCtx) wCtx.clearRect(0, 0, wWidth, wHeight);
         if (tCtx) tCtx.clearRect(0, 0, trailWidth, trailHeight);
@@ -1481,44 +1553,61 @@
           resetAnimationState();
         } else {
           lastTime = performance.now();
+          wakeRenderLoop();
         }
       });
-      window.addEventListener('focus', resetAnimationState);
+      window.addEventListener('focus', () => {
+        lastTime = performance.now();
+        wakeRenderLoop();
+      });
       window.addEventListener('blur', resetAnimationState);
 
 
       // ----------------------------------------------------
-      // 7. ULTRA HIGH-PERFORMANCE ZERO-HANG ANIMATION LOOP
+      // 7. ULTRA HIGH-PERFORMANCE ADAPTIVE-SLEEPING RENDER LOOP
       // ----------------------------------------------------
-      let isCanvasActive = true;
-
       function renderLoop() {
-        // Fast ambient lighting interpolation
-        amb1X += (mouseX - amb1X) * 0.055;
-        amb1Y += (mouseY - amb1Y) * 0.055;
-        if (ambientPrimary) {
-          ambientPrimary.style.transform = `translate3d(${amb1X - 525}px, ${amb1Y - 525}px, 0)`;
+        if (document.hidden) {
+          isRenderLoopRunning = false;
+          return;
+        }
+
+        // 1. Ambient lighting interpolation with resting threshold
+        const diff1X = mouseX - amb1X;
+        const diff1Y = mouseY - amb1Y;
+        let isAmb1Active = false;
+        if (Math.abs(diff1X) > 0.35 || Math.abs(diff1Y) > 0.35) {
+          amb1X += diff1X * 0.055;
+          amb1Y += diff1Y * 0.055;
+          if (ambientPrimary) {
+            ambientPrimary.style.transform = `translate3d(${amb1X - 525}px, ${amb1Y - 525}px, 0)`;
+          }
+          isAmb1Active = true;
         }
 
         const targetAmb2X = window.innerWidth - mouseX;
         const targetAmb2Y = window.innerHeight - mouseY;
-        amb2X += (targetAmb2X - amb2X) * 0.045;
-        amb2Y += (targetAmb2Y - amb2Y) * 0.045;
-        if (ambientSecondary) {
-          ambientSecondary.style.transform = `translate3d(${amb2X - 425}px, ${amb2Y - 425}px, 0)`;
+        const diff2X = targetAmb2X - amb2X;
+        const diff2Y = targetAmb2Y - amb2Y;
+        let isAmb2Active = false;
+        if (Math.abs(diff2X) > 0.35 || Math.abs(diff2Y) > 0.35) {
+          amb2X += diff2X * 0.045;
+          amb2Y += diff2Y * 0.045;
+          if (ambientSecondary) {
+            ambientSecondary.style.transform = `translate3d(${amb2X - 425}px, ${amb2Y - 425}px, 0)`;
+          }
+          isAmb2Active = true;
         }
 
-        // Trail point collection
-        trailPoints.push({ x: mouseX, y: mouseY, time: performance.now() });
-        if (trailPoints.length > MAX_TRAIL_POINTS) {
+        // 2. Trail decay & rendering
+        if (!isMouseMoving && trailPoints.length > 0) {
           trailPoints.shift();
         }
 
-        // Draw original vibrant electric neon trail streamline (Item 1)
-        tCtx.clearRect(0, 0, trailWidth, trailHeight);
-
         if (trailPoints.length > 2) {
-          // Vibrant electric outer glow
+          tCtx.clearRect(0, 0, trailWidth, trailHeight);
+
+          // Electric cyan outer glow
           tCtx.save();
           tCtx.beginPath();
           tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
@@ -1558,9 +1647,15 @@
           tCtx.shadowBlur = 6;
           tCtx.stroke();
           tCtx.restore();
+
+          isTrailActive = true;
+        } else if (isTrailActive) {
+          tCtx.clearRect(0, 0, trailWidth, trailHeight);
+          trailPoints.length = 0;
+          isTrailActive = false;
         }
 
-        // Draw water background only when active
+        // 3. Water background canvas updates
         if (wakes.length > 0 || ripples.length > 0) {
           wCtx.clearRect(0, 0, wWidth, wHeight);
 
@@ -1585,10 +1680,17 @@
           isCanvasActive = false;
         }
 
+        // 4. Smart Idle Sleep Check: Pause RAF if all visuals are idle
+        if (!isTrailActive && !isCanvasActive && !isAmb1Active && !isAmb2Active && !isMouseMoving) {
+          isRenderLoopRunning = false;
+          return;
+        }
+
         requestAnimationFrame(renderLoop);
       }
 
-      requestAnimationFrame(renderLoop);
+      // Initial start
+      wakeRenderLoop();
     });
   </script>
 </body>
