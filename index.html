@@ -162,7 +162,7 @@
       height: 100%;
     }
 
-    /* Ambient Dynamic Pointer Glow Lights - Expanded atmospheric gradient */
+    /* Ambient Dynamic Pointer Glow Lights - Ultra-Fast Zero-Blur Shader-Free CSS Gradients */
     .ambient-glow {
       position: fixed;
       border-radius: 50%;
@@ -171,28 +171,34 @@
       contain: layout paint;
     }
 
-    /* 3D Achievement Card Spatial Elevation - Lightened Subtle Shallow Popout */
-    .achievement-card-wrapper {
-      perspective: 1000px;
+    #ambient-primary {
+      width: 1050px;
+      height: 1050px;
+      background: radial-gradient(circle, rgba(0, 240, 255, 0.13) 0%, rgba(0, 240, 255, 0.04) 45%, transparent 70%);
     }
 
-    .achievement-card {
-      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    #ambient-secondary {
+      width: 850px;
+      height: 850px;
+      background: radial-gradient(circle, rgba(255, 178, 89, 0.09) 0%, rgba(255, 178, 89, 0.02) 45%, transparent 70%);
+    }
+
+    /* Unified Tactile 3D Popout Cards (Experience, Education, Projects & Achievements) */
+    .interactive-3d-card {
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
                   box-shadow 0.25s ease,
                   border-color 0.25s ease,
                   background-color 0.25s ease;
       will-change: transform;
       transform-style: preserve-3d;
-      cursor: none !important;
       position: relative;
-      overflow: hidden;
     }
 
-    .achievement-card.is-hovered {
-      border-color: rgba(0, 240, 255, 0.8) !important;
+    .interactive-3d-card.is-hovered {
+      border-color: rgba(0, 240, 255, 0.6) !important;
       background-color: rgba(12, 26, 29, 0.95) !important;
-      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4), 
-                  0 0 12px rgba(0, 240, 255, 0.08) !important;
+      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.5), 
+                  0 0 14px rgba(0, 240, 255, 0.1) !important;
     }
 
     /* Very light optical sheen glare moving with tilt */
@@ -205,7 +211,7 @@
       transition: opacity 0.25s ease;
     }
 
-    .achievement-card.is-hovered .card-glare {
+    .interactive-3d-card.is-hovered .card-glare {
       opacity: 1;
     }
 
@@ -217,7 +223,7 @@
       transform-origin: center center;
     }
 
-    .achievement-card.is-hovered .card-icon {
+    .interactive-3d-card.is-hovered .card-icon {
       transform: scale(1.05);
       filter: drop-shadow(0 0 6px currentColor);
     }
@@ -257,6 +263,12 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
+    /* Item 1 Fix: Active nav button text MUST stay dark petroleum even on hover */
+    .nav-item.is-active,
+    .nav-item.is-active:hover {
+      color: #081416 !important;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
@@ -284,16 +296,15 @@
   <!-- Interactive Liquid / Water Motion Background Canvas -->
   <canvas id="water-canvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
 
-  <!-- Dynamic Pointer-Tracking Ambient Background Lights (Expanded Large Gradient) -->
-  <div id="ambient-primary" class="ambient-glow -z-10 w-[1050px] h-[1050px] bg-accent-teal/[0.13] rounded-full blur-[150px] top-0 left-0"></div>
-  <div id="ambient-secondary" class="ambient-glow -z-10 w-[850px] h-[850px] bg-accent-amber/[0.09] rounded-full blur-[130px] bottom-0 right-0"></div>
+  <!-- Dynamic Pointer-Tracking Ambient Background Lights (Zero-Blur Radial Gradient) -->
+  <div id="ambient-primary" class="ambient-glow -z-10 top-0 left-0"></div>
+  <div id="ambient-secondary" class="ambient-glow -z-10 bottom-0 right-0"></div>
   
   <!-- Analog Film Grain Overlay -->
   <div class="fixed inset-0 film-grain pointer-events-none z-30 opacity-40"></div>
 
   <!-- ========================================================
        TOP NAVIGATION BAR WITH SYMMETRICAL FLUID SLIDING PILL
-       (Item 1: Symmetrical button highlight in section selector)
        ======================================================== -->
   <header class="w-full px-5 md:px-12 py-3.5 flex justify-between items-center border-b border-dotted border-outline-variant/40 sticky top-0 bg-primary-container/90 backdrop-blur-md z-40">
     <div class="flex items-center gap-6">
@@ -307,7 +318,7 @@
       <!-- Symmetrical sliding pill indicator -->
       <div id="nav-indicator"></div>
 
-      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#081416] inline-flex items-center justify-center text-center" data-target="about" href="#about">
+      <a class="nav-item is-active relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 inline-flex items-center justify-center text-center" data-target="about" href="#about">
         ABOUT
       </a>
       <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-4 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface inline-flex items-center justify-center text-center" data-target="skills" href="#skills">
@@ -331,7 +342,7 @@
   <main class="w-full">
     <!-- ========================================================
          SECTION 01: ABOUT ME & HERO STATEMENT
-         (Item 3: Balanced, high-craft layout for Actions & Social Dock)
+         (Item 2: "MY LINKS" positioned ABOVE Action Buttons)
          ======================================================== -->
     <section class="section-3d-reveal relative w-full px-5 md:px-12 pt-8 md:pt-16 pb-12 md:pb-16" id="about">
       <!-- Monumental Typography Spread -->
@@ -370,27 +381,14 @@
               </div>
               
               <!-- ========================================================
-                   REFINED TWO-TIER ACTION & PROFILES DOCK (Item 3)
-                   Tier 1: Balanced Primary & Secondary Action CTAs
-                   Tier 2: Dedicated Professional Profile Dock
+                   REFINED ACTION & PROFILE DECK (Item 2)
+                   Tier 1 (Top): "MY LINKS //" Profiles Dock
+                   Tier 2 (Bottom): Primary Action Buttons
                    ======================================================== -->
               <div class="space-y-4">
-                <!-- Tier 1: Primary Action Buttons -->
-                <div class="flex flex-wrap items-center gap-4">
-                  <a class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent-teal text-primary-container font-label-caps text-xs font-bold tracking-widest hover:bg-white hover:shadow-[0_0_24px_rgba(0,240,255,0.45)] transition-all duration-300" href="#projects">
-                    <span>EXPLORE PROJECTS</span>
-                    <span class="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
-                  </a>
-
-                  <a class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-outline-variant/60 bg-surface/80 hover:border-accent-teal hover:bg-surface-container text-on-surface font-label-caps text-xs font-bold tracking-widest transition-all duration-300" href="#contact">
-                    <span>GET IN TOUCH</span>
-                    <span class="text-accent-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">↗</span>
-                  </a>
-                </div>
-
-                <!-- Tier 2: Dedicated Profiles & Channels Dock -->
-                <div class="flex flex-wrap items-center gap-2.5 pt-1">
-                  <span class="font-meta-mono text-xs text-outline uppercase tracking-wider mr-1">CHANNELS //</span>
+                <!-- Tier 1: MY LINKS Dock placed ABOVE buttons -->
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <span class="font-meta-mono text-xs text-outline uppercase tracking-wider mr-1">MY LINKS //</span>
                   
                   <a href="https://github.com/iSHAANphaye" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface/70 hover:border-accent-teal hover:text-accent-teal hover:bg-surface text-xs font-meta-mono text-on-surface-variant transition-all duration-200">
                     <i class="fab fa-github text-sm"></i> GitHub
@@ -402,6 +400,19 @@
                   
                   <a href="https://leetcode.com/ishaanroxx/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-outline-variant/40 bg-surface/70 hover:border-accent-teal hover:text-accent-teal hover:bg-surface text-xs font-meta-mono text-on-surface-variant transition-all duration-200">
                     <i class="fas fa-code text-sm text-accent-amber"></i> LeetCode <span class="text-[10px] text-outline font-semibold">(400+)</span>
+                  </a>
+                </div>
+
+                <!-- Tier 2: Primary Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4 pt-1">
+                  <a class="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent-teal text-primary-container font-label-caps text-xs font-bold tracking-widest hover:bg-white hover:shadow-[0_0_24px_rgba(0,240,255,0.45)] transition-all duration-300" href="#projects">
+                    <span>EXPLORE PROJECTS</span>
+                    <span class="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
+                  </a>
+
+                  <a class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-outline-variant/60 bg-surface/80 hover:border-accent-teal hover:bg-surface-container text-on-surface font-label-caps text-xs font-bold tracking-widest transition-all duration-300" href="#contact">
+                    <span>GET IN TOUCH</span>
+                    <span class="text-accent-teal group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">↗</span>
                   </a>
                 </div>
               </div>
@@ -589,7 +600,8 @@
 
     <!-- ========================================================
          SECTION 03: WORK EXPERIENCE & EDUCATION
-         (Item 4: Symmetrical Education Cards with Clean Multi-line Details)
+         (Item 4: Matching Title Fonts/Design across Exp & Edu)
+         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="experience">
       <!-- Section Title Header -->
@@ -608,8 +620,11 @@
             WORK EXPERIENCE
           </p>
 
-          <!-- Role: Datanomers -->
-          <div class="p-6 md:p-7 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 hover:border-accent-teal/50 transition-all duration-300 relative group backdrop-blur-sm">
+          <!-- Role: Datanomers (With Left Gradient Accent Strip on Highlight & 3D Popout) -->
+          <div class="p-6 md:p-7 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
+            <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
               <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium group-hover:text-accent-teal transition-colors">
                 Machine Learning Intern <span class="text-on-surface font-medium text-xl md:text-2xl">@ Datanomers</span>
@@ -638,15 +653,20 @@
 
           <div class="space-y-6">
             <!-- Degree 1: M.Tech IIIT Lucknow -->
-            <div class="p-6 rounded-2xl border-l-4 border-l-accent-teal border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 backdrop-blur-sm">
+            <div class="p-6 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
+              <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
               <div class="flex items-center justify-between mb-1">
                 <span class="font-meta-mono text-xs text-outline">2025 — PRESENT (EXP. 2027)</span>
                 <span class="font-meta-mono text-xs px-2.5 py-0.5 rounded-full bg-accent-teal/15 text-accent-teal font-semibold border border-accent-teal/30">CGPA: 8.36 / 10</span>
               </div>
-              <h4 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mt-2">M.Tech in Computer Science</h4>
+              <h4 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium mt-2 mb-1 group-hover:text-accent-teal transition-colors">
+                M.Tech in Computer Science
+              </h4>
               <p class="font-body-md text-sm md:text-base text-accent-cyan font-light mb-2">Indian Institute of Information Technology, Lucknow (IIIT Lucknow)</p>
               
-              <!-- Item 4: Location on its own line -->
+              <!-- Location on its own line -->
               <p class="font-meta-mono text-xs text-outline mb-2 flex items-center gap-1.5">
                 <i class="fas fa-location-dot text-accent-teal"></i> Lucknow, Uttar Pradesh, India
               </p>
@@ -656,16 +676,21 @@
               </p>
             </div>
 
-            <!-- Degree 2: B.Tech SSIPMT (Identical font size, colors & badge styling to M.Tech) -->
-            <div class="p-6 rounded-2xl border-l-4 border-l-accent-teal border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 backdrop-blur-sm">
+            <!-- Degree 2: B.Tech SSIPMT (Matching font and design) -->
+            <div class="p-6 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
+              <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
               <div class="flex items-center justify-between mb-1">
                 <span class="font-meta-mono text-xs text-outline">2019 — 2023</span>
                 <span class="font-meta-mono text-xs px-2.5 py-0.5 rounded-full bg-accent-teal/15 text-accent-teal font-semibold border border-accent-teal/30">CGPA: 8.3 / 10</span>
               </div>
-              <h4 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mt-2">B.Tech in Information Technology</h4>
+              <h4 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium mt-2 mb-1 group-hover:text-accent-teal transition-colors">
+                B.Tech in Information Technology
+              </h4>
               <p class="font-body-md text-sm md:text-base text-accent-cyan font-light mb-2">Shri Shankaracharya Institute of Professional Management &amp; Technology (SSIPMT)</p>
               
-              <!-- Item 4: Location on its own line -->
+              <!-- Location on its own line -->
               <p class="font-meta-mono text-xs text-outline mb-2 flex items-center gap-1.5">
                 <i class="fas fa-location-dot text-accent-teal"></i> Raipur, Chhattisgarh, India
               </p>
@@ -681,6 +706,7 @@
 
     <!-- ========================================================
          SECTION 04: PROJECTS (PRODUCTION & SYSTEMS)
+         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="projects">
       <!-- Section Title Header -->
@@ -692,10 +718,13 @@
         </div>
       </div>
 
-      <!-- Pure Typographic Index Cards -->
+      <!-- Pure Typographic Index Cards with 3D Popout and Highlight Gradient Strip -->
       <div class="space-y-6">
         <!-- Project 01: ClipSense AI -->
-        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
+        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
@@ -724,7 +753,10 @@
         </div>
 
         <!-- Project 02: GPT-2 from Scratch -->
-        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
+        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
@@ -750,7 +782,10 @@
         </div>
 
         <!-- Project 03: Vaatika Zone -->
-        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
+        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
@@ -776,7 +811,10 @@
         </div>
 
         <!-- Project 04: Mini Database Storage Engine -->
-        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
+        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
@@ -802,7 +840,10 @@
         </div>
 
         <!-- Project 05: Real-Time Object Detection App -->
-        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
+        <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               <span class="font-headline-md text-2xl md:text-3xl font-normal text-on-surface group-hover:text-accent-teal transition-colors duration-200 italic">
@@ -831,6 +872,8 @@
 
     <!-- ========================================================
          SECTION 05: ACHIEVEMENTS & KEY HONORS
+         (Item 4: Matching Title Fonts/Design)
+         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="achievements">
       <!-- Section Title Header -->
@@ -842,15 +885,17 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 achievement-card-wrapper">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         <!-- Award 1: TechXR Hackathon -->
-        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 achievement-card group rounded-2xl backdrop-blur-sm">
+        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-amber text-xl card-icon"><i class="fas fa-trophy"></i></span>
             <span class="font-meta-mono text-xs text-outline">IIT ROORKEE</span>
           </div>
-          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+          <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
             8th Place / 3,500+ Participants
           </h3>
           <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
@@ -860,13 +905,15 @@
         </div>
 
         <!-- Award 2: Competitive Programming LeetCode -->
-        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 achievement-card group rounded-2xl backdrop-blur-sm">
+        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-cyan text-xl card-icon"><i class="fas fa-code"></i></span>
             <span class="font-meta-mono text-xs text-outline">LEETCODE</span>
           </div>
-          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+          <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
             400+ Algorithmic Problems Solved
           </h3>
           <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
@@ -878,13 +925,15 @@
         </div>
 
         <!-- Award 3: TCS NQT -->
-        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 achievement-card group rounded-2xl backdrop-blur-sm">
+        <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
+          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
+          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-teal text-xl card-icon"><i class="fas fa-medal"></i></span>
             <span class="font-meta-mono text-xs text-outline">NATIONAL EXAM</span>
           </div>
-          <h3 class="font-headline-sm text-lg md:text-xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
+          <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium mb-2 group-hover:text-accent-teal transition-colors">
             Top 200 All-India Rank
           </h3>
           <p class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-4 text-justify">
@@ -1017,7 +1066,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ----------------------------------------------------
-      // 1. SYMMETRICAL FLUID SLIDING TAB NAVIGATION WITH SCROLL-SPY
+      // 1. SYMMETRICAL FLUID SLIDING TAB NAVIGATION
+      // (Item 1: Active font stays dark on hover)
+      // (Item 3: Explore Projects & Get in Touch glide directly to target)
       // ----------------------------------------------------
       const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
       const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
@@ -1041,11 +1092,11 @@
         navItems.forEach(item => {
           const isCurrent = item.getAttribute('data-target') === targetId;
           if (isCurrent) {
+            item.classList.add('is-active');
             item.classList.remove('text-[#8da3a6]');
-            item.classList.add('text-[#081416]');
             updateNavIndicator(item);
           } else {
-            item.classList.remove('text-[#081416]');
+            item.classList.remove('is-active');
             item.classList.add('text-[#8da3a6]');
           }
         });
@@ -1089,14 +1140,16 @@
         setActiveNav(matchedId);
       }
 
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          const targetId = item.getAttribute('data-target');
+      // Smooth navigation for ALL anchor links (nav items + Explore Projects + Get in touch + Footer)
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('href').replace('#', '');
+          if (!targetId) return;
           const targetEl = document.getElementById(targetId);
           if (targetEl) {
             e.preventDefault();
             isSmoothScrolling = true;
-            setActiveNav(targetId);
+            setActiveNav(targetId); // Instantly glides pill straight to target without mid-button hops
 
             const headerOffset = 70;
             const elementPosition = targetEl.getBoundingClientRect().top;
@@ -1110,7 +1163,7 @@
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
               isSmoothScrolling = false;
-            }, 800);
+            }, 850);
           }
         });
       });
@@ -1145,8 +1198,6 @@
 
       // ----------------------------------------------------
       // 3. ZERO-PHYSICS HARDWARE-LOCKED CURSOR & EXPANDED LIGHT
-      // (Item 2: No weight/physics, direct 1:1 mouse movement)
-      // (Item 5: Expanded large ambient gradient following mouse)
       // ----------------------------------------------------
       const ambientPrimary = document.getElementById('ambient-primary');
       const ambientSecondary = document.getElementById('ambient-secondary');
@@ -1187,16 +1238,16 @@
       });
 
       document.body.addEventListener('mouseover', (e) => {
-        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article');
         if (interactiveTarget) {
           document.body.classList.add('cursor-hover');
         }
       });
 
       document.body.addEventListener('mouseout', (e) => {
-        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article');
+        const interactiveTarget = e.target.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article');
         if (interactiveTarget) {
-          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, [role="button"], .nav-item, .achievement-card, article')) {
+          if (!e.relatedTarget || !e.relatedTarget.closest('a, button, input, textarea, select, [role="button"], .nav-item, .interactive-3d-card, article')) {
             document.body.classList.remove('cursor-hover');
           }
         }
@@ -1207,10 +1258,10 @@
 
 
       // ----------------------------------------------------
-      // 4. LIGHTENED GENTLE 3D POPOUT FOR ACHIEVEMENT CARDS
+      // 4. UNIFIED 3D POPOUT FOR EXPERIENCE, EDUCATION, PROJECTS & ACHIEVEMENTS (Item 6)
       // ----------------------------------------------------
-      const achievementCards = document.querySelectorAll('.achievement-card');
-      achievementCards.forEach(card => {
+      const interactiveCards = document.querySelectorAll('.interactive-3d-card');
+      interactiveCards.forEach(card => {
         const glare = card.querySelector('.card-glare');
 
         card.addEventListener('mouseenter', () => {
@@ -1227,15 +1278,15 @@
           const normX = (x - centerX) / centerX;
           const normY = (y - centerY) / centerY;
 
-          const rotateX = normY * -1.6;
-          const rotateY = normX * 1.6;
+          const rotateX = normY * -2.2;
+          const rotateY = normX * 2.2;
 
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
 
           if (glare) {
             const glareX = (x / rect.width) * 100;
             const glareY = (y / rect.height) * 100;
-            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.06) 0%, transparent 60%)`;
+            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.08) 0%, transparent 60%)`;
           }
         });
 
@@ -1278,6 +1329,8 @@
 
       const ripples = [];
       const wakes = [];
+      const MAX_WAKES = 6;
+      const MAX_RIPPLES = 3;
       let lastMouseX = mouseX;
       let lastMouseY = mouseY;
       let lastTime = performance.now();
@@ -1287,9 +1340,9 @@
           this.x = x;
           this.y = y;
           this.radius = 4;
-          this.maxRadius = Math.min(wWidth, wHeight) * 0.18 * power;
-          this.speed = (2.0 + Math.random() * 1.2) * power;
-          this.opacity = 0.35 * power;
+          this.maxRadius = Math.min(wWidth, wHeight) * 0.16 * power;
+          this.speed = (1.8 + Math.random() * 1.0) * power;
+          this.opacity = 0.3 * power;
           this.decay = 0.985;
         }
 
@@ -1306,16 +1359,16 @@
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
 
           const grad = ctx.createRadialGradient(
-            this.x, this.y, Math.max(0, this.radius - 12),
+            this.x, this.y, Math.max(0, this.radius - 10),
             this.x, this.y, this.radius + 4
           );
           grad.addColorStop(0, `rgba(8, 20, 22, 0)`);
-          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.2})`);
-          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.12})`);
+          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.18})`);
+          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.1})`);
           grad.addColorStop(1, `rgba(8, 20, 22, 0)`);
 
           ctx.strokeStyle = grad;
-          ctx.lineWidth = Math.max(1, 2.4 * (1 - this.radius / this.maxRadius));
+          ctx.lineWidth = Math.max(1, 2.2 * (1 - this.radius / this.maxRadius));
           ctx.stroke();
           ctx.restore();
         }
@@ -1329,12 +1382,12 @@
           this.y2 = y2;
           this.speed = speed;
           this.life = 1.0;
-          this.width = Math.min(20, 3 + speed * 1.2);
+          this.width = Math.min(18, 2.5 + speed * 1.0);
         }
 
         update() {
-          this.life -= 0.04;
-          this.width += 0.3;
+          this.life -= 0.045;
+          this.width += 0.25;
           return this.life > 0;
         }
 
@@ -1343,7 +1396,7 @@
           ctx.beginPath();
           ctx.moveTo(this.x1, this.y1);
           ctx.lineTo(this.x2, this.y2);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.08})`;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.07})`;
           ctx.lineWidth = this.width;
           ctx.lineCap = 'round';
           ctx.stroke();
@@ -1354,19 +1407,19 @@
       let moveThrottle = 0;
       window.addEventListener('mousemove', (e) => {
         const now = performance.now();
-        const dt = now - lastTime;
+        const dt = Math.min(64, now - lastTime);
         lastTime = now;
 
         const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
         const speed = dist / Math.max(1, dt);
 
-        if (dist > 4) {
+        if (dist > 5 && wakes.length < MAX_WAKES) {
           wakes.push(new FluidWake(lastMouseX, lastMouseY, e.clientX, e.clientY, speed));
         }
 
         moveThrottle++;
-        if (moveThrottle % 6 === 0 && dist > 8) {
-          const power = Math.min(1.4, Math.max(0.5, speed * 0.6));
+        if (moveThrottle % 8 === 0 && dist > 10 && ripples.length < MAX_RIPPLES) {
+          const power = Math.min(1.2, Math.max(0.4, speed * 0.5));
           ripples.push(new WaterRipple(e.clientX, e.clientY, power));
         }
 
@@ -1375,28 +1428,49 @@
       }, { passive: true });
 
       window.addEventListener('click', (e) => {
-        ripples.push(new WaterRipple(e.clientX, e.clientY, 1.4));
+        if (ripples.length < MAX_RIPPLES) {
+          ripples.push(new WaterRipple(e.clientX, e.clientY, 1.2));
+        }
       }, { passive: true });
+
+      // Performance: Reset state when tab visibility changes or window blurs to prevent stalls
+      function resetAnimationState() {
+        wakes.length = 0;
+        ripples.length = 0;
+        trailPoints.length = 0;
+        lastTime = performance.now();
+        if (wCtx) wCtx.clearRect(0, 0, wWidth, wHeight);
+        if (tCtx) tCtx.clearRect(0, 0, trailWidth, trailHeight);
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          resetAnimationState();
+        } else {
+          lastTime = performance.now();
+        }
+      });
+      window.addEventListener('focus', resetAnimationState);
+      window.addEventListener('blur', resetAnimationState);
 
 
       // ----------------------------------------------------
-      // 7. HIGH-PERFORMANCE ANIMATION LOOP
-      // (Item 5: 1050px / 850px large ambient lights centered smoothly)
+      // 7. ULTRA HIGH-PERFORMANCE ZERO-HANG ANIMATION LOOP
       // ----------------------------------------------------
       let isCanvasActive = true;
 
       function renderLoop() {
-        // Smooth atmospheric ambient lights with larger radius
-        amb1X += (mouseX - amb1X) * 0.05;
-        amb1Y += (mouseY - amb1Y) * 0.05;
+        // Fast ambient lighting interpolation without layout thrashing
+        amb1X += (mouseX - amb1X) * 0.055;
+        amb1Y += (mouseY - amb1Y) * 0.055;
         if (ambientPrimary) {
           ambientPrimary.style.transform = `translate3d(${amb1X - 525}px, ${amb1Y - 525}px, 0)`;
         }
 
         const targetAmb2X = window.innerWidth - mouseX;
         const targetAmb2Y = window.innerHeight - mouseY;
-        amb2X += (targetAmb2X - amb2X) * 0.04;
-        amb2Y += (targetAmb2Y - amb2Y) * 0.04;
+        amb2X += (targetAmb2X - amb2X) * 0.045;
+        amb2Y += (targetAmb2Y - amb2Y) * 0.045;
         if (ambientSecondary) {
           ambientSecondary.style.transform = `translate3d(${amb2X - 425}px, ${amb2Y - 425}px, 0)`;
         }
