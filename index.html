@@ -106,52 +106,52 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 99999;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.8);
-      transition: transform 0.15s ease, background-color 0.2s ease, opacity 0.25s ease;
+      transform: translate3d(-50%, -50%, 0);
+      box-shadow: 0 0 8px #00f0ff, 0 0 16px rgba(0, 240, 255, 0.6);
+      transition: opacity 0.25s ease;
       will-change: transform;
     }
 
-    /* Outer Neon Precision Ring - NO BLUR */
+    /* Outer Neon Precision Ring - Lightweight and snappy */
     #custom-cursor-ring {
       position: fixed;
       top: 0;
       left: 0;
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid rgba(0, 240, 255, 0.55);
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(0, 240, 255, 0.5);
       border-radius: 50%;
       pointer-events: none;
       z-index: 99998;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.15);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+      transform: translate3d(-50%, -50%, 0);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2), inset 0 0 8px rgba(0, 240, 255, 0.1);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
                   border-color 0.2s ease, 
                   background-color 0.2s ease,
                   opacity 0.25s ease;
       will-change: transform;
     }
 
-    /* Clickable Hover State: Expanded ring with crisp outline and subtle tint */
+    /* Clickable Hover State */
     body.cursor-hover #custom-cursor-ring {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
       border-color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.45), inset 0 0 14px rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
     }
 
     body.cursor-hover #custom-cursor-dot {
-      transform: translate(-50%, -50%) scale(1.4);
+      transform: scale(1.3) translate3d(-50%, -50%, 0);
       background-color: #ffffff;
-      box-shadow: 0 0 14px #ffffff, 0 0 24px #ffffff;
+      box-shadow: 0 0 12px #ffffff;
     }
 
     body.cursor-down #custom-cursor-ring {
-      transform: translate(-50%, -50%) scale(0.85);
+      transform: scale(0.85) translate3d(-50%, -50%, 0);
       border-color: #ffffff;
-      box-shadow: 0 0 20px #00f0ff;
+      box-shadow: 0 0 16px #00f0ff;
     }
 
     /* High-Resolution Neon Trail Ribbon Canvas */
@@ -164,26 +164,26 @@
       height: 100%;
     }
 
-    /* Ambient Dynamic Pointer Glow Lights */
+    /* Ambient Dynamic Pointer Glow Lights - Lightweight GPU performance */
     .ambient-glow {
       position: fixed;
       border-radius: 50%;
       pointer-events: none;
       will-change: transform;
-      transition: transform 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+      contain: layout paint;
     }
 
-    /* 3D Achievement Card Spatial Elevation - Simplified Subtle Shallow Popout */
+    /* 3D Achievement Card Spatial Elevation - Lightened Subtle Shallow Popout */
     .achievement-card-wrapper {
       perspective: 1000px;
     }
 
     .achievement-card {
-      transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
                   box-shadow 0.25s ease,
                   border-color 0.25s ease,
                   background-color 0.25s ease;
-      will-change: transform, box-shadow;
+      will-change: transform;
       transform-style: preserve-3d;
       cursor: none !important;
       position: relative;
@@ -191,18 +191,18 @@
     }
 
     .achievement-card.is-hovered {
-      border-color: #00f0ff !important;
+      border-color: rgba(0, 240, 255, 0.8) !important;
       background-color: rgba(12, 26, 29, 0.95) !important;
-      box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.5), 
-                  0 0 18px rgba(0, 240, 255, 0.15) !important;
+      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4), 
+                  0 0 12px rgba(0, 240, 255, 0.08) !important;
     }
 
-    /* Subtle optical sheen glare moving with tilt */
+    /* Very light optical sheen glare moving with tilt */
     .card-glare {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.12) 0%, transparent 60%);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.25s ease;
     }
@@ -211,7 +211,6 @@
       opacity: 1;
     }
 
-    /* Clean Card Icons - No aggressive pulse, just clean accent glow */
     .card-icon {
       display: inline-flex !important;
       align-items: center;
@@ -221,28 +220,22 @@
     }
 
     .achievement-card.is-hovered .card-icon {
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 8px currentColor);
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 6px currentColor);
     }
 
-    /* 3D Section Depth Transitions */
-    .section-3d-wrap {
-      perspective: 1200px;
-      perspective-origin: center top;
-    }
-
+    /* 3D Section Depth Transitions - Smoothly resets on scroll up and down */
     .section-3d-reveal {
       opacity: 0.15;
-      transform: perspective(1200px) rotateX(8deg) translateY(30px) scale(0.98);
-      transform-origin: center top;
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: perspective(1000px) translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform, opacity;
     }
 
     .section-3d-reveal.is-in-view {
       opacity: 1;
-      transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+      transform: perspective(1000px) translateY(0);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -281,14 +274,14 @@
   <canvas id="water-canvas" class="fixed inset-0 pointer-events-none z-0 w-full h-full"></canvas>
 
   <!-- Dynamic Pointer-Tracking Ambient Background Lights -->
-  <div id="ambient-primary" class="ambient-glow -z-10 w-[780px] h-[780px] bg-accent-teal/10 rounded-full blur-[160px] top-0 left-0"></div>
-  <div id="ambient-secondary" class="ambient-glow -z-10 w-[620px] h-[620px] bg-accent-amber/8 rounded-full blur-[150px] bottom-0 right-0"></div>
+  <div id="ambient-primary" class="ambient-glow -z-10 w-[640px] h-[640px] bg-accent-teal/10 rounded-full blur-[100px] top-0 left-0"></div>
+  <div id="ambient-secondary" class="ambient-glow -z-10 w-[520px] h-[520px] bg-accent-amber/8 rounded-full blur-[90px] bottom-0 right-0"></div>
   
   <!-- Analog Film Grain Overlay -->
   <div class="fixed inset-0 film-grain pointer-events-none z-30 opacity-40"></div>
 
   <!-- ========================================================
-       TOP NAVIGATION BAR WITH DYNAMIC ACTIVE SECTION SCROLL-SPY
+       TOP NAVIGATION BAR WITH FLUID SLIDING INDICATOR PILL
        ======================================================== -->
   <header class="w-full px-5 md:px-12 py-3.5 flex justify-between items-center border-b border-dotted border-outline-variant/40 sticky top-0 bg-primary-container/90 backdrop-blur-md z-40">
     <div class="flex items-center gap-6">
@@ -297,24 +290,27 @@
       </a>
     </div>
 
-    <!-- Navigation items: purely textual names without numbers -->
-    <nav class="hidden md:flex items-center gap-1.5" id="nav-container">
-      <a class="nav-item bg-[#f4f7f6] text-[#081416] font-medium font-label-caps text-label-caps rounded-full px-3.5 py-1.5 transition-all duration-300" data-target="about" href="#about">
+    <!-- Navigation items with smooth sliding indicator pill -->
+    <nav class="hidden md:flex items-center relative p-1 rounded-full bg-surface-container/60 border border-outline-variant/30 backdrop-blur-md" id="nav-container">
+      <!-- Fluid sliding pill indicator -->
+      <div id="nav-indicator" class="absolute h-[calc(100%-8px)] rounded-full bg-[#f4f7f6] shadow-sm transition-all duration-300 pointer-events-none" style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);"></div>
+
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#081416]" data-target="about" href="#about">
         ABOUT
       </a>
-      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="skills" href="#skills">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="skills" href="#skills">
         SKILLS
       </a>
-      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="experience" href="#experience">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="experience" href="#experience">
         EXP
       </a>
-      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="projects" href="#projects">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="projects" href="#projects">
         PROJECTS
       </a>
-      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="achievements" href="#achievements">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="achievements" href="#achievements">
         ACHIEVEMENTS
       </a>
-      <a class="nav-item font-meta-mono text-meta-mono text-[#7b9295] hover:text-on-surface px-3 py-1.5 transition-all duration-300" data-target="contact" href="#contact">
+      <a class="nav-item relative z-10 font-meta-mono text-xs font-semibold tracking-wider px-3.5 py-1.5 rounded-full transition-colors duration-200 text-[#8da3a6] hover:text-on-surface" data-target="contact" href="#contact">
         CONTACT
       </a>
     </nav>
@@ -328,9 +324,16 @@
       <!-- Monumental Typography Spread -->
       <div class="pt-4 md:pt-8 pb-4 relative z-10">
         <div class="max-w-6xl">
-          <p class="font-meta-mono text-accent-teal text-meta-mono tracking-widest uppercase mb-4">
-            AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER // M.TECH @ IIIT LUCKNOW
-          </p>
+          <!-- Item 6: M.Tech beneath AI Systems Architect text -->
+          <div class="mb-5 space-y-1">
+            <p class="font-meta-mono text-accent-teal text-meta-mono tracking-widest uppercase">
+              AI SYSTEMS ARCHITECT &amp; SOFTWARE ENGINEER
+            </p>
+            <p class="font-meta-mono text-accent-cyan/90 text-xs md:text-sm tracking-widest uppercase">
+              M.TECH @ IIIT LUCKNOW
+            </p>
+          </div>
+
           <h1 class="text-4xl sm:text-6xl md:text-8xl font-normal text-on-surface tracking-tight leading-[0.94] mb-8 font-display">
             ISHAAN<br/>
             <span class="text-on-surface/90 font-light italic text-accent-cyan">SHAILESH PHAYE</span>
@@ -659,7 +662,7 @@
         </div>
       </div>
 
-      <!-- Pure Typographic Index Cards - Subtle left accent and high readability -->
+      <!-- Pure Typographic Index Cards -->
       <div class="space-y-6">
         <!-- Project 01: ClipSense AI -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 border-l-2 border-l-transparent hover:border-l-accent-teal transition-all duration-300 backdrop-blur-sm">
@@ -864,6 +867,7 @@
 
     <!-- ========================================================
          SECTION 06: CONTACT & EMPLOYMENT PREFERENCES
+         (Item 5: Removed direct dispatch and initiate inquiry text)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30 bg-surface-container-lowest/30" id="contact">
       <div class="pb-4 border-b border-dotted border-outline-variant/30 flex justify-end items-center mb-8">
@@ -877,9 +881,6 @@
         <!-- Direct contact info & preferences -->
         <div class="md:col-span-7 flex flex-col justify-between">
           <div>
-            <p class="font-meta-mono text-sm md:text-base font-semibold text-outline mb-3">
-              DIRECT DISPATCH //
-            </p>
             <a class="text-2xl sm:text-4xl font-normal text-on-surface hover:text-accent-teal transition-colors duration-200 tracking-tight block mb-2" href="mailto:ishaanphaye@gmail.com">
               ishaanphaye@gmail.com
             </a>
@@ -933,7 +934,6 @@
 
         <!-- Interactive Direct Message Box -->
         <div class="md:col-span-5 border-t md:border-t-0 md:border-l border-dotted border-outline-variant/40 pt-8 md:pt-0 md:pl-10">
-          <span class="font-meta-mono text-sm md:text-base font-semibold text-outline block mb-4">INITIATE INQUIRY //</span>
           <form class="space-y-4" onsubmit="event.preventDefault(); const n = document.getElementById('cf-name').value; const e = document.getElementById('cf-email').value; const m = document.getElementById('cf-msg').value; window.location.href = `mailto:ishaanphaye@gmail.com?subject=Inquiry from ${encodeURIComponent(n)}&body=${encodeURIComponent(m + '\n\nFrom: ' + n + ' (' + e + ')')}`; return false;">
             <div>
               <label class="block font-meta-mono text-xs text-outline mb-1.5">YOUR NAME &amp; COMPANY</label>
@@ -982,40 +982,55 @@
   </footer>
 
   <!-- ========================================================
-       SCRIPTS: DYNAMIC AMBIENT LIGHT, LIQUID NEON TRAIL,
-       WATER CANVAS, AND ADVANCED SCROLL-SPY
+       SCRIPTS: HIGH PERFORMANCE ENGINE, SLIDING TABS,
+       LIGHTWEIGHT NEON TRAIL, AND BIDIRECTIONAL SCROLL REVEAL
        ======================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ----------------------------------------------------
-      // 1. DYNAMIC SCROLL-SPY NAVIGATION
+      // 1. FLUID SLIDING TAB NAVIGATION WITH SCROLL-SPY
       // ----------------------------------------------------
       const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
       const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
       const navItems = document.querySelectorAll('.nav-item');
-
-      const activeClasses = ['bg-[#f4f7f6]', 'text-[#081416]', 'font-medium', 'font-label-caps', 'text-label-caps', 'rounded-full', 'px-3.5', 'py-1.5'];
-      const mutedClasses = ['font-meta-mono', 'text-meta-mono', 'text-[#7b9295]', 'hover:text-on-surface', 'px-3', 'py-1.5'];
+      const navIndicator = document.getElementById('nav-indicator');
 
       let currentActiveId = 'about';
+      let isSmoothScrolling = false;
+      let scrollTimeout = null;
+
+      function updateNavIndicator(activeEl) {
+        if (!navIndicator || !activeEl) return;
+        navIndicator.style.transform = `translate3d(${activeEl.offsetLeft}px, 0, 0)`;
+        navIndicator.style.width = `${activeEl.offsetWidth}px`;
+      }
 
       function setActiveNav(targetId) {
-        if (!targetId || targetId === currentActiveId) return;
+        if (!targetId) return;
         currentActiveId = targetId;
 
         navItems.forEach(item => {
           const isCurrent = item.getAttribute('data-target') === targetId;
           if (isCurrent) {
-            item.classList.remove(...mutedClasses);
-            item.classList.add(...activeClasses);
+            item.classList.remove('text-[#8da3a6]');
+            item.classList.add('text-[#081416]');
+            updateNavIndicator(item);
           } else {
-            item.classList.remove(...activeClasses);
-            item.classList.add(...mutedClasses);
+            item.classList.remove('text-[#081416]');
+            item.classList.add('text-[#8da3a6]');
           }
         });
       }
 
+      // Initial pill position
+      const initialActive = document.querySelector('.nav-item[data-target="about"]');
+      if (initialActive) {
+        setTimeout(() => updateNavIndicator(initialActive), 60);
+      }
+
       function updateScrollSpy() {
+        if (isSmoothScrolling) return;
+
         const scrollPosition = window.scrollY;
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
@@ -1051,6 +1066,9 @@
           const targetEl = document.getElementById(targetId);
           if (targetEl) {
             e.preventDefault();
+            isSmoothScrolling = true;
+            setActiveNav(targetId);
+
             const headerOffset = 70;
             const elementPosition = targetEl.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1059,37 +1077,46 @@
               top: offsetPosition,
               behavior: 'smooth'
             });
-            setActiveNav(targetId);
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              isSmoothScrolling = false;
+            }, 800);
           }
         });
       });
 
       window.addEventListener('scroll', updateScrollSpy, { passive: true });
-      window.addEventListener('resize', updateScrollSpy, { passive: true });
-      updateScrollSpy();
+      window.addEventListener('resize', () => {
+        const activeItem = document.querySelector(`.nav-item[data-target="${currentActiveId}"]`);
+        if (activeItem) updateNavIndicator(activeItem);
+        updateScrollSpy();
+      }, { passive: true });
 
-      // 3D Smooth Section Transition Observer
+
+      // ----------------------------------------------------
+      // 2. BIDIRECTIONAL SCROLL ANIMATIONS (RESETS UP AND DOWN)
+      // ----------------------------------------------------
       const revealSections = document.querySelectorAll('.section-3d-reveal');
       const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-in-view');
           } else {
-            if (entry.boundingClientRect.top > window.innerHeight || entry.boundingClientRect.bottom < 0) {
-              entry.target.classList.remove('is-in-view');
-            }
+            // Resets cleanly whenever leaving viewport going UP or DOWN
+            entry.target.classList.remove('is-in-view');
           }
         });
       }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -60px 0px'
+        threshold: 0.08,
+        rootMargin: '-30px 0px -30px 0px'
       });
 
       revealSections.forEach(sec => sectionObserver.observe(sec));
 
 
       // ----------------------------------------------------
-      // 2. POINTER POSITION & DYNAMIC AMBIENT BACKGROUND LIGHT
+      // 3. RESPONSIVE LIGHTWEIGHT CUSTOM CURSOR & AMBIENT LIGHT
       // ----------------------------------------------------
       const ambientPrimary = document.getElementById('ambient-primary');
       const ambientSecondary = document.getElementById('ambient-secondary');
@@ -1110,15 +1137,15 @@
         mouseX = e.clientX;
         mouseY = e.clientY;
 
+        // Zero-lag GPU hardware-accelerated transform for core dot
         if (cursorDot) {
           cursorDot.style.opacity = '1';
-          cursorDot.style.left = `${mouseX}px`;
-          cursorDot.style.top = `${mouseY}px`;
+          cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
         }
         if (cursorRing) {
           cursorRing.style.opacity = '1';
         }
-      });
+      }, { passive: true });
 
       document.addEventListener('mouseleave', () => {
         if (cursorDot) cursorDot.style.opacity = '0';
@@ -1146,10 +1173,13 @@
         }
       });
 
-      window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
-      window.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+      window.addEventListener('mousedown', () => document.body.classList.add('cursor-down'), { passive: true });
+      window.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'), { passive: true });
 
-      // Simplified Subtle Shallow 3D Popout for Achievement Cards
+
+      // ----------------------------------------------------
+      // 4. LIGHTENED GENTLE 3D POPOUT FOR ACHIEVEMENT CARDS
+      // ----------------------------------------------------
       const achievementCards = document.querySelectorAll('.achievement-card');
       achievementCards.forEach(card => {
         const glare = card.querySelector('.card-glare');
@@ -1168,27 +1198,28 @@
           const normX = (x - centerX) / centerX;
           const normY = (y - centerY) / centerY;
 
-          const rotateX = normY * -4;
-          const rotateY = normX * 4;
+          // Gentle, lightened 3D tilt
+          const rotateX = normY * -1.6;
+          const rotateY = normX * 1.6;
 
-          card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)`;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
 
           if (glare) {
             const glareX = (x / rect.width) * 100;
             const glareY = (y / rect.height) * 100;
-            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.12) 0%, transparent 60%)`;
+            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.06) 0%, transparent 60%)`;
           }
         });
 
         card.addEventListener('mouseleave', () => {
           card.classList.remove('is-hovered');
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale3d(1, 1, 1)';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
         });
       });
 
 
       // ----------------------------------------------------
-      // 3. LIQUID NEON CONTINUOUS TRAIL STREAMLINE
+      // 5. LIGHTWEIGHT NEON TRAIL STREAMLINE
       // ----------------------------------------------------
       const trailCanvas = document.getElementById('trail-canvas');
       const tCtx = trailCanvas.getContext('2d');
@@ -1198,13 +1229,14 @@
       window.addEventListener('resize', () => {
         trailWidth = trailCanvas.width = window.innerWidth;
         trailHeight = trailCanvas.height = window.innerHeight;
-      });
+      }, { passive: true });
 
       const trailPoints = [];
-      const MAX_TRAIL_POINTS = 32;
+      const MAX_TRAIL_POINTS = 18; // Lightweight history
+
 
       // ----------------------------------------------------
-      // 4. INTERACTIVE WATER / LIQUID WAVES BACKGROUND
+      // 6. INTERACTIVE WATER / LIQUID WAVES BACKGROUND
       // ----------------------------------------------------
       const waterCanvas = document.getElementById('water-canvas');
       const wCtx = waterCanvas.getContext('2d');
@@ -1214,7 +1246,7 @@
       window.addEventListener('resize', () => {
         wWidth = waterCanvas.width = window.innerWidth;
         wHeight = waterCanvas.height = window.innerHeight;
-      });
+      }, { passive: true });
 
       const ripples = [];
       const wakes = [];
@@ -1227,16 +1259,16 @@
           this.x = x;
           this.y = y;
           this.radius = 4;
-          this.maxRadius = Math.min(wWidth, wHeight) * (0.2 + Math.random() * 0.1) * power;
-          this.speed = (2.2 + Math.random() * 1.6) * power;
-          this.opacity = 0.5 * power;
-          this.decay = 0.984;
+          this.maxRadius = Math.min(wWidth, wHeight) * 0.18 * power;
+          this.speed = (2.0 + Math.random() * 1.2) * power;
+          this.opacity = 0.35 * power;
+          this.decay = 0.985;
         }
 
         update() {
           this.radius += this.speed;
           this.opacity *= this.decay;
-          this.speed *= 0.994;
+          this.speed *= 0.992;
           return this.opacity > 0.01 && this.radius < this.maxRadius;
         }
 
@@ -1246,16 +1278,16 @@
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
 
           const grad = ctx.createRadialGradient(
-            this.x, this.y, Math.max(0, this.radius - 14),
-            this.x, this.y, this.radius + 6
+            this.x, this.y, Math.max(0, this.radius - 12),
+            this.x, this.y, this.radius + 4
           );
           grad.addColorStop(0, `rgba(8, 20, 22, 0)`);
-          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.3})`);
-          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.2})`);
+          grad.addColorStop(0.5, `rgba(0, 240, 255, ${this.opacity * 0.2})`);
+          grad.addColorStop(0.8, `rgba(94, 242, 214, ${this.opacity * 0.12})`);
           grad.addColorStop(1, `rgba(8, 20, 22, 0)`);
 
           ctx.strokeStyle = grad;
-          ctx.lineWidth = Math.max(1, 3.2 * (1 - this.radius / this.maxRadius));
+          ctx.lineWidth = Math.max(1, 2.4 * (1 - this.radius / this.maxRadius));
           ctx.stroke();
           ctx.restore();
         }
@@ -1269,12 +1301,12 @@
           this.y2 = y2;
           this.speed = speed;
           this.life = 1.0;
-          this.width = Math.min(26, 4 + speed * 1.6);
+          this.width = Math.min(20, 3 + speed * 1.2);
         }
 
         update() {
-          this.life -= 0.035;
-          this.width += 0.35;
+          this.life -= 0.04;
+          this.width += 0.3;
           return this.life > 0;
         }
 
@@ -1283,7 +1315,7 @@
           ctx.beginPath();
           ctx.moveTo(this.x1, this.y1);
           ctx.lineTo(this.x2, this.y2);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.12})`;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${this.life * 0.08})`;
           ctx.lineWidth = this.width;
           ctx.lineCap = 'round';
           ctx.stroke();
@@ -1300,36 +1332,36 @@
         const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
         const speed = dist / Math.max(1, dt);
 
-        if (dist > 3) {
+        if (dist > 4) {
           wakes.push(new FluidWake(lastMouseX, lastMouseY, e.clientX, e.clientY, speed));
         }
 
         moveThrottle++;
-        if (moveThrottle % 4 === 0 && dist > 5) {
-          const power = Math.min(1.8, Math.max(0.6, speed * 0.8));
+        if (moveThrottle % 6 === 0 && dist > 8) {
+          const power = Math.min(1.4, Math.max(0.5, speed * 0.6));
           ripples.push(new WaterRipple(e.clientX, e.clientY, power));
         }
 
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
-      });
+      }, { passive: true });
 
       window.addEventListener('click', (e) => {
-        ripples.push(new WaterRipple(e.clientX, e.clientY, 1.8));
-        setTimeout(() => {
-          ripples.push(new WaterRipple(e.clientX, e.clientY, 1.3));
-        }, 80);
-      });
+        ripples.push(new WaterRipple(e.clientX, e.clientY, 1.4));
+      }, { passive: true });
 
 
       // ----------------------------------------------------
-      // 5. MASTER ANIMATION LOOP
+      // 7. HIGH-PERFORMANCE ANIMATION LOOP
       // ----------------------------------------------------
+      let isCanvasActive = true;
+
       function renderLoop() {
+        // Smooth ambient lights
         amb1X += (mouseX - amb1X) * 0.045;
         amb1Y += (mouseY - amb1Y) * 0.045;
         if (ambientPrimary) {
-          ambientPrimary.style.transform = `translate3d(${amb1X - 390}px, ${amb1Y - 390}px, 0)`;
+          ambientPrimary.style.transform = `translate3d(${amb1X - 320}px, ${amb1Y - 320}px, 0)`;
         }
 
         const targetAmb2X = window.innerWidth - mouseX;
@@ -1337,24 +1369,27 @@
         amb2X += (targetAmb2X - amb2X) * 0.035;
         amb2Y += (targetAmb2Y - amb2Y) * 0.035;
         if (ambientSecondary) {
-          ambientSecondary.style.transform = `translate3d(${amb2X - 310}px, ${amb2Y - 310}px, 0)`;
+          ambientSecondary.style.transform = `translate3d(${amb2X - 260}px, ${amb2Y - 260}px, 0)`;
         }
 
-        ringX += (mouseX - ringX) * 0.22;
-        ringY += (mouseY - ringY) * 0.22;
+        // Snappy responsive cursor ring follow (factor 0.45 for zero sluggishness)
+        ringX += (mouseX - ringX) * 0.45;
+        ringY += (mouseY - ringY) * 0.45;
         if (cursorRing) {
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
+          cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
         }
 
+        // Trail point collection
         trailPoints.push({ x: mouseX, y: mouseY, time: performance.now() });
         if (trailPoints.length > MAX_TRAIL_POINTS) {
           trailPoints.shift();
         }
 
+        // Draw lightened trail streamline
         tCtx.clearRect(0, 0, trailWidth, trailHeight);
 
         if (trailPoints.length > 2) {
+          // Delicate lightened outer glow
           tCtx.save();
           tCtx.beginPath();
           tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
@@ -1368,13 +1403,14 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
-          tCtx.lineWidth = 4.5;
+          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+          tCtx.lineWidth = 2.5;
           tCtx.shadowColor = '#00f0ff';
-          tCtx.shadowBlur = 18;
+          tCtx.shadowBlur = 8;
           tCtx.stroke();
           tCtx.restore();
 
+          // Delicate lightened core streamline
           tCtx.save();
           tCtx.beginPath();
           tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
@@ -1387,30 +1423,37 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-          tCtx.lineWidth = 1.75;
+          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.55)';
+          tCtx.lineWidth = 1;
           tCtx.shadowColor = '#ffffff';
-          tCtx.shadowBlur = 6;
+          tCtx.shadowBlur = 3;
           tCtx.stroke();
           tCtx.restore();
         }
 
-        wCtx.clearRect(0, 0, wWidth, wHeight);
+        // Draw water background only when active
+        if (wakes.length > 0 || ripples.length > 0) {
+          wCtx.clearRect(0, 0, wWidth, wHeight);
 
-        for (let i = wakes.length - 1; i >= 0; i--) {
-          if (!wakes[i].update()) {
-            wakes.splice(i, 1);
-          } else {
-            wakes[i].draw(wCtx);
+          for (let i = wakes.length - 1; i >= 0; i--) {
+            if (!wakes[i].update()) {
+              wakes.splice(i, 1);
+            } else {
+              wakes[i].draw(wCtx);
+            }
           }
-        }
 
-        for (let i = ripples.length - 1; i >= 0; i--) {
-          if (!ripples[i].update()) {
-            ripples.splice(i, 1);
-          } else {
-            ripples[i].draw(wCtx);
+          for (let i = ripples.length - 1; i >= 0; i--) {
+            if (!ripples[i].update()) {
+              ripples.splice(i, 1);
+            } else {
+              ripples[i].draw(wCtx);
+            }
           }
+          isCanvasActive = true;
+        } else if (isCanvasActive) {
+          wCtx.clearRect(0, 0, wWidth, wHeight);
+          isCanvasActive = false;
         }
 
         requestAnimationFrame(renderLoop);
