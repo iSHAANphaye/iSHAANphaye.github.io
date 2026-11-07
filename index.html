@@ -185,7 +185,7 @@
 
     /* Unified Tactile 3D Popout Cards (Experience, Education, Projects & Achievements) */
     .interactive-3d-card {
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.25s ease,
                   border-color 0.25s ease,
                   background-color 0.25s ease;
@@ -197,16 +197,22 @@
     .interactive-3d-card.is-hovered {
       border-color: rgba(0, 240, 255, 0.6) !important;
       background-color: rgba(12, 26, 29, 0.95) !important;
-      box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.5), 
-                  0 0 14px rgba(0, 240, 255, 0.1) !important;
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 
+                  0 0 16px rgba(0, 240, 255, 0.12) !important;
     }
 
-    /* Very light optical sheen glare moving with tilt */
+    /* Dynamic Left Gradient Strip: Highlights both on hover AND when scrolled under pointer */
+    .interactive-3d-card:hover .card-left-strip,
+    .interactive-3d-card.is-hovered .card-left-strip {
+      opacity: 1 !important;
+    }
+
+    /* Optical sheen glare moving with tilt */
     .card-glare {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.25s ease;
     }
@@ -263,7 +269,7 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
-    /* Item 1 Fix: Active nav button text MUST stay dark petroleum even on hover */
+    /* Active nav button text MUST stay dark petroleum even on hover */
     .nav-item.is-active,
     .nav-item.is-active:hover {
       color: #081416 !important;
@@ -342,7 +348,6 @@
   <main class="w-full">
     <!-- ========================================================
          SECTION 01: ABOUT ME & HERO STATEMENT
-         (Item 2: "MY LINKS" positioned ABOVE Action Buttons)
          ======================================================== -->
     <section class="section-3d-reveal relative w-full px-5 md:px-12 pt-8 md:pt-16 pb-12 md:pb-16" id="about">
       <!-- Monumental Typography Spread -->
@@ -380,11 +385,7 @@
                 </span>
               </div>
               
-              <!-- ========================================================
-                   REFINED ACTION & PROFILE DECK (Item 2)
-                   Tier 1 (Top): "MY LINKS //" Profiles Dock
-                   Tier 2 (Bottom): Primary Action Buttons
-                   ======================================================== -->
+              <!-- Action & Profile Deck -->
               <div class="space-y-4">
                 <!-- Tier 1: MY LINKS Dock placed ABOVE buttons -->
                 <div class="flex flex-wrap items-center gap-2.5">
@@ -600,8 +601,6 @@
 
     <!-- ========================================================
          SECTION 03: WORK EXPERIENCE & EDUCATION
-         (Item 4: Matching Title Fonts/Design across Exp & Edu)
-         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="experience">
       <!-- Section Title Header -->
@@ -622,8 +621,8 @@
 
           <!-- Role: Datanomers (With Left Gradient Accent Strip on Highlight & 3D Popout) -->
           <div class="p-6 md:p-7 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
-            <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <!-- Dynamic Left Gradient Accent Strip -->
+            <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
               <h3 class="font-headline-md text-xl md:text-2xl text-on-surface font-medium group-hover:text-accent-teal transition-colors">
@@ -654,8 +653,8 @@
           <div class="space-y-6">
             <!-- Degree 1: M.Tech IIIT Lucknow -->
             <div class="p-6 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
-              <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              <!-- Dynamic Left Gradient Accent Strip -->
+              <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
               <div class="flex items-center justify-between mb-1">
                 <span class="font-meta-mono text-xs text-outline">2025 — PRESENT (EXP. 2027)</span>
@@ -678,8 +677,8 @@
 
             <!-- Degree 2: B.Tech SSIPMT (Matching font and design) -->
             <div class="p-6 rounded-2xl border border-outline-variant/40 bg-surface/40 hover:bg-surface/70 transition-all duration-300 relative group backdrop-blur-sm overflow-hidden interactive-3d-card">
-              <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              <!-- Dynamic Left Gradient Accent Strip -->
+              <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
               <div class="flex items-center justify-between mb-1">
                 <span class="font-meta-mono text-xs text-outline">2019 — 2023</span>
@@ -706,7 +705,6 @@
 
     <!-- ========================================================
          SECTION 04: PROJECTS (PRODUCTION & SYSTEMS)
-         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="projects">
       <!-- Section Title Header -->
@@ -722,8 +720,8 @@
       <div class="space-y-6">
         <!-- Project 01: ClipSense AI -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
@@ -754,8 +752,8 @@
 
         <!-- Project 02: GPT-2 from Scratch -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
@@ -783,8 +781,8 @@
 
         <!-- Project 03: Vaatika Zone -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
@@ -812,8 +810,8 @@
 
         <!-- Project 04: Mini Database Storage Engine -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
@@ -841,8 +839,8 @@
 
         <!-- Project 05: Real-Time Object Detection App -->
         <div class="group relative p-6 md:p-8 rounded-2xl border border-outline-variant/30 bg-surface/30 hover:bg-surface/70 hover:border-outline-variant/60 transition-all duration-300 backdrop-blur-sm overflow-hidden interactive-3d-card">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
           <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-3">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
@@ -872,8 +870,6 @@
 
     <!-- ========================================================
          SECTION 05: ACHIEVEMENTS & KEY HONORS
-         (Item 4: Matching Title Fonts/Design)
-         (Item 6: Left Gradient Strip visible on Highlight & 3D Popout)
          ======================================================== -->
     <section class="section-3d-reveal w-full px-5 md:px-12 py-10 md:py-16 border-t border-dotted border-outline-variant/30" id="achievements">
       <!-- Section Title Header -->
@@ -888,8 +884,8 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         <!-- Award 1: TechXR Hackathon -->
         <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-amber text-xl card-icon"><i class="fas fa-trophy"></i></span>
@@ -906,8 +902,8 @@
 
         <!-- Award 2: Competitive Programming LeetCode -->
         <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-cyan text-xl card-icon"><i class="fas fa-code"></i></span>
@@ -926,8 +922,8 @@
 
         <!-- Award 3: TCS NQT -->
         <div class="p-6 md:p-7 border border-outline-variant/40 bg-surface/40 group rounded-2xl backdrop-blur-sm overflow-hidden interactive-3d-card relative">
-          <!-- Dynamic Left Gradient Accent Strip (visible only on highlight) -->
-          <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          <!-- Dynamic Left Gradient Accent Strip -->
+          <div class="card-left-strip absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-accent-teal via-accent-cyan to-accent-amber opacity-0 transition-opacity duration-300 pointer-events-none"></div>
           <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-accent-teal text-xl card-icon"><i class="fas fa-medal"></i></span>
@@ -1061,14 +1057,13 @@
 
   <!-- ========================================================
        SCRIPTS: DIRECT 1:1 HARDWARE MOUSE (ZERO PHYSICS),
-       EXPANDED AMBIENT ILLUMINATION, AND SYMMETRICAL SLIDING TABS
+       VIBRANT RETRO TRAIL, SCROLL-AWARE CARD HIGHLIGHT,
+       AND FLUID ZERO-LAG 3D POPOUT ENGINE
        ======================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ----------------------------------------------------
       // 1. SYMMETRICAL FLUID SLIDING TAB NAVIGATION
-      // (Item 1: Active font stays dark on hover)
-      // (Item 3: Explore Projects & Get in Touch glide directly to target)
       // ----------------------------------------------------
       const sectionIds = ['about', 'skills', 'experience', 'projects', 'achievements', 'contact'];
       const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
@@ -1102,7 +1097,6 @@
         });
       }
 
-      // Initial symmetrical positioning
       const initialActive = document.querySelector('.nav-item[data-target="about"]');
       if (initialActive) {
         setTimeout(() => updateNavIndicator(initialActive), 60);
@@ -1140,7 +1134,7 @@
         setActiveNav(matchedId);
       }
 
-      // Smooth navigation for ALL anchor links (nav items + Explore Projects + Get in touch + Footer)
+      // Smooth direct navigation for ALL anchor links
       document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', (e) => {
           const targetId = link.getAttribute('href').replace('#', '');
@@ -1149,7 +1143,7 @@
           if (targetEl) {
             e.preventDefault();
             isSmoothScrolling = true;
-            setActiveNav(targetId); // Instantly glides pill straight to target without mid-button hops
+            setActiveNav(targetId);
 
             const headerOffset = 70;
             const elementPosition = targetEl.getBoundingClientRect().top;
@@ -1197,7 +1191,7 @@
 
 
       // ----------------------------------------------------
-      // 3. ZERO-PHYSICS HARDWARE-LOCKED CURSOR & EXPANDED LIGHT
+      // 3. ZERO-PHYSICS HARDWARE-LOCKED CURSOR & AMBIENT ILLUMINATION
       // ----------------------------------------------------
       const ambientPrimary = document.getElementById('ambient-primary');
       const ambientSecondary = document.getElementById('ambient-secondary');
@@ -1258,47 +1252,87 @@
 
 
       // ----------------------------------------------------
-      // 4. UNIFIED 3D POPOUT FOR EXPERIENCE, EDUCATION, PROJECTS & ACHIEVEMENTS (Item 6)
+      // 4. FLUID, ZERO-LAG 3D POPOUT & SCROLL-OVER HIGHLIGHT ENGINE (Items 2 & 3)
       // ----------------------------------------------------
       const interactiveCards = document.querySelectorAll('.interactive-3d-card');
-      interactiveCards.forEach(card => {
-        const glare = card.querySelector('.card-glare');
+      let currentHoveredCard = null;
 
-        card.addEventListener('mouseenter', () => {
+      function updateCardTilt(card, clientX, clientY) {
+        const rect = card.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const normX = (x - centerX) / centerX;
+        const normY = (y - centerY) / centerY;
+
+        // Smooth subtle 3D popout
+        const rotateX = normY * -2.4;
+        const rotateY = normX * 2.4;
+
+        // Disable transform transition during direct cursor tracking for instantaneous response
+        card.style.transition = 'box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease';
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translate3d(0, -4px, 0)`;
+
+        const glare = card.querySelector('.card-glare');
+        if (glare) {
+          const glareX = (x / rect.width) * 100;
+          const glareY = (y / rect.height) * 100;
+          glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.08) 0%, transparent 60%)`;
+        }
+      }
+
+      function resetCard(card) {
+        card.classList.remove('is-hovered');
+        card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0)';
+      }
+
+      interactiveCards.forEach(card => {
+        card.addEventListener('mouseenter', (e) => {
           card.classList.add('is-hovered');
+          currentHoveredCard = card;
+          updateCardTilt(card, e.clientX, e.clientY);
         });
 
         card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          
-          const normX = (x - centerX) / centerX;
-          const normY = (y - centerY) / centerY;
-
-          const rotateX = normY * -2.2;
-          const rotateY = normX * 2.2;
-
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
-
-          if (glare) {
-            const glareX = (x / rect.width) * 100;
-            const glareY = (y / rect.height) * 100;
-            glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(0, 240, 255, 0.08) 0%, transparent 60%)`;
-          }
+          updateCardTilt(card, e.clientX, e.clientY);
         });
 
         card.addEventListener('mouseleave', () => {
-          card.classList.remove('is-hovered');
-          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+          resetCard(card);
+          if (currentHoveredCard === card) {
+            currentHoveredCard = null;
+          }
         });
       });
 
+      // Item 2: Highlight card dynamically when scrolling if mouse is over it
+      function checkCardUnderPointer() {
+        if (mouseX < 0 || mouseY < 0 || mouseX > window.innerWidth || mouseY > window.innerHeight) return;
+        const el = document.elementFromPoint(mouseX, mouseY);
+        const card = el ? el.closest('.interactive-3d-card') : null;
+
+        if (card !== currentHoveredCard) {
+          if (currentHoveredCard) {
+            resetCard(currentHoveredCard);
+          }
+          if (card) {
+            card.classList.add('is-hovered');
+            updateCardTilt(card, mouseX, mouseY);
+          }
+          currentHoveredCard = card;
+        } else if (card) {
+          updateCardTilt(card, mouseX, mouseY);
+        }
+      }
+
+      window.addEventListener('scroll', checkCardUnderPointer, { passive: true });
+
 
       // ----------------------------------------------------
-      // 5. LIGHTWEIGHT NEON TRAIL STREAMLINE
+      // 5. RESTORED ORIGINAL VIBRANT NEON TRAIL STREAMLINE (Item 1)
       // ----------------------------------------------------
       const trailCanvas = document.getElementById('trail-canvas');
       const tCtx = trailCanvas.getContext('2d');
@@ -1311,7 +1345,7 @@
       }, { passive: true });
 
       const trailPoints = [];
-      const MAX_TRAIL_POINTS = 16;
+      const MAX_TRAIL_POINTS = 32; // Original fluid stream history
 
 
       // ----------------------------------------------------
@@ -1433,7 +1467,6 @@
         }
       }, { passive: true });
 
-      // Performance: Reset state when tab visibility changes or window blurs to prevent stalls
       function resetAnimationState() {
         wakes.length = 0;
         ripples.length = 0;
@@ -1460,7 +1493,7 @@
       let isCanvasActive = true;
 
       function renderLoop() {
-        // Fast ambient lighting interpolation without layout thrashing
+        // Fast ambient lighting interpolation
         amb1X += (mouseX - amb1X) * 0.055;
         amb1Y += (mouseY - amb1Y) * 0.055;
         if (ambientPrimary) {
@@ -1481,11 +1514,11 @@
           trailPoints.shift();
         }
 
-        // Draw lightened trail streamline
+        // Draw original vibrant electric neon trail streamline (Item 1)
         tCtx.clearRect(0, 0, trailWidth, trailHeight);
 
         if (trailPoints.length > 2) {
-          // Delicate lightened outer glow
+          // Vibrant electric outer glow
           tCtx.save();
           tCtx.beginPath();
           tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
@@ -1499,14 +1532,14 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.18)';
-          tCtx.lineWidth = 2.5;
+          tCtx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+          tCtx.lineWidth = 4.5;
           tCtx.shadowColor = '#00f0ff';
-          tCtx.shadowBlur = 8;
+          tCtx.shadowBlur = 18;
           tCtx.stroke();
           tCtx.restore();
 
-          // Delicate lightened core streamline
+          // Solid bright core streamline
           tCtx.save();
           tCtx.beginPath();
           tCtx.moveTo(trailPoints[0].x, trailPoints[0].y);
@@ -1519,10 +1552,10 @@
 
           tCtx.lineCap = 'round';
           tCtx.lineJoin = 'round';
-          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-          tCtx.lineWidth = 1;
+          tCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+          tCtx.lineWidth = 1.75;
           tCtx.shadowColor = '#ffffff';
-          tCtx.shadowBlur = 3;
+          tCtx.shadowBlur = 6;
           tCtx.stroke();
           tCtx.restore();
         }
