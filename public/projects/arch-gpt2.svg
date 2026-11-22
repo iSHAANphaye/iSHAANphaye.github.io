@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" fill="none">
+  <rect width="760" height="180" rx="12" fill="#F8FAFC"/>
+  <rect x="20" y="55" width="140" height="70" rx="10" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
+  <text x="90" y="88" text-anchor="middle" fill="#111827" font-family="monospace" font-size="12" font-weight="700">BPE Tokenizer</text>
+  <text x="90" y="108" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="10">Token + Pos Emb</text>
+  <path d="M160 90H205" stroke="#2563EB" stroke-width="2"/>
+  <rect x="205" y="55" width="165" height="70" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="287" y="88" text-anchor="middle" fill="#1D4ED8" font-family="monospace" font-size="12" font-weight="700">Causal MHA Blocks</text>
+  <text x="287" y="108" text-anchor="middle" fill="#3B82F6" font-family="monospace" font-size="10">124M / 355M PyTorch</text>
+  <path d="M370 90H415" stroke="#2563EB" stroke-width="2"/>
+  <rect x="415" y="55" width="150" height="70" rx="10" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
+  <text x="490" y="88" text-anchor="middle" fill="#111827" font-family="monospace" font-size="12" font-weight="700">Alpaca SFT</text>
+  <text x="490" y="108" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="10">95.67% Cls Acc</text>
+  <path d="M565 90H605" stroke="#2563EB" stroke-width="2"/>
+  <rect x="605" y="55" width="135" height="70" rx="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+  <text x="672" y="88" text-anchor="middle" fill="#111827" font-family="monospace" font-size="12" font-weight="700">Flask UI</text>
+  <text x="672" y="108" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="10">Top-k &amp; Temp</text>
+</svg>
