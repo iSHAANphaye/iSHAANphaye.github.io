@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan Phaye — Technical Blueprint & CAD Schematic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Share Tech Mono', monospace; background-color: #0A1628; color: #E0F2FE; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .blueprint-grid { background-image: linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px); background-size: 24px 24px; }
+    .schematic-box { border: 1.5px solid #38BDF8; background: rgba(10, 25, 47, 0.85); box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.1); }
+    .crosshair { position: relative; }
+    .crosshair::before { content: "+"; position: absolute; top: -10px; left: -10px; color: #38BDF8; font-size: 14px; }
+    .dim-line { border-top: 1px dashed #38BDF8; position: relative; }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8 blueprint-grid selection:bg-sky-400 selection:text-slate-950">
+
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Blueprint Drafting Title Block -->
+    <header class="schematic-box p-4 flex flex-wrap items-center justify-between gap-4 border-2 border-sky-400">
+      <div>
+        <div class="text-[10px] text-sky-400 uppercase tracking-widest">ENGINEERING SCHEMATIC // DWG NO: IP-2026-SYS</div>
+        <h1 class="font-display text-xl font-bold text-white tracking-wide">SYSTEMS ARCHITECTURE SPECIFICATION</h1>
+      </div>
+      <div class="text-xs text-right space-y-0.5">
+        <div>DESIGNER: <strong class="text-sky-300">ISHAAN S. PHAYE</strong></div>
+        <div>INSTITUTION: <span class="text-sky-400">IIIT LUCKNOW (M.TECH CS)</span></div>
+        <div>SCALE: <span class="text-emerald-400">1:1 PRODUCTION DEPLOYED</span></div>
+      </div>
+    </header>
+
+    <!-- Main Architectural Drawing -->
+    <div class="schematic-box p-6 space-y-6">
+      <div class="flex items-center justify-between border-b border-sky-400/30 pb-3 text-xs">
+        <span>FIG 1.0 // SUBSYSTEM LEVEL TOPOLOGY &amp; THROUGHPUT SPEC</span>
+        <span class="text-sky-300">STATUS: APPROVED FOR REVIEW</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight">
+            Low-Latency Vector RAG &amp; Crash-Safe C++ Engine
+          </h2>
+          <p class="text-xs sm:text-sm text-sky-200 leading-relaxed">
+            Technical blueprint outlining low-latency distributed systems: two-stage vector retrieval within &lt;80MB RAM constraints, disk-backed B+Tree storage with sequential WAL flush, and fine-tuned 124M/355M PyTorch transformer pipelines.
+          </p>
+
+          <!-- Technical Specs Dimension Strip -->
+          <div class="p-4 rounded border border-sky-500/40 bg-sky-950/40 space-y-2 text-xs">
+            <div class="flex justify-between">
+              <span>|&lt;--- QUERY LATENCY (8.0s baseline)</span>
+              <span class="text-emerald-300 font-bold">&lt; 0.28s (-96.5%) ---&gt;|</span>
+            </div>
+            <div class="flex justify-between">
+              <span>|&lt;--- MEMORY REGION LIMIT</span>
+              <span class="text-sky-300 font-bold">&lt; 80 MB SERVERLESS ---&gt;|</span>
+            </div>
+            <div class="flex justify-between">
+              <span>|&lt;--- STORAGE ENGINE MODEL</span>
+              <span class="text-sky-300 font-bold">O(log n) B+TREE + WAL ---&gt;|</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Blueprint Node Preview -->
+        <div class="lg:col-span-5 border border-sky-400/40 p-4 bg-slate-950/70 space-y-3 text-xs">
+          <div class="text-[10px] text-sky-400 uppercase tracking-widest border-b border-sky-800 pb-1">
+            CIRCUIT DIAGRAM: CLIPSENSE DUAL-STAGE RAG
+          </div>
+          <div class="space-y-2 text-sky-300">
+            <div class="p-2 border border-dashed border-sky-600 bg-sky-950/40">[USER QUERY VIA FASTAPI]</div>
+            <div class="text-center text-sky-500">▼ (THREAD POOL CONCURRENCY)</div>
+            <div class="p-2 border border-dashed border-sky-600 bg-sky-950/40">[QDRANT DENSE VECTOR EMBEDDINGS]</div>
+            <div class="text-center text-sky-500">▼ (SUB-80MB CROSS-ENCODER)</div>
+            <div class="p-2 border border-sky-400 bg-sky-900/40 font-bold text-white">[SYNCHRONIZED CITATIONS OUTPUT]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schematics List -->
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Blueprint Unit 1 -->
+      <div class="schematic-box p-5 space-y-3">
+        <div class="flex justify-between text-xs border-b border-sky-400/30 pb-2">
+          <span class="text-sky-400 font-bold">DWG #01: CLIPSENSE-AI</span>
+          <span class="text-emerald-400">LATENCY: &lt; 0.28s</span>
+        </div>
+        <h3 class="font-display text-xl font-bold text-white">Video RAG &amp; Vector Search Platform</h3>
+        <p class="text-xs text-sky-200 leading-relaxed">
+          Concurrent transcript chunking across 35+ playlists with dense vector retrieval and cross-encoder re-ranking.
+        </p>
+        <div class="pt-3 border-t border-sky-400/20 flex justify-between items-center text-xs">
+          <span>SPEC: FastAPI, Qdrant, Docker</span>
+          <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" class="px-3 py-1 bg-sky-500 text-slate-950 font-bold hover:bg-sky-400">INSPECT ↗</a>
+        </div>
+      </div>
+
+      <!-- Blueprint Unit 2 -->
+      <div class="schematic-box p-5 space-y-3">
+        <div class="flex justify-between text-xs border-b border-sky-400/30 pb-2">
+          <span class="text-sky-400 font-bold">DWG #02: MINI-DB-ENGINE</span>
+          <span class="text-emerald-400">ACID: CRASH-SAFE</span>
+        </div>
+        <h3 class="font-display text-xl font-bold text-white">C++ B+Tree Disk Storage Engine</h3>
+        <p class="text-xs text-sky-200 leading-relaxed">
+          Engineered from scratch in C++. 4KB fixed page frame buffer pool, sequential WAL commit logging, and O(log n) point queries.
+        </p>
+        <div class="pt-3 border-t border-sky-400/20 flex justify-between items-center text-xs">
+          <span>SPEC: C++20, Buffer Pool, WAL</span>
+          <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" class="px-3 py-1 bg-sky-500 text-slate-950 font-bold hover:bg-sky-400">INSPECT ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Specs -->
+    <footer class="schematic-box p-4 flex flex-wrap items-center justify-between gap-4 text-xs">
+      <div>
+        <span>CONTACT: </span>
+        <a href="mailto:ishaanphaye@gmail.com" class="text-sky-300 hover:underline">ishaanphaye@gmail.com</a>
+      </div>
+      <div class="flex items-center gap-4 text-sky-400">
+        <a href="https://github.com/iSHAANphaye" target="_blank" class="hover:underline">GITHUB</a>
+        <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" class="hover:underline">LINKEDIN</a>
+        <a href="/resume.pdf" class="hover:underline">RESUME_V2.PDF</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

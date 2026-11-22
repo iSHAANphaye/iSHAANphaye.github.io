@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan Phaye — Mission Control Avionics Flight Telemetry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Chivo Mono', monospace; background-color: #121316; color: #E5E7EB; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .avionics-card { background: #181A1E; border: 2px solid #2B2E35; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 12px rgba(0,0,0,0.4); }
+    .status-lamp-green { background: #10B981; box-shadow: 0 0 8px #10B981; }
+    .status-lamp-amber { background: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
+    .status-lamp-red { background: #EF4444; box-shadow: 0 0 8px #EF4444; }
+    .bezel-btn { border: 2px solid #3F434C; background: #23262D; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.5); }
+    .bezel-btn:active { transform: translateY(1px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.6); }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8 selection:bg-amber-500 selection:text-black">
+
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Mission Control Banner Strip -->
+    <header class="avionics-card p-4 flex flex-wrap items-center justify-between gap-4 rounded-xl border-t-4 border-t-emerald-500">
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 px-2.5 py-1 rounded bg-black/60 border border-neutral-700">
+          <span class="w-2.5 h-2.5 rounded-full status-lamp-green animate-pulse"></span>
+          <span class="text-xs font-bold text-white tracking-widest">FLIGHT: ACTIVE</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-neutral-400 block tracking-wider uppercase">AVIONICS CONSOLE // IIIT LUCKNOW</span>
+          <h1 class="font-display font-bold text-lg text-white">ISHAAN S. PHAYE · SYSTEMS ENGINEER</h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs">
+        <span class="px-3 py-1 rounded bg-neutral-900 border border-neutral-700 text-neutral-300">
+          TELEMETRY: <strong class="text-emerald-400">P99 &lt; 0.28s</strong>
+        </span>
+        <a href="/resume.pdf" class="bezel-btn px-4 py-1.5 rounded text-white font-bold text-xs hover:border-emerald-400 transition-colors">
+          FLIGHT_LOG.PDF
+        </a>
+      </div>
+    </header>
+
+    <!-- Flight Telemetry HUD Display -->
+    <div class="avionics-card p-6 sm:p-8 rounded-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-neutral-700 pb-3 text-xs text-neutral-400">
+        <span>PRIMARY MISSION SPECIFICATION // CRASH-SAFE DISTRIBUTED SYSTEMS</span>
+        <span class="text-emerald-400 font-bold">ALL GAUGES NOMINAL</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-white leading-tight">
+            High-Integrity Systems Engineering with Zero Fault Tolerance
+          </h2>
+          <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            M.Tech Computer Science candidate at IIIT Lucknow. Engineering mission-critical storage engines in C++20 with crash-safe Write-Ahead Logging (WAL) and low-latency concurrent vector retrieval pipelines.
+          </p>
+
+          <!-- Status Indicator Lamps Strip -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="p-3 bg-black/50 rounded-lg border border-neutral-800 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-neutral-500 uppercase">Durability</span>
+                <span class="w-2 h-2 rounded-full status-lamp-green"></span>
+              </div>
+              <div class="text-lg font-bold text-white">ACID WAL</div>
+              <div class="text-[10px] text-emerald-400">Crash-Safe Replay</div>
+            </div>
+
+            <div class="p-3 bg-black/50 rounded-lg border border-neutral-800 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-neutral-500 uppercase">Search Speed</span>
+                <span class="w-2 h-2 rounded-full status-lamp-green"></span>
+              </div>
+              <div class="text-lg font-bold text-white">&lt; 0.3s</div>
+              <div class="text-[10px] text-emerald-400">-96% Latency Cut</div>
+            </div>
+
+            <div class="p-3 bg-black/50 rounded-lg border border-neutral-800 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-neutral-500 uppercase">Payload RAM</span>
+                <span class="w-2 h-2 rounded-full status-lamp-amber"></span>
+              </div>
+              <div class="text-lg font-bold text-white">&lt; 80 MB</div>
+              <div class="text-[10px] text-amber-400">Serverless Budget</div>
+            </div>
+
+            <div class="p-3 bg-black/50 rounded-lg border border-neutral-800 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] text-neutral-500 uppercase">Algorithms</span>
+                <span class="w-2 h-2 rounded-full status-lamp-green"></span>
+              </div>
+              <div class="text-lg font-bold text-white">400+</div>
+              <div class="text-[10px] text-emerald-400">LeetCode Solved</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segmented Cockpit Readout -->
+        <div class="lg:col-span-4 p-5 bg-black/70 rounded-xl border border-neutral-700 space-y-3 text-xs">
+          <div class="text-[10px] text-neutral-400 uppercase tracking-widest border-b border-neutral-800 pb-1">
+            MISSION TELEMETRY GAUGES
+          </div>
+          <div class="space-y-1.5 text-neutral-300 font-mono">
+            <div class="flex justify-between"><span>BASE:</span> <strong>LUCKNOW (INDIA)</strong></div>
+            <div class="flex justify-between"><span>AVAILABILITY:</span> <strong class="text-emerald-400">IMMEDIATE (0-DAY)</strong></div>
+            <div class="flex justify-between"><span>HACKATHON:</span> <strong>8TH / 3,500+ TECHXR</strong></div>
+            <div class="flex justify-between"><span>INTERNSHIP:</span> <strong>DATANOMERS ML (-35%)</strong></div>
+            <div class="flex justify-between"><span>LLM ASSIST:</span> <strong class="text-sky-400">GEMINI 3.5 ACTIVE</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsystems Avionics Cards -->
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Card 1 -->
+      <div class="avionics-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs border-b border-neutral-700 pb-2">
+            <span class="text-emerald-400 font-bold">SUBSYSTEM 01 // RAG ENGINE</span>
+            <span class="text-neutral-400">P99: 0.28s</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mt-2">ClipSense Video Knowledge Engine</h3>
+          <p class="text-xs text-neutral-300 leading-relaxed mt-2">
+            Multi-stage dense vector retrieval via Qdrant with cross-encoder re-ranking. Thread pool queries 35+ playlists simultaneously within sub-80 MB serverless RAM.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-neutral-700 flex justify-between items-center text-xs">
+          <span class="text-neutral-400">SPEC: FastAPI, Qdrant, Docker</span>
+          <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" class="bezel-btn px-3 py-1 text-white hover:text-emerald-400">INSPECT ↗</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="avionics-card p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs border-b border-neutral-700 pb-2">
+            <span class="text-emerald-400 font-bold">SUBSYSTEM 02 // C++ STORAGE</span>
+            <span class="text-neutral-400">O(log n) LOOKUPS</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mt-2">Mini DB Storage Engine</h3>
+          <p class="text-xs text-neutral-300 leading-relaxed mt-2">
+            Custom C++20 disk-backed key-value store with fixed-size 4KB buffer pool manager, sequential WAL crash recovery, and doubly-linked leaf nodes.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-neutral-700 flex justify-between items-center text-xs">
+          <span class="text-neutral-400">SPEC: C++20, Buffer Pool, WAL</span>
+          <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" class="bezel-btn px-3 py-1 text-white hover:text-emerald-400">INSPECT ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Dispatch Console -->
+    <footer class="avionics-card p-4 rounded-xl flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+      <div>
+        <span class="text-neutral-400">COMMS FREQUENCY: </span>
+        <a href="mailto:ishaanphaye@gmail.com" class="text-emerald-400 hover:underline">ishaanphaye@gmail.com</a>
+      </div>
+      <div class="flex items-center gap-4 text-neutral-400">
+        <a href="https://github.com/iSHAANphaye" target="_blank" class="hover:text-white">GITHUB</a>
+        <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" class="hover:text-white">LINKEDIN</a>
+        <a href="https://leetcode.com/ishaanroxx/" target="_blank" class="hover:text-white">LEETCODE</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
