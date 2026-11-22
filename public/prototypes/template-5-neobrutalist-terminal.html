@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan Phaye — Technical Neo-Brutalist Systems Workbench</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'JetBrains Mono', monospace; background-color: #0C0D0E; color: #E4E4E7; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .brutal-box { border: 2px solid #27272A; background-color: #121316; box-shadow: 4px 4px 0px #000000; }
+    .brutal-box:hover { border-color: #3F3F46; }
+    .brutal-btn { border: 2px solid #3F3F46; box-shadow: 3px 3px 0px #000000; }
+    .brutal-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000000; }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8 selection:bg-yellow-400 selection:text-black">
+
+  <div class="max-w-5xl mx-auto space-y-6">
+
+    <!-- Top Status Header -->
+    <header class="brutal-box p-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="px-2 py-1 bg-yellow-400 text-black font-extrabold text-xs">ROOT</span>
+        <span class="font-display font-bold text-white text-base">ISHAAN_SHAILSH_PHAYE</span>
+        <span class="text-xs text-zinc-500">v2.0.26 [STABLE]</span>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <span class="px-2.5 py-1 bg-emerald-950 border border-emerald-600 text-emerald-400 font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          STATUS: READY FOR HIRE (0-DAY NOTICE)
+        </span>
+        <a href="/resume.pdf" class="brutal-btn px-3 py-1 bg-yellow-400 text-black font-bold hover:bg-yellow-300">
+          RESUME.PDF
+        </a>
+      </div>
+    </header>
+
+    <!-- ASCII Banner & Bio Matrix -->
+    <div class="brutal-box p-6 space-y-4">
+      <pre class="text-yellow-400 text-[10px] sm:text-xs leading-none overflow-x-auto select-none">
+██╗███████╗██╗  ██╗ █████╗  █████╗ ███╗   ██╗    ██████╗ ██╗  ██╗ █████╗ ██╗   ██╗███████╗
+██║██╔════╝██║  ██║██╔══██╗██╔══██╗████╗  ██║    ██╔══██╗██║  ██║██╔══██╗╚██╗ ██╔╝██╔════╝
+██║███████╗███████║███████║███████║██╔██╗ ██║    ██████╔╝███████║███████║ ╚████╔╝ █████╗  
+██║╚════██║██╔══██║██╔══██║██╔══██║██║╚██╗██║    ██╔═══╝ ██╔══██║██╔══██║  ╚██╔╝  ██╔══╝  
+██║███████║██║  ██║██║  ██║██║  ██║██║ ╚████║    ██║     ██║  ██║██║  ██║   ██║   ███████╗
+╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
+      </pre>
+
+      <div class="pt-2 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-4 text-xs">
+        <div>
+          <span class="text-zinc-500">ROLE:</span> <strong class="text-white">Systems &amp; Applied AI Engineer</strong>
+        </div>
+        <div>
+          <span class="text-zinc-500">EDUCATION:</span> <strong class="text-white">M.Tech CS (IIIT Lucknow '27)</strong>
+        </div>
+        <div>
+          <span class="text-zinc-500">LOC:</span> <strong class="text-white">India / Worldwide Remote</strong>
+        </div>
+      </div>
+      
+      <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed pt-2">
+        Zero fluff. Specializing in high-throughput RAG search pipelines, disk-backed C++ B+Tree storage engines with crash-safe Write-Ahead Logging (WAL), and PyTorch transformer architectures.
+      </p>
+    </div>
+
+    <!-- Interactive Shell Diagnostic Console -->
+    <div class="brutal-box p-4 space-y-3">
+      <div class="flex items-center justify-between text-xs text-zinc-400 border-b border-zinc-800 pb-2">
+        <span class="flex items-center gap-2">
+          <i data-lucide="terminal" class="w-4 h-4 text-yellow-400"></i>
+          <span>DIAGNOSTIC TERMINAL INTERFACE</span>
+        </span>
+        <span class="text-zinc-500">Click commands below to execute</span>
+      </div>
+
+      <!-- Quick Command Buttons -->
+      <div class="flex flex-wrap gap-2 text-xs">
+        <button onclick="runCommand('cat clipsense.log')" class="brutal-btn px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-yellow-400 font-mono">$ cat clipsense.log</button>
+        <button onclick="runCommand('cat minidb.cpp')" class="brutal-btn px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-emerald-400 font-mono">$ cat minidb.cpp</button>
+        <button onclick="runCommand('benchmarks --all')" class="brutal-btn px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-cyan-400 font-mono">$ benchmarks --all</button>
+        <button onclick="runCommand('ask-ai')" class="brutal-btn px-2.5 py-1 bg-yellow-400 text-black font-bold font-mono">$ launch ask-ai</button>
+      </div>
+
+      <!-- Terminal Output Box -->
+      <div id="term-output" class="p-3 bg-black rounded border border-zinc-800 text-xs text-zinc-300 min-h-[140px] max-h-[220px] overflow-y-auto space-y-1">
+        <div class="text-zinc-500">// Welcome to Ishaan's technical terminal.</div>
+        <div class="text-zinc-500">// Type or click a command above to inspect architecture benchmarks.</div>
+      </div>
+    </div>
+
+    <!-- Production Systems Grid -->
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Card 1 -->
+      <div class="brutal-box p-5 space-y-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs border-b border-zinc-800 pb-2">
+            <span class="text-yellow-400 font-bold">PROJECT_01</span>
+            <span class="text-emerald-400 font-mono">LATENCY: &lt;0.3s (-96%)</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mt-2">ClipSense AI Platform</h3>
+          <p class="text-xs text-zinc-400 mt-1">Multi-Stage Retrieval &amp; Video Knowledge Base</p>
+          <p class="text-xs text-zinc-300 mt-3 leading-relaxed">
+            Scalable RAG search over 35+ playlists using Qdrant dense vector index and cross-encoder re-ranking. Memory capped under 80 MB serverless RAM.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs">
+          <span class="text-zinc-500 font-mono">FastAPI · Qdrant · Docker</span>
+          <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" class="text-yellow-400 hover:underline">SOURCE ↗</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="brutal-box p-5 space-y-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs border-b border-zinc-800 pb-2">
+            <span class="text-emerald-400 font-bold">PROJECT_02</span>
+            <span class="text-cyan-400 font-mono">CRASH_SAFE ACID WAL</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mt-2">Mini DB Storage Engine</h3>
+          <p class="text-xs text-zinc-400 mt-1">Disk-Backed B+Tree &amp; Buffer Pool Manager</p>
+          <p class="text-xs text-zinc-300 mt-3 leading-relaxed">
+            Written from scratch in C++. Custom 4KB page frame serializer, Write-Ahead Logging (WAL) for durability, and doubly-linked leaf nodes for sequential traversal.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs">
+          <span class="text-zinc-500 font-mono">C++20 · Disk I/O · O(log n)</span>
+          <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" class="text-emerald-400 hover:underline">SOURCE ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact & Dispatch -->
+    <div class="brutal-box p-5 flex flex-wrap items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="text-zinc-500">CONTACT CHANNEL:</span>
+        <a href="mailto:ishaanphaye@gmail.com" class="text-white hover:text-yellow-400 font-bold ml-1">ishaanphaye@gmail.com</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/iSHAANphaye" target="_blank" class="text-zinc-400 hover:text-white">GITHUB</a>
+        <a href="https://www.linkedin.com/in/ishaan-phaye-6786971b3/" target="_blank" class="text-zinc-400 hover:text-white">LINKEDIN</a>
+        <a href="https://leetcode.com/ishaanroxx/" target="_blank" class="text-zinc-400 hover:text-white">LEETCODE (400+)</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function runCommand(cmd) {
+      const out = document.getElementById('term-output');
+      out.innerHTML += `<div class="text-yellow-400 pt-1">$ ${cmd}</div>`;
+
+      if (cmd.includes('clipsense')) {
+        out.innerHTML += `<div class="text-zinc-300">[ClipSense AI] Two-stage retrieval verified: 8.0s baseline reduced to 0.28s latency (-96.5%). Serverless RAM: 78.4 MB.</div>`;
+      } else if (cmd.includes('minidb')) {
+        out.innerHTML += `<div class="text-zinc-300">[Mini DB] B+Tree index loaded with WAL commit buffer. Point query latency: O(log n). Durability: Crash-safe ACID.</div>`;
+      } else if (cmd.includes('benchmarks')) {
+        out.innerHTML += `<div class="text-emerald-400">✓ 96% Search Latency Cut (ClipSense) | ✓ 35% ML Inference Drop (Datanomers) | ✓ 95.67% SFT Accuracy (GPT-2) | ✓ 8th/3,500+ IIT Roorkee Finalist</div>`;
+      } else if (cmd.includes('ask-ai')) {
+        out.innerHTML += `<div class="text-cyan-400">✨ Initializing Gemini 3.5 Flash-Lite grounded assistant... [READY]</div>`;
+      }
+      out.scrollTop = out.scrollHeight;
+    }
+  </script>
+</body>
+</html>

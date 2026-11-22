@@ -84,13 +84,16 @@ export function Hero() {
                 <span>Get in Touch</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a
-                href="#ai-chat"
-                className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("open-ai-chat"))
+                }
+                className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 cursor-pointer"
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Ask AI Assistant</span>
-              </a>
+              </button>
 
               <div className="flex items-center gap-2 pl-1">
                 <a

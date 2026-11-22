@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan Phaye — Linear & Vercel Minimalist Craft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #0A0A0A; color: #EDEDED; }
+    .font-mono { font-family: 'Geist Mono', monospace; }
+    .spotlight { background: radial-gradient(600px circle at 50% 0%, rgba(255,255,255,0.06), transparent 80%); }
+    .hairline-border { border: 1px solid rgba(255, 255, 255, 0.08); }
+    .hairline-border:hover { border-color: rgba(255, 255, 255, 0.18); }
+    .glass-pill { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body class="min-h-screen relative spotlight antialiased selection:bg-white selection:text-black">
+
+  <!-- Floating Minimalist Pill Navbar -->
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
+    <div class="glass-pill rounded-full px-4 py-2 flex items-center justify-between w-full max-w-2xl shadow-2xl">
+      <div class="flex items-center gap-3">
+        <a href="#" class="font-semibold text-sm tracking-tight text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-white"></span>
+          <span>ishaan phaye</span>
+        </a>
+        <span class="hidden sm:inline text-xs text-neutral-500 font-mono">systems / ai</span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-4 text-xs text-neutral-400 font-medium">
+        <a href="#work" class="hover:text-white transition-colors">work</a>
+        <a href="#systems" class="hover:text-white transition-colors">systems</a>
+        <a href="#metrics" class="hover:text-white transition-colors">benchmarks</a>
+        <a href="#contact" class="hover:text-white transition-colors">contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button onclick="openCommandMenu()" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-neutral-400 hover:text-white transition-colors">
+          <span class="text-[10px] font-mono">⌘K</span>
+        </button>
+        <button onclick="toggleChat()" class="px-3 py-1 rounded-full bg-white text-black text-xs font-medium hover:bg-neutral-200 transition-colors flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3 h-3 text-black"></i>
+          <span>Ask AI</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero: Minimalist Craft -->
+  <main class="max-w-4xl mx-auto px-6 pt-36 pb-20">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span>Open to immediate engineering roles · India &amp; Global Remote</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+        Engineering low-latency systems &amp; generative AI with mathematical precision.
+      </h1>
+
+      <p class="text-neutral-400 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+        M.Tech Computer Science candidate at IIIT Lucknow. Focused on C++ disk storage engines, B+Tree &amp; Write-Ahead Logging internals, and sub-300ms vector retrieval pipelines.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 font-mono text-xs text-neutral-300">96% Search Latency Cut</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 font-mono text-xs text-neutral-300">C++ B+Tree &amp; WAL</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 font-mono text-xs text-neutral-300">124M/355M PyTorch GPT-2</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 font-mono text-xs text-neutral-300">8th / 3,500+ TechXR Finalist</span>
+      </div>
+    </div>
+
+    <!-- Featured Interactive Work with Tabs -->
+    <section id="work" class="mt-24 space-y-12">
+      <div class="flex items-baseline justify-between border-b border-neutral-800 pb-3">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-neutral-400">Selected Engineering Works</h2>
+        <span class="text-xs font-mono text-neutral-500">2024 — 2026</span>
+      </div>
+
+      <!-- Interactive Tabbed Project: ClipSense AI -->
+      <div class="hairline-border rounded-2xl bg-[#0F0F0F] p-7 transition-all">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-2xl font-bold text-white tracking-tight">ClipSense AI</h3>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-800 text-neutral-300">FLAGSHIP</span>
+            </div>
+            <p class="text-sm text-neutral-400 mt-1">Scalable Video RAG &amp; Vector Search Platform</p>
+          </div>
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" class="text-neutral-400 hover:text-white flex items-center gap-1">
+              <span>github</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <a href="https://clipsense-ai.onrender.com" target="_blank" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white text-white hover:text-black transition-colors flex items-center gap-1">
+              <span>live demo</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Sub-Tabs -->
+        <div class="flex gap-2 border-b border-neutral-800 pb-2 mb-4 font-mono text-xs">
+          <button onclick="switchTab('clipsense', 'overview')" id="tab-btn-clipsense-overview" class="text-white font-semibold">Overview</button>
+          <button onclick="switchTab('clipsense', 'arch')" id="tab-btn-clipsense-arch" class="text-neutral-500 hover:text-neutral-300">Architecture</button>
+          <button onclick="switchTab('clipsense', 'telemetry')" id="tab-btn-clipsense-telemetry" class="text-neutral-500 hover:text-neutral-300">Benchmarks</button>
+        </div>
+
+        <div id="tab-content-clipsense-overview" class="text-sm text-neutral-300 leading-relaxed space-y-3">
+          <p>
+            ClipSense is a production retrieval engine turning YouTube playlists into queryable knowledge bases. Engineered two-stage retrieval combining Qdrant vector search with cross-encoder re-ranking inside a constrained sub-80 MB RAM container.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-2.5 py-1 rounded bg-neutral-800/80 font-mono text-xs text-neutral-400">FastAPI</span>
+            <span class="px-2.5 py-1 rounded bg-neutral-800/80 font-mono text-xs text-neutral-400">Qdrant</span>
+            <span class="px-2.5 py-1 rounded bg-neutral-800/80 font-mono text-xs text-neutral-400">TypeScript</span>
+            <span class="px-2.5 py-1 rounded bg-neutral-800/80 font-mono text-xs text-neutral-400">Docker</span>
+          </div>
+        </div>
+
+        <div id="tab-content-clipsense-arch" class="hidden text-xs font-mono text-neutral-400 space-y-2 bg-black p-4 rounded-xl border border-neutral-800">
+          <div>[User Query] ──&gt; (Dual JWT Auth) ──&gt; [Thread Pool Concurrency (35+ Playlists)]</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&gt; Stage 1: Dense Vector Search (Qdrant Cosine)</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&gt; Stage 2: Cross-Encoder Re-Ranking (&lt;80MB RAM)</div>
+          <div>Result: 8.0s baseline reduced to &lt; 0.28s latency with synchronized video citations.</div>
+        </div>
+
+        <div id="tab-content-clipsense-telemetry" class="hidden space-y-2">
+          <div class="grid grid-cols-3 gap-3 text-xs font-mono">
+            <div class="p-3 bg-neutral-900 rounded-xl">
+              <div class="text-neutral-500">Latency</div>
+              <div class="text-lg font-bold text-white mt-1">&lt; 0.3s</div>
+              <div class="text-[10px] text-emerald-400">-96% from 8.0s</div>
+            </div>
+            <div class="p-3 bg-neutral-900 rounded-xl">
+              <div class="text-neutral-500">Memory</div>
+              <div class="text-lg font-bold text-white mt-1">&lt; 80 MB</div>
+              <div class="text-[10px] text-neutral-400">Serverless RAM</div>
+            </div>
+            <div class="p-3 bg-neutral-900 rounded-xl">
+              <div class="text-neutral-500">Concurrency</div>
+              <div class="text-lg font-bold text-white mt-1">35+</div>
+              <div class="text-[10px] text-neutral-400">Playlists threaded</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Mini DB -->
+      <div class="hairline-border rounded-2xl bg-[#0F0F0F] p-7 transition-all">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-2xl font-bold text-white tracking-tight">Mini Database Storage Engine</h3>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-neutral-800 text-neutral-300">C++20</span>
+            </div>
+            <p class="text-sm text-neutral-400 mt-1">Disk-Backed B+Tree Index &amp; Write-Ahead Logging</p>
+          </div>
+          <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" class="text-neutral-400 hover:text-white flex items-center gap-1 font-mono text-xs">
+            <span>github</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+        <p class="text-sm text-neutral-300 leading-relaxed">
+          Custom storage engine written from scratch in C++. Implements disk-backed fixed-size page serialization, buffer pool management, and Write-Ahead Logging (WAL) to ensure crash-safe ACID durability with $O(\log n)$ point queries.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Experience & Education -->
+    <section class="mt-20 border-t border-neutral-800 pt-12 space-y-8">
+      <div class="flex items-baseline justify-between">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-neutral-400">Background &amp; Pedigree</h2>
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h4 class="text-base font-semibold text-white">M.Tech in Computer Science</h4>
+            <p class="text-sm text-neutral-400">Indian Institute of Information Technology, Lucknow (IIIT Lucknow)</p>
+          </div>
+          <div class="font-mono text-xs text-neutral-500">2025 — 2027 (Expected) · CGPA 8.36 / 10</div>
+        </div>
+
+        <div class="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h4 class="text-base font-semibold text-white">Machine Learning Intern</h4>
+            <p class="text-sm text-neutral-400">Datanomers (Remote)</p>
+          </div>
+          <div class="font-mono text-xs text-neutral-500">June 2022 — Dec 2022 · 35% Latency Reduction</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Command Menu Modal -->
+  <div id="cmd-menu" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-start justify-center pt-28 px-4" onclick="closeCommandMenu()">
+    <div class="hairline-border rounded-2xl bg-[#121212] w-full max-w-lg p-3 shadow-2xl space-y-2" onclick="event.stopPropagation()">
+      <div class="flex items-center gap-2 px-3 py-2 border-b border-neutral-800">
+        <i data-lucide="search" class="w-4 h-4 text-neutral-500"></i>
+        <input type="text" placeholder="Type a command or jump to section..." class="w-full bg-transparent text-sm text-white placeholder-neutral-500 focus:outline-none" />
+        <span class="text-[10px] font-mono text-neutral-500 px-1.5 py-0.5 rounded bg-neutral-800">ESC</span>
+      </div>
+      <div class="text-xs font-mono text-neutral-400 space-y-1 p-1">
+        <a href="#work" onclick="closeCommandMenu()" class="block px-3 py-2 rounded-lg hover:bg-neutral-800/80 text-white flex items-center justify-between">
+          <span>Jump to Projects</span>
+          <span class="text-neutral-500">↵</span>
+        </a>
+        <a href="/resume.pdf" class="block px-3 py-2 rounded-lg hover:bg-neutral-800/80 text-white flex items-center justify-between">
+          <span>Download Resume PDF</span>
+          <span class="text-neutral-500">↗</span>
+        </a>
+        <button onclick="closeCommandMenu(); toggleChat()" class="w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-800/80 text-white flex items-center justify-between">
+          <span>Ask Gemini AI Assistant</span>
+          <span class="text-neutral-500">✨</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function openCommandMenu() {
+      document.getElementById('cmd-menu').classList.remove('hidden');
+    }
+    function closeCommandMenu() {
+      document.getElementById('cmd-menu').classList.add('hidden');
+    }
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openCommandMenu();
+      }
+      if (e.key === 'Escape') closeCommandMenu();
+    });
+
+    function switchTab(proj, tab) {
+      ['overview', 'arch', 'telemetry'].forEach(t => {
+        const content = document.getElementById(`tab-content-${proj}-${t}`);
+        const btn = document.getElementById(`tab-btn-${proj}-${t}`);
+        if (t === tab) {
+          content.classList.remove('hidden');
+          btn.className = 'text-white font-semibold';
+        } else {
+          content.classList.add('hidden');
+          btn.className = 'text-neutral-500 hover:text-neutral-300';
+        }
+      });
+    }
+
+    function toggleChat() {
+      alert("Opening Ishaan AI Assistant powered by Gemini 3.5 Flash-Lite!");
+    }
+  </script>
+</body>
+</html>

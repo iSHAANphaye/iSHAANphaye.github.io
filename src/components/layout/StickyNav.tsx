@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Menu, X } from "lucide-react";
+import { FileText, Menu, Sparkles, X } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Home" },
-  { id: "ai-chat", label: "Ask AI" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
@@ -39,6 +38,11 @@ export function StickyNav() {
     return () => observer.disconnect();
   }, []);
 
+  const openAiChat = () => {
+    window.dispatchEvent(new CustomEvent("open-ai-chat"));
+    setMobileOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border-subtle)] bg-[var(--surface-canvas)]/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -50,7 +54,10 @@ export function StickyNav() {
           <span>ISHAAN PHAYE</span>
         </a>
 
-        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-1">
+        <nav
+          aria-label="Main Navigation"
+          className="hidden md:flex items-center gap-1"
+        >
           {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
@@ -68,6 +75,16 @@ export function StickyNav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Ask AI Pill Trigger */}
+          <button
+            type="button"
+            onClick={openAiChat}
+            className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-blue-600" />
+            <span>Ask AI</span>
+          </button>
+
           <a
             href={PROFILE.resumePath}
             target="_blank"
@@ -106,6 +123,14 @@ export function StickyNav() {
               {item.label}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={openAiChat}
+            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50"
+          >
+            <Sparkles className="h-4 w-4" />
+            <span>Ask AI Assistant</span>
+          </button>
         </div>
       )}
     </header>

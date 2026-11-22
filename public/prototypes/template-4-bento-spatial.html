@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan Phaye — Spatial Bento Matrix Prototype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B1120; color: #F1F5F9; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .bento-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease; }
+    .bento-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5); }
+  </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-8 selection:bg-sky-500/30 selection:text-sky-200">
+
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- Header Block -->
+    <header class="flex flex-wrap items-center justify-between gap-4 p-6 rounded-3xl bento-card">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white text-lg shadow-lg">
+          IP
+        </div>
+        <div>
+          <h1 class="text-xl font-extrabold text-white">Ishaan Shailesh Phaye</h1>
+          <p class="text-xs text-sky-400 font-mono">Systems &amp; Applied AI Engineer · IIIT Lucknow</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 font-mono text-xs text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Immediate Availability
+        </span>
+        <a href="/resume.pdf" class="px-4 py-2 rounded-xl bg-white text-slate-900 font-bold text-xs hover:bg-slate-200 transition-colors">
+          Resume PDF
+        </a>
+      </div>
+    </header>
+
+    <!-- Bento Grid Showcase -->
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      
+      <!-- Bento 1: Flagship ClipSense AI (Span 2 col, 2 row) -->
+      <div class="md:col-span-2 lg:col-span-2 md:row-span-2 bento-card rounded-3xl p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-sky-400 mb-4">
+            <span class="px-2.5 py-1 rounded-full bg-sky-950/80 border border-sky-800">★ FLAGSHIP RAG</span>
+            <span>FastAPI + Qdrant</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">ClipSense AI</h2>
+          <p class="text-xs font-mono text-slate-400 mt-1">Sub-300ms Video Knowledge Engine</p>
+          <p class="text-sm text-slate-300 mt-4 leading-relaxed">
+            Production retrieval engine converting YouTube playlists into vector databases. Concurrent thread pools cut search latency by 96% (8.0s down to &lt;0.3s) while maintaining a strict sub-80 MB serverless RAM footprint.
+          </p>
+
+          <!-- Interactive Latency Comparison Simulator -->
+          <div class="mt-6 p-4 rounded-2xl bg-slate-950/70 border border-white/5 space-y-3 font-mono text-xs">
+            <div class="flex justify-between text-slate-400">
+              <span>Standard Baseline:</span>
+              <span class="text-rose-400">8.00 s</span>
+            </div>
+            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-rose-500 h-full w-full"></div>
+            </div>
+            <div class="flex justify-between text-slate-400 pt-1">
+              <span>ClipSense Optimized:</span>
+              <span class="text-emerald-400">&lt; 0.28 s (-96.5%)</span>
+            </div>
+            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-emerald-400 h-full w-[3.5%]"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-white/10 mt-6">
+          <span class="text-xs font-mono text-slate-400">Live Citations Sync</span>
+          <div class="flex items-center gap-2">
+            <a href="https://github.com/iSHAANphaye/ClipSense" target="_blank" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+            <a href="https://clipsense-ai.onrender.com" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold text-xs hover:bg-sky-400 transition-colors">Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 2: C++ Mini DB Engine (Span 2 col) -->
+      <div class="md:col-span-1 lg:col-span-2 bento-card rounded-3xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-emerald-400 mb-2">
+            <span>SYSTEMS ENGINE</span>
+            <span>C++20</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">Mini DB Storage Engine</h3>
+          <p class="text-xs text-slate-400 font-mono mt-0.5">B+Tree Indexing &amp; Write-Ahead Logging</p>
+          <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+            Zero-dependency disk key-value store with fixed-size 4KB page serialization, custom buffer pool, and crash-safe ACID durability via sequential WAL logging.
+          </p>
+        </div>
+        <div class="flex items-center justify-between pt-4 border-t border-white/10 mt-4 font-mono text-xs">
+          <span class="text-emerald-400">O(log n) lookups</span>
+          <a href="https://github.com/iSHAANphaye/Mini-Database-Storage-Engine" target="_blank" class="text-slate-300 hover:text-white flex items-center gap-1">
+            <span>Source</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bento 3: Honors & LeetCode (Span 1 col) -->
+      <div class="bento-card rounded-3xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="font-mono text-xs text-amber-400 uppercase tracking-wider mb-2">National Hackathon</div>
+          <div class="text-3xl font-extrabold text-white">8th / 3.5k+</div>
+          <p class="text-xs text-slate-300 mt-2">
+            IIT Roorkee TechXR national finalist among 3,500+ participants. 400+ LeetCode problems solved.
+          </p>
+        </div>
+        <div class="font-mono text-xs text-slate-400 pt-4 border-t border-white/10 mt-4">Top 200 All-India TCS NQT</div>
+      </div>
+
+      <!-- Bento 4: GPT-2 PyTorch (Span 1 col) -->
+      <div class="bento-card rounded-3xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="font-mono text-xs text-indigo-400 uppercase tracking-wider mb-2">Transformer SFT</div>
+          <div class="text-3xl font-extrabold text-white">95.67%</div>
+          <p class="text-xs text-slate-300 mt-2">
+            PyTorch 124M/355M GPT-2 built from scratch with OpenAI weight loading &amp; sequence classification.
+          </p>
+        </div>
+        <div class="font-mono text-xs text-slate-400 pt-4 border-t border-white/10 mt-4">Alpaca Instruction Tuning</div>
+      </div>
+
+      <!-- Bento 5: Core Tech Matrix (Span 4 col) -->
+      <div class="md:col-span-3 lg:col-span-4 bento-card rounded-3xl p-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs uppercase text-slate-400 font-semibold tracking-wider">Core Technical Arsenal</span>
+          <span class="font-mono text-xs text-sky-400">Continuous Production Stacks</span>
+        </div>
+        <div class="flex flex-wrap gap-2 font-mono text-xs">
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">C++ (C++20)</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">Python</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">TypeScript</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">PyTorch</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">FastAPI</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">Qdrant Vector DB</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">Distributed Systems</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">Docker</span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-800/80 border border-white/5 text-slate-200">B+Tree &amp; WAL</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>

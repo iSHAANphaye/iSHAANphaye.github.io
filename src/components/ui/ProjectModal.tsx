@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ExternalLink, Github, X } from "lucide-react";
+import { ExternalLink, Github, Sparkles, X } from "lucide-react";
 import type { Project } from "@/types/portfolio";
 
 interface ProjectModalProps {
@@ -139,6 +139,23 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             ))}
           </div>
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                window.dispatchEvent(
+                  new CustomEvent("open-ai-chat", {
+                    detail: {
+                      prompt: `How did Ishaan build ${project.title} and what are its key architectural highlights?`,
+                    },
+                  })
+                );
+              }}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 cursor-pointer"
+            >
+              <Sparkles className="h-4 w-4" />
+              <span>Ask AI</span>
+            </button>
             <a
               href={project.githubUrl}
               target="_blank"
