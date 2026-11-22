@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import Groq from "groq-sdk";
+import { GoogleGenAI } from "@google/genai";
 import { buildSystemPrompt } from "@/lib/knowledge-base";
 import { limitChat } from "@/lib/ratelimit";
 import { chatRequestSchema } from "@/lib/validators";
@@ -35,30 +35,28 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GROQ_API_KEY;
-    if (!apiKey || apiKey.startsWith("gsk_your_")) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey || apiKey.startsWith("AIzaSy_your_")) {
       return NextResponse.json(
         {
           error:
-            "AI assistant is not configured yet (missing valid GROQ_API_KEY in .env.local).",
+            "AI assistant is not configured yet (missing valid GEMINI_API_KEY in .env.local).",
         },
         { status: 503 }
       );
     }
 
-    const groq = new Groq({ apiKey });
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
-      temperature: 0.2,
-      max_tokens: 350,
-      messages: [
-        { role: "system", content: buildSystemPrompt() },
-        { role: "user", content: parsed.data.message },
-      ],
+    const ai = new GoogleGenAI({ apiKey });
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash-lite",
+      contents: parsed.data.message,
+      config: {
+        systemInstruction: buildSystemPrompt(),
+      },
     });
 
     const reply =
-      completion.choices[0]?.message?.content?.trim() ||
+      response.text?.trim() ||
       "I couldn't generate a response. Please try rephrasing your question.";
 
     return NextResponse.json(
